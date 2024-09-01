@@ -8,7 +8,7 @@ importers:
 
   .: {}
 
-  be:
+  be/graphql_api:
     dependencies:
       graphql:
         specifier: ^16.9.0
@@ -26,6 +26,8 @@ importers:
       typescript:
         specifier: ^5.5.4
         version: 5.5.4
+
+  infra: {}
 
 packages:
 

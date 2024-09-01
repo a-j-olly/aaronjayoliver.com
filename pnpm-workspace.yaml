@@ -1,4 +1,5 @@
 packages:
 - fe
-- be
+- be/*
 - pkgs/*
+- infra
