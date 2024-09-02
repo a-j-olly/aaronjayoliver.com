@@ -2,4 +2,4 @@ packages:
 - fe
 - be/*
 - pkgs/*
-- infra
+- infra/*
