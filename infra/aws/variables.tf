@@ -4,6 +4,12 @@ variable "aws_region" {
   default     = "eu-west-1"
 }
 
+variable "stage" {
+  description = "The stage name for the application"
+  type        = string
+  default     = "dev"
+}
+
 variable "vpc_cidr" {
   description = "The CIDR block for the VPC"
   type        = string
@@ -32,4 +38,34 @@ variable "db_password" {
   description = "The master password for the PostgreSQL database"
   type        = string
   sensitive   = true
+}
+
+variable "graphql_api_name" {
+  description = "The name of the GraphQL API"
+  type        = string
+  default     = "graphql-api"
+}
+
+variable "graphql_api_lambda_name" {
+  description = "The name of the GraphQL API Lambda function"
+  type        = string
+  default     = "graphql-api-handler"
+}
+
+variable "db_migration_lambda_name" {
+  description = "The name of the database migration Lambda function"
+  type        = string
+  default     = "db-migration"
+}
+
+variable "db_migration_lambda_exec_role_name" {
+  description = "The name of the database migration Lambda function execution role"
+  type        = string
+  default     = "DBMigrationLambdaExecRole"
+}
+
+variable "graphql_api_lambda_exec_role_name" {
+  description = "The name of the database migration Lambda function execution role"
+  type        = string
+  default     = "GraphQLAPILambdaExecRole"
 }

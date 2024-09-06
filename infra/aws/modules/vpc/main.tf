@@ -31,11 +31,3 @@ resource "aws_security_group" "lambda_rds_sg" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 }
-
-resource "aws_vpc_endpoint" "lambda_vpc_endpoint" {
-  vpc_id              = aws_vpc.main.id
-  service_name        = "com.amazonaws.${var.aws_region}.lambda"
-  vpc_endpoint_type   = "Interface"
-  subnet_ids          = aws_subnet.private_subnets[*].id
-  security_group_ids  = [aws_security_group.lambda_rds_sg.id]
-}
