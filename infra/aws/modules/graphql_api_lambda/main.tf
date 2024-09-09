@@ -22,7 +22,7 @@ resource "aws_lambda_function" "graphql_api_lambda" {
 
   environment {
     variables = {
-      DB_URL    = var.database_url
+      DATABASE_URL    = var.database_url
     }
   }
 }

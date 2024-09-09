@@ -6,7 +6,7 @@ type Project {
 	releaseDate: String!
 	repositoryURL: String!
 	siteURL: String
-	tags: [Tag]!
+	tags: Tag[]!
 }
 
 type Tag {
@@ -15,9 +15,10 @@ type Tag {
 }
 
 type Query {
-	getProjectList: [Project]!
-    getProjectListByTagIds(tagIds: [ID]!): [Project]!
+	getProjectList: Project[]!
+    getProjectListByTagIds(tagIds: ID[]!): Project[]!
     getProjectByProjectId(projectId: ID!): Project
+	getTagList: Tag[]!
 	hello: String
 }
 `;
