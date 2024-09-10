@@ -9,7 +9,7 @@ resource "aws_lambda_function" "db_migration_lambda" {
   handler       = "index.handler"
   runtime       = "nodejs20.x"
   role          = aws_iam_role.db_migration_lambda_exec_role.arn
-  memory_size   = 128
+  memory_size   = 1024
   timeout       = 30
 
   vpc_config {

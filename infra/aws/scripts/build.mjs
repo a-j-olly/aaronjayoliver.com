@@ -1,5 +1,4 @@
 import * as esbuild from "esbuild";
-import { cpSync } from "fs";
 
 await esbuild.build({
 	entryPoints: ["node_modules/graphql_api/src/index.ts"],
@@ -22,7 +21,3 @@ await esbuild.build({
 });
 
 console.log("DB migration lambda built!");
-
-cpSync('node_modules/db_migration/src/sql/', 'dist/build/db_migration/sql', { recursive: true });
-
-console.log("SQL files copied!");

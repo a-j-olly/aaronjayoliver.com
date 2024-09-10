@@ -1,3 +1,4 @@
+export const seedQuery = `
 INSERT INTO tags (name) VALUES
 ('JavaScript'),
 ('Python'),
@@ -50,3 +51,4 @@ SELECT p.id, t.id FROM projects p, tags t WHERE p.name = 'Project Delta' AND t.n
 
 INSERT INTO project_tags (project_id, tag_id) 
 SELECT p.id, t.id FROM projects p, tags t WHERE p.name = 'Project Delta' AND t.name = 'Web Development';
+`;

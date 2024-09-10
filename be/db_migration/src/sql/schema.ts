@@ -1,3 +1,4 @@
+export const createSchemaQuery = `
 -- Create Projects table only if it doesn't exist
 CREATE TABLE IF NOT EXISTS projects (
     id SERIAL PRIMARY KEY,
@@ -31,3 +32,4 @@ DO $$ BEGIN
         CREATE INDEX idx_project_tags_tag_id ON project_tags(tag_id);
     END IF;
 END $$;
+`;

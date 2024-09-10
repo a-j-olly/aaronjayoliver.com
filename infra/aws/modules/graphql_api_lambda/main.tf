@@ -9,7 +9,7 @@ resource "aws_lambda_function" "graphql_api_lambda" {
   handler       = "index.handler"
   runtime       = "nodejs20.x"
   role = aws_iam_role.graphql_api_lambda_exec_role.arn
-  memory_size = 128
+  memory_size = 1024
   timeout    = 30
 
   vpc_config {
