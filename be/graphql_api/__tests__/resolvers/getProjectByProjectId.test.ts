@@ -1,6 +1,6 @@
 import { describe, it, expect, vi } from "vitest";
-import prisma from "../../src/prisma_client/__mocks__/prisma";
-import { getProjectByProjectId } from "../../src/lib/getProjectByProjectId";
+
+import { getProjectByProjectId } from "../../src/resolvers/getProjectByProjectId";
 
 vi.mock("../../src/prisma_client/prisma");
 

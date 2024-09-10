@@ -1,7 +1,12 @@
-import { getProjectListByAllTagIds } from './src/lib/getProjectList';
+import {
+	getProjectList,
+	getProjectListByAllTagIds,
+	getProjectListBySomeTagIds,
+} from "./src/resolvers/getProjectList";
+import { getTagList } from "./src/resolvers/getTagList";
 
 async function main() {
-    console.log(await getProjectListByAllTagIds(["1, 5"]));
+	console.log(await getTagList());
 }
 
 main();

@@ -3,7 +3,7 @@ import { dropQuery } from "./sql/drop";
 import { createSchemaQuery } from "./sql/schema";
 import { seedQuery } from "./sql/seed";
 
-let client;
+let client: any;
 
 export async function handler() {
 	if (!client) {

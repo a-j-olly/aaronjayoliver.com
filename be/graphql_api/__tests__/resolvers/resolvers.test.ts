@@ -1,8 +1,8 @@
 import { describe, it, expect, vi } from "vitest";
-import * as getProjectByProjectIdLib from "../src/lib/getProjectByProjectId";
-import * as getProjectListLib from "../src/lib/getProjectList";
-import * as getTagListLib from "../src/lib/getTagList";
-import { resolvers } from "../src/resolvers"; // Update with the actual path
+import * as getProjectByProjectIdLib from "../../src/resolvers/getProjectByProjectId";
+import * as getProjectListLib from "../../src/resolvers/getProjectList";
+import * as getTagListLib from "../../src/resolvers/getTagList";
+import { resolvers } from "../../src/resolvers"; // Update with the actual path
 
 vi.mock("../src/prisma_client/prisma");
 

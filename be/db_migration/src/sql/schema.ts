@@ -5,7 +5,7 @@ CREATE TABLE IF NOT EXISTS projects (
     name VARCHAR(255) NOT NULL,
     description TEXT NOT NULL,
     release_date DATE NOT NULL,
-    repository_url VARCHAR(255) NOT NULL,
+    repository_url VARCHAR(255),
     presentation_url VARCHAR(255)
 );
 

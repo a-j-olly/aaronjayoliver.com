@@ -1,10 +1,10 @@
-import { getProjectByProjectId } from "./lib/getProjectByProjectId";
+import { getProjectByProjectId } from "./resolvers/getProjectByProjectId";
 import {
 	getProjectList,
 	getProjectListBySomeTagIds,
 	getProjectListByAllTagIds,
-} from "./lib/getProjectList";
-import { getTagList } from "./lib/getTagList";
+} from "./resolvers/getProjectList";
+import { getTagList } from "./resolvers/getTagList";
 
 export const resolvers = {
 	Query: {
