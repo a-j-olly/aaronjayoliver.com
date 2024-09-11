@@ -1,33 +1,50 @@
-import { describe, it, expect, vi } from "vitest";
-import { getTagList } from "../../src/lib/getTagList";
-import prisma from "../../src/prisma_client/__mocks__/prisma";
+import { describe, it, expect, vi, beforeEach } from "vitest";
+import { executeQuery } from "../../src/lib/db";
+import { getTagList } from "../../src/resolvers/getTagList";
 
-vi.mock("../../src/prisma_client/prisma");
+// Mock the client.query method
+vi.mock("../../src/lib/db", () => ({
+	executeQuery: vi.fn(),
+}));
+
+// Mock the mapProjectResponse function
+vi.mock("../../src/lib/response_mapper", () => ({
+	mapProjectResponse: vi.fn(),
+}));
+
+beforeEach(() => {
+    vi.mocked(executeQuery).mockReset();
+})
 
 describe("getTagList", () => {
 	it("should return a list of tags", async () => {
-		// Mock data returned by Prisma
-		const mockTags = [
-			{ id: 1, name: "Tag 1" },
-			{ id: 2, name: "Tag 2" },
+		const mockTagRows = {
+			rows: [
+				{ id: 1, name: "JavaScript" },
+				{ id: 2, name: "GraphQL" },
+			],
+		};
+
+		const expectedTags = [
+			{ id: 1, name: "JavaScript" },
+			{ id: 2, name: "GraphQL" },
 		];
 
-		// Mock the Prisma response
-		prisma.tags.findMany.mockResolvedValue(mockTags);
+		vi.mocked(executeQuery).mockResolvedValue(mockTagRows as any);
 
 		// Call the function
 		const result = await getTagList();
 
 		// Assert that the result matches the mock data
-		expect(result).toEqual(mockTags);
+		expect(result).toEqual(expectedTags);
 
-		// Ensure Prisma was called
-		expect(prisma.tags.findMany).toHaveBeenCalledTimes(1);
+		expect(executeQuery).toHaveBeenCalledWith(
+			expect.stringContaining("SELECT * FROM tags")
+		);
 	});
 
 	it("should return an empty list when no tags are found", async () => {
-		// Mock the Prisma response to return an empty array
-		prisma.tags.findMany.mockResolvedValue([]);
+		vi.mocked(executeQuery).mockResolvedValue({ rows: [] } as any);
 
 		// Call the function
 		const result = await getTagList();
@@ -35,7 +52,8 @@ describe("getTagList", () => {
 		// Assert that the result is an empty array
 		expect(result).toEqual([]);
 
-		// Ensure Prisma was called
-		expect(prisma.tags.findMany).toHaveBeenCalledTimes(1);
+		expect(executeQuery).toHaveBeenCalledWith(
+			expect.stringContaining("SELECT * FROM tags")
+		);
 	});
 });

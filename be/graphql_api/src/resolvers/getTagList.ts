@@ -1,12 +1,10 @@
 import { TagItem } from "shared_types";
-import { client } from "../lib/db";
+import { executeQuery } from "../lib/db";
 
 export async function getTagList(): Promise<TagItem[]> {
-	await client.connect();
+	const result = await executeQuery(`SELECT * FROM tags`);
 
-	const result = await client.query(`SELECT * FROM tags`);
-
-	client.end();
+	if (result.rows.length === 0) return [];
 
 	return result.rows;
 }

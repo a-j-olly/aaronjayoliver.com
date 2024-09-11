@@ -1,7 +1,7 @@
 import { describe, it, expect, vi, beforeEach } from "vitest";
-import { getProjectList } from "../../src/resolvers/getProjectList";
 import { executeQuery } from "../../src/lib/db";
 import { mapProjectResponse } from "../../src/lib/response_mapper";
+import { getProjectListBySomeTagIds } from "../../src/resolvers/getProjectListBySomeTagIds";
 
 // Mock the client.query method
 vi.mock("../../src/lib/db", () => ({
@@ -14,12 +14,12 @@ vi.mock("../../src/lib/response_mapper", () => ({
 }));
 
 beforeEach(() => {
-    vi.mocked(executeQuery).mockReset();
-    vi.mocked(mapProjectResponse).mockReset();
-})
+	vi.mocked(executeQuery).mockReset();
+	vi.mocked(mapProjectResponse).mockReset();
+});
 
-describe("getProjectList", {}, () => {
-	it("should return a list of projects", async () => {
+describe("getProjectListBySomeTagIds", {}, () => {
+	it("should return projects associated with given tag IDs", async () => {
 		const mockProjectRows = {
 			rows: [
 				{
@@ -46,14 +46,6 @@ describe("getProjectList", {}, () => {
 					tag_id: 1,
 					tag_name: "JavaScript",
 				},
-				{
-					id: 3,
-					name: "Project Gamma",
-					description: "Third project",
-					releaseDate: "2023-02-01",
-					tag_id: null,
-					tag_name: null,
-				},
 			],
 		};
 
@@ -75,41 +67,30 @@ describe("getProjectList", {}, () => {
 				releaseDate: "2023-02-01",
 				tags: [{ id: 1, name: "JavaScript" }],
 			},
-			{
-				id: 3,
-				name: "Project Gamma",
-				description: "Third project",
-				releaseDate: "2023-02-01",
-				tags: [],
-			},
 		];
 
 		vi.mocked(executeQuery).mockResolvedValue(mockProjectRows as any);
-		vi.mocked(mapProjectResponse).mockReturnValue(expectedProjects);
+		vi.mocked(mapProjectResponse).mockResolvedValue(expectedProjects);
 
-		// Call the function
-		const result = await getProjectList();
+		// Call the function with valid tag IDs
+		const result = await getProjectListBySomeTagIds(["1", "2"]);
 
 		// Assert that the result matches the mock data
 		expect(result).toEqual(expectedProjects);
 
-		expect(executeQuery).toHaveBeenCalledWith(
-			expect.stringContaining(`SELECT p.*, t.id AS tag_id, t.name AS tag_name`)
-		);
+		expect(executeQuery).toHaveBeenCalledOnce();
 	});
 
-	it("should return an empty list when no projects are found", async () => {
+	it("should return an empty list when no projects match the tag IDs", async () => {
 		vi.mocked(executeQuery).mockResolvedValue({ rows: [] } as any);
-		vi.mocked(mapProjectResponse).mockReturnValue([]);
+		vi.mocked(mapProjectResponse).mockResolvedValue([]);
 
-		// Call the function
-		const result = await getProjectList();
+		// Call the function with tag IDs
+		const result = await getProjectListBySomeTagIds(["999"]);
 
 		// Assert that the result is an empty array
 		expect(result).toEqual([]);
 
-		expect(executeQuery).toHaveBeenCalledWith(
-			expect.stringContaining(`SELECT p.*, t.id AS tag_id, t.name AS tag_name`)
-		);
+		expect(executeQuery).toHaveBeenCalledOnce();
 	});
 });

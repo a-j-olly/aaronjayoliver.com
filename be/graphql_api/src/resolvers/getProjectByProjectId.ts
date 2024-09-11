@@ -1,5 +1,5 @@
 import { ProjectItem } from "shared_types";
-import { client } from "../lib/db";
+import { executeQuery } from "../lib/db";
 import { mapProjectResponse } from "../lib/response_mapper";
 
 export async function getProjectByProjectId(
@@ -7,22 +7,19 @@ export async function getProjectByProjectId(
 ): Promise<ProjectItem | null> {
 	let project: ProjectItem | null = null;
 
-	await client.connect();
 	const sql = `
-			SELECT p.*, t.id AS tag_id, t.name AS tag_name
-			FROM projects p
-			LEFT JOIN project_tags pt ON pt.project_id = p.id
-			LEFT JOIN tags t ON t.id = pt.tag_id
-			WHERE p.id = $1
-		`;
+		SELECT p.*, t.id AS tag_id, t.name AS tag_name
+		FROM projects p
+		LEFT JOIN project_tags pt ON pt.project_id = p.id
+		LEFT JOIN tags t ON t.id = pt.tag_id
+		WHERE p.id = $1
+	`;
 
-	const result = await client.query(sql, [projectId]);
+	const result = await executeQuery(sql, projectId);
 
-	if (result.rows.length === 0) return project;
+	if (result.rows.length === 0) return null;
 
-	project = mapProjectResponse(result.rows)[0] ?? null;
-
-	client.end();
+	project = mapProjectResponse(result.rows)[0];
 
 	return project;
 }
