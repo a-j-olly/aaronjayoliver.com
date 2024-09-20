@@ -1,8 +1,6 @@
 import { ProjectItem, ProjectRow } from "shared_types";
 
 export function mapProjectResponse(rows: ProjectRow[]): ProjectItem[] {
-	console.log("Raw rows: ", rows);
-
 	const projectMap = new Map<number, ProjectItem>();
 
 	rows.forEach((row) => {

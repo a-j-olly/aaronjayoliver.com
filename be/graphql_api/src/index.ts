@@ -20,32 +20,35 @@ const yoga = createYoga<{
 });
 
 export async function handler(
-	event: APIGatewayProxyEventV2,
-	lambdaContext: APIGatewayEventRequestContextV2
+	event: APIGatewayProxyEventV2
 ): Promise<APIGatewayProxyResultV2> {
-	const path = event.rawPath;
+	try {
+		const path = event.rawPath;
+		const response = await yoga.fetch(
+			path,
+			{
+				method: event.requestContext.http.method,
+				headers: event.headers as HeadersInit,
+				body: event.body
+					? Buffer.from(event.body, event.isBase64Encoded ? "base64" : "utf8")
+					: undefined,
+			},
+			{
+				event,
+				lambdaContext: event.requestContext,
+			}
+		);
 
-	const response = await yoga.fetch(
-		path,
-		{
-			method: event.requestContext.http.method,
-			headers: event.headers as HeadersInit,
-			body: event.body
-				? Buffer.from(event.body, event.isBase64Encoded ? "base64" : "utf8")
-				: undefined,
-		},
-		{
-			event,
-			lambdaContext,
-		}
-	);
+		const responseHeaders = Object.fromEntries(response.headers.entries());
 
-	const responseHeaders = Object.fromEntries(response.headers.entries());
-
-	return {
-		statusCode: response.status,
-		headers: responseHeaders,
-		body: await response.text(),
-		isBase64Encoded: false,
-	};
+		return {
+			statusCode: response.status,
+			headers: responseHeaders,
+			body: await response.text(),
+			isBase64Encoded: false,
+		};
+	} catch (error) {
+		console.log("Handler caught the following error: ", error);
+		throw error;
+	}
 }

@@ -7,9 +7,15 @@ import { getTagList } from "./resolvers/getTagList";
 export const resolvers = {
 	Query: {
 		getProjectList,
-		getProjectListBySomeTagIds,
-		getProjectListByAllTagIds,
-		getProjectByProjectId,
+		getProjectListBySomeTagIds(_, args) {
+			return getProjectListBySomeTagIds(args.tagIds);
+		},
+		getProjectListByAllTagIds(_, args) {
+			return getProjectListByAllTagIds(args.tagIds);
+		},
+		getProjectByProjectId(_, args) {
+			return getProjectByProjectId(args.projectId);
+		},
 		getTagList,
 	},
 };
