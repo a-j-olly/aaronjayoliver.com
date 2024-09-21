@@ -11,12 +11,10 @@ export async function getProjectList(): Promise<ProjectItem[]> {
 		LEFT JOIN project_tags pt ON pt.project_id = p.id
 		LEFT JOIN tags t ON t.id = pt.tag_id
 	`);
-	console.log(`getProjectList result: ${JSON.stringify(result)}`);
 
 	if (result.rows.length === 0) return [];
 
 	projects = mapProjectResponse(result.rows);
-	console.log(`getProjectList projects: ${JSON.stringify(projects)}`);
 	
 	return projects;
 }
