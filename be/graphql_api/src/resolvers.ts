@@ -1,16 +1,21 @@
+import { getProjectByProjectId } from "./resolvers/getProjectByProjectId";
+import { getProjectList } from "./resolvers/getProjectList";
+import { getProjectListByAllTagIds } from "./resolvers/getProjectListByAllTagIds";
+import { getProjectListBySomeTagIds } from "./resolvers/getProjectListBySomeTagIds";
+import { getTagList } from "./resolvers/getTagList";
+
 export const resolvers = {
 	Query: {
-		hello: async function (_) {
-			return "world";
+		getProjectList,
+		getProjectListBySomeTagIds(_, args) {
+			return getProjectListBySomeTagIds(args.tagIds);
 		},
-		getProjectList: async function (_) {
-            return [];
-        },
-		getProjectListByTagIds: async function (_, { tagIds: [string] }) {
-			return [];
+		getProjectListByAllTagIds(_, args) {
+			return getProjectListByAllTagIds(args.tagIds);
 		},
-		getProjectByProjectId: async function (_, { projectId: string }) {
-			return;
+		getProjectByProjectId(_, args) {
+			return getProjectByProjectId(args.projectId);
 		},
+		getTagList,
 	},
 };
