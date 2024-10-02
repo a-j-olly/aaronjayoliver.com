@@ -1,7 +1,7 @@
 {
 	"name": "graphql_api",
-	"version": "0.0.0",
-	"description": "",
+	"version": "0.1.0",
+	"description": "A graphql API serving aaronjayoliver.com",
 	"main": "index.js",
 	"scripts": {
 		"dev": "node --env-file=.env -r ts-node/register local_resolver_test.ts",
