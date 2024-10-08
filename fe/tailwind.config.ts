@@ -7,6 +7,9 @@ export default {
 		extend: {
 			colors: {
 				'dark-blue': '#2079c7'
+			},
+			aria: {
+				current: 'current=page'
 			}
 		}
 	},
