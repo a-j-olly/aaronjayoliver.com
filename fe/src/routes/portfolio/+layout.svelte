@@ -3,11 +3,8 @@
 </script>
 
 <header>
-	<nav class="m-2 flex justify-between">
-		<div class="flex items-center">
-			<h1 class="text-center text-4xl font-bold text-dark-blue">{$page.data.pageTitle}</h1>
-		</div>
-		<div class="flex h-min flex-row divide-x-2">
+	<nav class="m-2 mb-6 grid grid-cols-3">
+		<div class="max-sm:col-start-2 max-sm-justify-center flex h-min flex-row divide-x-2">
 			<ul class="pr-2 text-right text-lg font-bold leading-5 text-dark-blue">
 				<li>
 					<h1>Aaron</h1>
@@ -38,6 +35,9 @@
 					<a class="underline hover:text-blue-600 hover:decoration-blue-600" href="/blog">blog</a>
 				</li>
 			</ul>
+		</div>
+		<div class="flex items-center max-sm:hidden justify-center">
+			<h1 class="text-center text-4xl font-bold text-dark-blue">{$page.data.pageTitle}</h1>
 		</div>
 	</nav>
 </header>
