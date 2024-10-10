@@ -1,22 +1,31 @@
-<script lang="tsc">
+<script lang="ts">
+	import Pill from './Pill.svelte';
 	export let data;
+
+	let tagList = data.tags;
+	let selectedTags = [...tagList];
+
+	function handleTagToggle(
+		e: CustomEvent<{ tag: { id: number; name: string }; selected: boolean }>
+	) {
+		const { tag, selected } = e.detail;
+		if (selected) {
+			selectedTags = [...selectedTags, tag];
+		} else {
+			selectedTags = selectedTags.filter((v) => v !== tag);
+		}
+		// getProjectsByAllTags(selectedTags)
+		console.log(selectedTags);
+	}
 </script>
 
-<div class="md:mx-48 mx-12 flex items-center justify-center gap-2">
-	<h2 class="text-lg font-semibold text-dark-blue">Tags:</h2>
+<div class="mx-12 flex items-center justify-center gap-2 md:mx-48">
+	<h2 class="text-lg font-bold text-dark-blue">Tags:</h2>
 	<div class="flex flex-col">
 		<ul class="flex flex-wrap justify-evenly">
-			{#each data.tags as { id, name }}
-				<button class="bg-orange-600 hover:bg-orange-400 text-white font-bold my-1 py-1 px-2 rounded-full">{name}</button>
+			{#each tagList as tag}
+				<Pill {tag} on:toggle={handleTagToggle} />
 			{/each}
 		</ul>
-		<div class="flex flex-wrap items-center justify-center">
-			<input
-				id="new-tag-input"
-				class="mt-1 w-full rounded-md p-1"
-				type="text"
-				placeholder="Add tags (press Enter to add)"
-			/>
-		</div>
 	</div>
 </div>
