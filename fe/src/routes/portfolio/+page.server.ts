@@ -4,7 +4,7 @@ export function load() {
 	return {
 		pageTitle: 'Portfolio',
 		tags: [
-			{ id: 1, name: 'Javascript' },
+			{ id: 1, name: 'JavaScript' },
 			{ id: 2, name: 'Angular' },
 			{ id: 3, name: 'Svelte' },
 			{ id: 4, name: 'Nodejs' },
@@ -12,10 +12,19 @@ export function load() {
 			{ id: 6, name: 'React' },
 			{ id: 7, name: 'AWS' },
 			{ id: 8, name: 'Azure' },
-            { id: 9, name: 'C#' },
+			{ id: 9, name: 'C#' },
 			{ id: 10, name: 'Serverless' },
-			{ id: 11, name: 'Terraform' },
+			{ id: 11, name: 'Terraform' }
 		],
-		projects: []
+		projects: [
+			{ title: 'Project 1', presentationURL: 'https://picsum.photos/id/1/640/360' },
+			{ title: 'Project 2', presentationURL: 'https://picsum.photos/id/2/640/360' },
+			{ title: 'Project 3', presentationURL: 'https://picsum.photos/id/3/640/360' },
+			{ title: 'Project 4', presentationURL: 'https://picsum.photos/id/4/640/360' },
+			{ title: 'Project 5', presentationURL: 'https://picsum.photos/id/5/640/360' },
+			{ title: 'Project 6', presentationURL: 'https://picsum.photos/id/6/640/360' },
+			{ title: 'Project 7', presentationURL: 'https://picsum.photos/id/7/640/360' },
+			{ title: 'Project 8', presentationURL: 'https://picsum.photos/id/8/640/360' }
+		]
 	};
 }

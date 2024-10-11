@@ -6,7 +6,7 @@
 	}>();
 
 	export let tag: { id: number; name: string };
-	export let selected = true;
+	export let selected = false;
 
 	// Emit an event to the parent to add/remove the value from the list
 	function toggle() {
@@ -22,9 +22,9 @@
 
 <!-- Button Style: Changing color based on selected state -->
 <button
-	class="m-1 rounded-full rounded-full px-2 py-1 font-bold text-white transition-colors
+	class="m-1 rounded-lg p-1 text-lg font-semibold text-white transition-colors
            duration-200
-           {selected ? 'bg-blue-600 hover:bg-blue-400' : 'bg-red-600 hover:bg-red-400'}"
+           {selected ? 'bg-dark-blue hover:bg-blue-400' : 'bg-slate-400 hover:bg-blue-400'}"
 	on:click={toggle}
 >
 	{tag.name}

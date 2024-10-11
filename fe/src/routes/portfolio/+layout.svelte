@@ -4,7 +4,9 @@
 
 <header>
 	<nav class="m-2 mb-6 grid grid-cols-3">
-		<div class="max-sm:col-start-2 max-sm-justify-center flex h-min flex-row divide-x-2">
+		<div
+			class="flex h-min flex-row justify-start divide-x-2 max-sm:col-start-2 max-sm:justify-center"
+		>
 			<ul class="pr-2 text-right text-lg font-bold leading-5 text-dark-blue">
 				<li>
 					<h1>Aaron</h1>
@@ -36,7 +38,7 @@
 				</li>
 			</ul>
 		</div>
-		<div class="flex items-center max-sm:hidden justify-center">
+		<div class="flex items-center justify-center max-sm:hidden">
 			<h1 class="text-center text-4xl font-bold text-dark-blue">{$page.data.pageTitle}</h1>
 		</div>
 	</nav>
