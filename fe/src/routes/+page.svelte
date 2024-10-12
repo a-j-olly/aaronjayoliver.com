@@ -48,8 +48,8 @@
 
 	<!-- page 2 -->
 	<div class="flex h-screen flex-col items-center justify-center" id="about">
-		<ul role="list" class="divide-y px-6">
-			<li class="flex gap-x-4 py-5">
+		<ul role="list" class="divide-y mx-2">
+			<li class="flex gap-x-2 py-2">
 				<div class="w-28">
 					<img
 						class="w-24 flex-none rounded-full bg-gray-50"
@@ -60,7 +60,7 @@
 
 				<div class="flex min-w-0 gap-x-2">
 					<div class="min-w-0 flex-auto">
-						<p class="text-4xl font-bold leading-6 text-dark-blue">Aaron Jay Oliver</p>
+						<p class="text-2xl md:text-4xl font-bold leading-6 text-dark-blue">Aaron Jay Oliver</p>
 
 						<div class="mt-4 flex items-center gap-x-2">
 							<svg
@@ -104,9 +104,9 @@
 				</div>
 			</li>
 			<li class="flex justify-between py-5">
-				<div class="flex min-w-0 flex-wrap gap-x-4">
+				<div class="flex min-w-0 flex-wrap gap-x-2">
 					<div class="mb-2 flex w-28 flex-col justify-center">
-						<h1 class="text-2xl leading-6 text-dark-blue">Developer</h1>
+						<h1 class="text-lg md:text-2xl leading-6 text-dark-blue">Developer</h1>
 					</div>
 
 					<div class="min-w-0 max-w-prose">
@@ -120,9 +120,9 @@
 			</li>
 
 			<li class="flex justify-between py-5">
-				<div class="flex min-w-0 flex-wrap gap-x-4">
+				<div class="flex min-w-0 flex-wrap gap-x-2">
 					<div class="mb-2 flex w-28 flex-col justify-center">
-						<h1 class="text-2xl leading-6 text-dark-blue">Architect</h1>
+						<h1 class="text-lg md:text-2xl leading-6 text-dark-blue">Architect</h1>
 					</div>
 					<div class="min-w-0 max-w-prose flex-auto">
 						<p class="text-sm leading-6 text-slate-900">

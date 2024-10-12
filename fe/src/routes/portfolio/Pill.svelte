@@ -24,7 +24,7 @@
 <button
 	class="m-1 rounded-lg p-1 text-lg font-semibold text-white transition-colors
            duration-200
-           {selected ? 'bg-dark-blue hover:bg-blue-400' : 'bg-slate-400 hover:bg-blue-400'}"
+           {selected ? 'bg-dark-blue hover:bg-blue-400' : 'bg-slate-400'}"
 	on:click={toggle}
 >
 	{tag.name}
