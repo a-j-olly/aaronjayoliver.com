@@ -1,68 +1,82 @@
 <script lang="ts">
+	import type { ProjectItem, TagItem } from 'shared_types';
+	import { projectStore, tagStore, selectedTagStore } from '$lib/stores';
 	import Card from './Card.svelte';
 	import Pill from './Pill.svelte';
+	import CloseIcon from './CloseIcon.svelte';
+
 	export let data;
+	const { projectData, tagData } = data;
+	projectStore.set(projectData);
+	tagStore.set(tagData);
 
-	let tagList = data.tags;
-	let isSelected = false;
-	let selectedTags = [];
+	let projectList: Partial<ProjectItem>[] = [];
+	let tagList: TagItem[] = [];
+	let selectedTags: TagItem[] = [];
+	let tagsSelected: boolean | undefined = false;
 
-	function handleTagToggle(
-		e: CustomEvent<{ tag: { id: number; name: string }; selected: boolean }>
-	) {
-		const { tag, selected } = e.detail;
+	projectStore.subscribe((value) => {
+		projectList = value;
+	});
+	tagStore.subscribe((value) => {
+		tagList = value;
+	});
+	selectedTagStore.subscribe((value) => {
+		selectedTags = value;
+	});
+
+	function handleTagToggle(event: CustomEvent<{ tag: TagItem; selected: boolean }>) {
+		const { tag, selected } = event.detail;
 		if (selected) {
-			selectedTags = [...selectedTags, tag];
+			selectedTagStore.set([...selectedTags, tag]);
 		} else {
-			selectedTags = selectedTags.filter((v) => v !== tag);
+			selectedTagStore.set(selectedTags.filter((v) => v !== tag));
 		}
 		// getProjectsByAllTags(selectedTags)
 		console.log(selectedTags);
 	}
 
-	function toggleAll() {
-		isSelected = !isSelected;
+	function clearTags() {
+		console.log(tagsSelected);
+		tagsSelected = undefined;
+		tagsSelected = false;
+		selectedTagStore.set([]);
+		console.log(selectedTags);
+		// getProjectList()
 	}
 </script>
 
-<div class="mx-2 md:mx-32">
-	<div class="">
-		<div class="relative">
-			<h1 class="text-center text-2xl font-bold text-slate-600">Skills</h1>
-
-			<div
-				class="absolute bottom-0 right-0 h-7 w-12 rounded-t-lg bg-slate-200 flex items-center justify-center"
-			>
-				<label class="inline-flex cursor-pointer items-center">
-					<input type="checkbox" value="" class="peer sr-only" on:click={toggleAll} />
-					<div
-						class="peer relative h-5 w-9 rounded-full bg-gray-200
-						after:absolute after:start-[2px] after:top-[2px] after:h-4 after:w-4 after:rounded-full after:border
-						after:border-gray-300 after:bg-white after:transition-all after:content-[''] peer-checked:bg-blue-600
-						peer-checked:after:translate-x-full peer-checked:after:border-white peer-focus:outline-none
-						rtl:peer-checked:after:-translate-x-full dark:border-gray-600 dark:bg-gray-700 dark:peer-focus:ring-blue-800
-						{isSelected
-							? 'bg-dark-blue hover:bg-blue-400'
-							: 'bg-slate-400 opacity-60 hover:bg-blue-400'} justify-cente flex items-center"
-					></div>
-				</label>
-			</div>
-		</div>
-
-		<ul
-			class=" grid grid-cols-3 gap-2 rounded-l border bg-slate-100 shadow-inner shadow-slate-200 sm:grid-cols-5 lg:grid-cols-8"
+<div class="mx-2 sm:mx-4 md:mx-8 lg:mx-16">
+	<div class="relative">
+		<h1 class="text-center text-2xl font-bold text-slate-600">Skills</h1>
+		<div
+			class="absolute bottom-0 right-0 flex h-8 w-10 items-center justify-center rounded-t bg-slate-200"
 		>
-			{#each tagList as tag}
-				<Pill {tag} selected={isSelected} on:toggle={handleTagToggle} />
-			{/each}
-		</ul>
+			<button
+				type="button"
+				disabled={selectedTags.length === 0}
+				class="rounded text-center text-sm font-medium text-white {selectedTags.length === 0
+					? 'bg-grey-600'
+					: 'bg-red-700 hover:bg-red-800 dark:bg-red-600 dark:hover:bg-red-700'}"
+				on:click={clearTags}
+				><CloseIcon />
+			</button>
+		</div>
 	</div>
+
+	<ul
+		class="grid grid-cols-3 gap-2 border bg-slate-100 shadow-inner shadow-slate-200 sm:grid-cols-5 lg:grid-cols-8"
+	>
+		{#each tagList as tag}
+			<Pill {tag} selected={tagsSelected} on:toggle={handleTagToggle} />
+		{/each}
+	</ul>
 
 	<h1 class="text-center text-2xl font-bold text-slate-600">Projects</h1>
 
-	<div class="m-auto mt-2 grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
-		{#each data.projects as { title, presentationURL }}
-			<Card {title} {presentationURL} />
+	<div class="m-auto grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+		{#each projectList as { name, presentationURL }}
+			<Card {name} {presentationURL} />
 		{/each}
 	</div>
 </div>
