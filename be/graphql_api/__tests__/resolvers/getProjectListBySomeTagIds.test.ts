@@ -1,8 +1,7 @@
 import { describe, it, expect, vi, beforeEach } from "vitest";
 import { executeQuery } from "../../src/lib/db";
-import { mapProjectResponse } from "../../src/lib/response_mapper";
 import { getProjectListBySomeTagIds } from "../../src/resolvers/getProjectListBySomeTagIds";
-import { ProjectItem } from "shared_types";
+import { ProjectItem, ProjectRow } from "shared_types";
 
 // Mock the client.query method
 vi.mock("../../src/lib/db", () => ({
@@ -15,7 +14,7 @@ beforeEach(() => {
 
 describe("getProjectListBySomeTagIds", {}, () => {
 	it("should return projects associated with given tag IDs", async () => {
-		const mockProjectRows = {
+		const mockProjectRows: { rows: ProjectRow[] } = {
 			rows: [
 				{
 					id: 1,
@@ -23,6 +22,8 @@ describe("getProjectListBySomeTagIds", {}, () => {
 					description: "First project",
 					release_date: "2023-01-01",
 					image_url: "http://example.com/images/project-alpha",
+					repository_url: "http://github.com/project-alpha",
+					presentation_url: null,
 					tag_id: 1,
 					tag_name: "JavaScript",
 				},
@@ -32,6 +33,8 @@ describe("getProjectListBySomeTagIds", {}, () => {
 					description: "First project",
 					release_date: "2023-01-01",
 					image_url: "http://example.com/images/project-alpha",
+					repository_url: "http://github.com/project-alpha",
+					presentation_url: null,
 					tag_id: 2,
 					tag_name: "GraphQL",
 				},
@@ -41,6 +44,8 @@ describe("getProjectListBySomeTagIds", {}, () => {
 					description: "Second project",
 					release_date: "2023-02-01",
 					image_url: "http://example.com/images/project-beta",
+					repository_url: "http://github.com/project-beta",
+					presentation_url: null,
 					tag_id: 1,
 					tag_name: "JavaScript",
 				},
@@ -54,8 +59,8 @@ describe("getProjectListBySomeTagIds", {}, () => {
 				description: "First project",
 				releaseDate: "2023-01-01",
 				imageURL: "http://example.com/images/project-alpha",
+				repositoryURL: "http://github.com/project-alpha",
 				presentationURL: undefined,
-				repositoryURL: undefined,
 				tags: [
 					{ id: 1, name: "JavaScript" },
 					{ id: 2, name: "GraphQL" },
@@ -67,8 +72,8 @@ describe("getProjectListBySomeTagIds", {}, () => {
 				description: "Second project",
 				releaseDate: "2023-02-01",
 				imageURL: "http://example.com/images/project-beta",
+				repositoryURL: "http://github.com/project-beta",
 				presentationURL: undefined,
-				repositoryURL: undefined,
 				tags: [{ id: 1, name: "JavaScript" }],
 			},
 		];

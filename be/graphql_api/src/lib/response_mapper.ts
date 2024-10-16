@@ -11,7 +11,7 @@ export function mapProjectResponse(rows: ProjectRow[]): ProjectItem[] {
 				description: row.description,
 				releaseDate: row.release_date,
 				imageURL: row.image_url,
-				repositoryURL: row.repository_url ?? undefined,
+				repositoryURL: row.repository_url,
 				presentationURL: row.presentation_url ?? undefined,
 				tags: [],
 			});

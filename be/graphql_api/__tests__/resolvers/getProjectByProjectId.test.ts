@@ -1,7 +1,7 @@
 import { describe, it, expect, vi, beforeEach } from "vitest";
 import { getProjectByProjectId } from "../../src/resolvers/getProjectByProjectId";
 import { executeQuery } from "../../src/lib/db";
-import { ProjectItem } from "shared_types";
+import { ProjectItem, ProjectRow } from "shared_types";
 
 // Mock the client.query method
 vi.mock("../../src/lib/db", () => ({
@@ -14,13 +14,13 @@ beforeEach(() => {
 
 describe("getProjectByProjectId", {}, () => {
 	it("should return a project with associated tags when a valid projectId is provided", async () => {
-		const mockProjectRows = {
+		const mockProjectRows: { rows: ProjectRow[] } = {
 			rows: [
 				{
 					id: 1,
 					name: "Project Alpha",
 					description: "Test project",
-					release_date: "2023-01-01" as unknown as Date,
+					release_date: "2023-01-01",
 					image_url: "http://imgurl/1.png",
 					repository_url: "https://github.com/example/project-alpha",
 					presentation_url: "https://example.com/project-alpha",
@@ -31,7 +31,7 @@ describe("getProjectByProjectId", {}, () => {
 					id: 1,
 					name: "Project Alpha",
 					description: "Test project",
-					release_date: "2023-01-01" as unknown as Date,
+					release_date: "2023-01-01",
 					image_url: "http://imgurl/1.png",
 					repository_url: "https://github.com/example/project-alpha",
 					presentation_url: "https://example.com/project-alpha",
@@ -41,7 +41,7 @@ describe("getProjectByProjectId", {}, () => {
 			],
 		};
 
-		const expectedResults = {
+		const expectedResults: ProjectItem = {
 			id: 1,
 			name: "Project Alpha",
 			description: "Test project",
@@ -71,13 +71,15 @@ describe("getProjectByProjectId", {}, () => {
 
 	it("should return project without tags when project exists but has no associated tags", async () => {
 		const projectId = "2";
-		const mockResult = {
+		const mockProjectRows: { rows: ProjectRow[] } = {
 			rows: [
 				{
 					id: 2,
 					name: "Project 2",
 					description: "Desc 2",
-					release_date: "2023-01-01" as unknown as Date,
+					release_date: "2023-01-01",
+					repository_url: "https://github.com/Project_2",
+					presentation_url: null,
 					image_url: "http://imgurl/2.png",
 					tag_id: null,
 					tag_name: null,
@@ -90,12 +92,12 @@ describe("getProjectByProjectId", {}, () => {
 			description: "Desc 2",
 			releaseDate: "2023-01-01",
 			imageURL: "http://imgurl/2.png",
-			repositoryURL: undefined,
+			repositoryURL: "https://github.com/Project_2",
 			presentationURL: undefined,
 			tags: [],
 		};
 
-		vi.mocked(executeQuery).mockResolvedValue(mockResult as any);
+		vi.mocked(executeQuery).mockResolvedValue(mockProjectRows as any);
 
 		const result = await getProjectByProjectId(projectId);
 
@@ -109,11 +111,11 @@ describe("getProjectByProjectId", {}, () => {
 
 	it("should return null when a project is not found", async () => {
 		const projectId = "999";
-		const mockResult = {
+		const mockProjectRows = {
 			rows: [],
 		};
 
-		vi.mocked(executeQuery).mockResolvedValue(mockResult as any);
+		vi.mocked(executeQuery).mockResolvedValue(mockProjectRows as any);
 
 		const result = await getProjectByProjectId(projectId);
 

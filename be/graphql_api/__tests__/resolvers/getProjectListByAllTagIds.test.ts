@@ -1,8 +1,7 @@
 import { describe, it, expect, vi, beforeEach } from "vitest";
 import { executeQuery } from "../../src/lib/db";
-import { mapProjectResponse } from "../../src/lib/response_mapper";
 import { getProjectListByAllTagIds } from "../../src/resolvers/getProjectListByAllTagIds";
-import { ProjectItem } from "shared_types";
+import { ProjectItem, ProjectRow } from "shared_types";
 
 // Mock the client.query method
 vi.mock("../../src/lib/db", () => ({
@@ -15,7 +14,7 @@ beforeEach(() => {
 
 describe("getProjectListByAllTagIds", {}, () => {
 	it("should return projects that contain all the specified tag IDs", async () => {
-		const mockProjectRows = {
+		const mockProjectRows: { rows: ProjectRow[] } = {
 			rows: [
 				{
 					id: 1,
@@ -23,6 +22,8 @@ describe("getProjectListByAllTagIds", {}, () => {
 					description: "First project",
 					release_date: "2023-01-01",
 					image_url: "http://example.com/images/project-alpha",
+					repository_url: "http://github.com/project-alpha",
+					presentation_url: null,
 					tag_id: 1,
 					tag_name: "JavaScript",
 				},
@@ -32,6 +33,8 @@ describe("getProjectListByAllTagIds", {}, () => {
 					description: "First project",
 					release_date: "2023-01-01",
 					image_url: "http://example.com/images/project-alpha",
+					repository_url: "http://github.com/project-alpha",
+					presentation_url: null,
 					tag_id: 2,
 					tag_name: "GraphQL",
 				},
@@ -45,8 +48,8 @@ describe("getProjectListByAllTagIds", {}, () => {
 				description: "First project",
 				releaseDate: "2023-01-01",
 				imageURL: "http://example.com/images/project-alpha",
+				repositoryURL: "http://github.com/project-alpha",
 				presentationURL: undefined,
-				repositoryURL: undefined,
 				tags: [
 					{ id: 1, name: "JavaScript" },
 					{ id: 2, name: "GraphQL" },

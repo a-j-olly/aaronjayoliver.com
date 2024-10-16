@@ -1,8 +1,7 @@
 import { describe, it, expect, vi, beforeEach } from "vitest";
 import { getProjectList } from "../../src/resolvers/getProjectList";
 import { executeQuery } from "../../src/lib/db";
-import { mapProjectResponse } from "../../src/lib/response_mapper";
-import { ProjectItem } from "shared_types";
+import { ProjectItem, ProjectRow } from "shared_types";
 
 // Mock the client.query method
 vi.mock("../../src/lib/db", () => ({
@@ -15,7 +14,7 @@ beforeEach(() => {
 
 describe("getProjectList", {}, () => {
 	it("should return a list of projects", async () => {
-		const mockProjectRows = {
+		const mockProjectRows: { rows: ProjectRow[] } = {
 			rows: [
 				{
 					id: 1,

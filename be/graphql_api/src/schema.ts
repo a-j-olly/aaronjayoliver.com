@@ -10,7 +10,7 @@ type Project {
 	description: String!
 	releaseDate: String!
 	imageURL: String!
-	repositoryURL: String
+	repositoryURL: String!
 	presentationURL: String
 	tags: [Tag]!
 }

@@ -4,10 +4,10 @@ export type ProjectRow = {
 	description: string;
 	release_date: string;
 	image_url: string;
-	repository_url?: string;
-	presentation_url?: string;
-	tag_id: number;
-	tag_name: string;
+	repository_url: string ;
+	presentation_url: string | null;
+	tag_id: number | null;
+	tag_name: string | null;
   }
 
 export type ProjectItem = {
@@ -16,7 +16,7 @@ export type ProjectItem = {
 	description: string;
 	releaseDate: string;
 	imageURL: string;
-	repositoryURL?: string;
+	repositoryURL: string;
 	presentationURL?: string
 	tags: TagItem[];
 };

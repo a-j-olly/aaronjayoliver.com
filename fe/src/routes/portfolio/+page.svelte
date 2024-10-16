@@ -33,15 +33,12 @@
 			selectedTagStore.set(selectedTags.filter((v) => v !== tag));
 		}
 		// getProjectsByAllTags(selectedTags)
-		console.log(selectedTags);
 	}
 
 	function clearTags() {
-		console.log(tagsSelected);
 		tagsSelected = undefined;
 		tagsSelected = false;
 		selectedTagStore.set([]);
-		console.log(selectedTags);
 		// getProjectList()
 	}
 </script>
