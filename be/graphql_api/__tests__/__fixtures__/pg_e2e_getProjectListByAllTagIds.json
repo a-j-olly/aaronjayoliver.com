@@ -8,6 +8,7 @@
 			"name": "Project Alpha",
 			"description": "A web development project using JavaScript and GraphQL",
 			"release_date": "2023-01-15T00:00:00.000Z",
+			"image_url": "https://example.com/images/project-alpha",
 			"repository_url": "https://github.com/example/project-alpha",
 			"presentation_url": "https://example.com/project-alpha",
 			"tag_id": 1,
@@ -18,6 +19,7 @@
 			"name": "Project Alpha",
 			"description": "A web development project using JavaScript and GraphQL",
 			"release_date": "2023-01-15T00:00:00.000Z",
+			"image_url": "https://example.com/images/project-alpha",
 			"repository_url": "https://github.com/example/project-alpha",
 			"presentation_url": "https://example.com/project-alpha",
 			"tag_id": 3,
@@ -28,6 +30,7 @@
 			"name": "Project Alpha",
 			"description": "A web development project using JavaScript and GraphQL",
 			"release_date": "2023-01-15T00:00:00.000Z",
+			"image_url": "https://example.com/images/project-alpha",
 			"repository_url": "https://github.com/example/project-alpha",
 			"presentation_url": "https://example.com/project-alpha",
 			"tag_id": 5,
@@ -38,6 +41,7 @@
 			"name": "Project Delta",
 			"description": "An advanced web development project using modern JavaScript frameworks",
 			"release_date": "2023-04-04T23:00:00.000Z",
+			"image_url": "https://example.com/images/project-delta",
 			"repository_url": "https://github.com/example/project-delta",
 			"presentation_url": "https://example.com/project-delta",
 			"tag_id": 1,
@@ -48,6 +52,7 @@
 			"name": "Project Delta",
 			"description": "An advanced web development project using modern JavaScript frameworks",
 			"release_date": "2023-04-04T23:00:00.000Z",
+			"image_url": "https://example.com/images/project-delta",
 			"repository_url": "https://github.com/example/project-delta",
 			"presentation_url": "https://example.com/project-delta",
 			"tag_id": 5,
@@ -92,7 +97,7 @@
 			"format": "text"
 		},
 		{
-			"name": "repository_url",
+			"name": "image_url",
 			"tableID": 24661,
 			"columnID": 5,
 			"dataTypeID": 1043,
@@ -101,9 +106,18 @@
 			"format": "text"
 		},
 		{
-			"name": "presentation_url",
+			"name": "repository_url",
 			"tableID": 24661,
 			"columnID": 6,
+			"dataTypeID": 1043,
+			"dataTypeSize": -1,
+			"dataTypeModifier": 259,
+			"format": "text"
+		},
+		{
+			"name": "presentation_url",
+			"tableID": 24661,
+			"columnID": 7,
 			"dataTypeID": 1043,
 			"dataTypeSize": -1,
 			"dataTypeModifier": 259,

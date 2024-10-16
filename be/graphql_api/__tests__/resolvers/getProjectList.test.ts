@@ -2,21 +2,16 @@ import { describe, it, expect, vi, beforeEach } from "vitest";
 import { getProjectList } from "../../src/resolvers/getProjectList";
 import { executeQuery } from "../../src/lib/db";
 import { mapProjectResponse } from "../../src/lib/response_mapper";
+import { ProjectItem } from "shared_types";
 
 // Mock the client.query method
 vi.mock("../../src/lib/db", () => ({
 	executeQuery: vi.fn(),
 }));
 
-// Mock the mapProjectResponse function
-vi.mock("../../src/lib/response_mapper", () => ({
-	mapProjectResponse: vi.fn(),
-}));
-
 beforeEach(() => {
-    vi.mocked(executeQuery).mockReset();
-    vi.mocked(mapProjectResponse).mockReset();
-})
+	vi.mocked(executeQuery).mockReset();
+});
 
 describe("getProjectList", {}, () => {
 	it("should return a list of projects", async () => {
@@ -26,7 +21,10 @@ describe("getProjectList", {}, () => {
 					id: 1,
 					name: "Project Alpha",
 					description: "First project",
-					releaseDate: "2023-01-01",
+					release_date: "2023-01-01",
+					image_url: "http://imgurl/1.png",
+					presentation_url: "http://example.com/ProjectAlpha",
+					repository_url: "http://github.com/ProjectAlpha",
 					tag_id: 1,
 					tag_name: "JavaScript",
 				},
@@ -34,7 +32,10 @@ describe("getProjectList", {}, () => {
 					id: 1,
 					name: "Project Alpha",
 					description: "First project",
-					releaseDate: "2023-01-01",
+					release_date: "2023-01-01",
+					image_url: "http://imgurl/1.png",
+					presentation_url: "http://example.com/ProjectAlpha",
+					repository_url: "http://github.com/ProjectAlpha",
 					tag_id: 2,
 					tag_name: "GraphQL",
 				},
@@ -42,7 +43,10 @@ describe("getProjectList", {}, () => {
 					id: 2,
 					name: "Project Beta",
 					description: "Second project",
-					releaseDate: "2023-02-01",
+					release_date: "2023-02-01",
+					image_url: "http://imgurl/2.png",
+					presentation_url: "http://example.com/ProjectBeta",
+					repository_url: "http://github.com/ProjectBeta",
 					tag_id: 1,
 					tag_name: "JavaScript",
 				},
@@ -50,19 +54,25 @@ describe("getProjectList", {}, () => {
 					id: 3,
 					name: "Project Gamma",
 					description: "Third project",
-					releaseDate: "2023-02-01",
+					release_date: "2023-02-01",
+					image_url: "http://imgurl/3.png",
+					presentation_url: "http://example.com/ProjectGamma",
+					repository_url: "http://github.com/ProjectGamma",
 					tag_id: null,
 					tag_name: null,
 				},
 			],
 		};
 
-		const expectedProjects = [
+		const expectedProjects: ProjectItem[] = [
 			{
 				id: 1,
 				name: "Project Alpha",
 				description: "First project",
 				releaseDate: "2023-01-01",
+				imageURL: "http://imgurl/1.png",
+				presentationURL: "http://example.com/ProjectAlpha",
+				repositoryURL: "http://github.com/ProjectAlpha",
 				tags: [
 					{ id: 1, name: "JavaScript" },
 					{ id: 2, name: "GraphQL" },
@@ -73,6 +83,9 @@ describe("getProjectList", {}, () => {
 				name: "Project Beta",
 				description: "Second project",
 				releaseDate: "2023-02-01",
+				imageURL: "http://imgurl/2.png",
+				presentationURL: "http://example.com/ProjectBeta",
+				repositoryURL: "http://github.com/ProjectBeta",
 				tags: [{ id: 1, name: "JavaScript" }],
 			},
 			{
@@ -80,12 +93,14 @@ describe("getProjectList", {}, () => {
 				name: "Project Gamma",
 				description: "Third project",
 				releaseDate: "2023-02-01",
+				imageURL: "http://imgurl/3.png",
+				presentationURL: "http://example.com/ProjectGamma",
+				repositoryURL: "http://github.com/ProjectGamma",
 				tags: [],
 			},
 		];
 
 		vi.mocked(executeQuery).mockResolvedValue(mockProjectRows as any);
-		vi.mocked(mapProjectResponse).mockReturnValue(expectedProjects);
 
 		// Call the function
 		const result = await getProjectList();
@@ -100,7 +115,6 @@ describe("getProjectList", {}, () => {
 
 	it("should return an empty list when no projects are found", async () => {
 		vi.mocked(executeQuery).mockResolvedValue({ rows: [] } as any);
-		vi.mocked(mapProjectResponse).mockReturnValue([]);
 
 		// Call the function
 		const result = await getProjectList();

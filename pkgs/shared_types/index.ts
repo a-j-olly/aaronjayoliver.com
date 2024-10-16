@@ -3,6 +3,7 @@ export type ProjectRow = {
 	name: string;
 	description: string;
 	release_date: string;
+	image_url: string;
 	repository_url?: string;
 	presentation_url?: string;
 	tag_id: number;
@@ -14,6 +15,7 @@ export type ProjectItem = {
 	name: string;
 	description: string;
 	releaseDate: string;
+	imageURL: string;
 	repositoryURL?: string;
 	presentationURL?: string
 	tags: TagItem[];
