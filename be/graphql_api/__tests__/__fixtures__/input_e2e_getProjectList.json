@@ -35,6 +35,6 @@
 		"time": "20/Sep/2024:11:39:09 +0000",
 		"timeEpoch": 1726832349583
 	},
-	"body": "{\"query\":\"{\\r\\n    getProjectList {\\r\\n        id\\r\\n        name\\r\\n        description\\r\\n        releaseDate\\r\\n        repositoryURL\\r\\n        presentationURL\\r\\n        tags {\\r\\n            id\\r\\n            name\\r\\n        }\\r\\n    }\\r\\n}\"}",
+	"body": "{\"query\":\"{\\r\\n    getProjectList {\\r\\n        id\\r\\n        name\\r\\n        description\\r\\n        releaseDate\\r\\n        imageURL\\r\\n        repositoryURL\\r\\n        presentationURL\\r\\n        tags {\\r\\n            id\\r\\n            name\\r\\n        }\\r\\n    }\\r\\n}\"}",
 	"isBase64Encoded": false
 }

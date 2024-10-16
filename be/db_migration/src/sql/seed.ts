@@ -9,11 +9,11 @@ INSERT INTO tags (name) VALUES
 ('Machine Learning'),
 ('API Design');
 
-INSERT INTO projects (name, description, release_date, repository_url, presentation_url) VALUES
-('Project Alpha', 'A web development project using JavaScript and GraphQL', '2023-01-15', 'https://github.com/example/project-alpha', 'https://example.com/project-alpha'),
-('Project Beta', 'A data science project focused on machine learning with Python', '2023-02-20', 'https://github.com/example/project-beta', 'https://example.com/project-beta'),
-('Project Gamma', 'A comprehensive API design project using GraphQL and PostgreSQL', '2023-03-10', 'https://github.com/example/project-gamma', NULL),
-('Project Delta', 'An advanced web development project using modern JavaScript frameworks', '2023-04-05', 'https://github.com/example/project-delta', 'https://example.com/project-delta');
+INSERT INTO projects (name, description, release_date, image_url, repository_url, presentation_url) VALUES
+('Project Alpha', 'A web development project using JavaScript and GraphQL', '2023-01-15', 'https://picsum.photos/id/1/640/360', 'https://github.com/example/project-alpha', 'https://example.com/project-alpha'),
+('Project Beta', 'A data science project focused on machine learning with Python', '2023-02-20', 'https://picsum.photos/id/2/640/360', 'https://github.com/example/project-beta', 'https://example.com/project-beta'),
+('Project Gamma', 'A comprehensive API design project using GraphQL and PostgreSQL', '2023-03-10', 'https://picsum.photos/id/3/640/360', 'https://github.com/example/project-gamma', NULL),
+('Project Delta', 'An advanced web development project using modern JavaScript frameworks', '2023-04-05', 'https://picsum.photos/id/4/640/360', 'https://github.com/example/project-delta', 'https://example.com/project-delta');
 
 -- Project Alpha: Associated with 'JavaScript', 'GraphQL', 'Web Development'
 INSERT INTO project_tags (project_id, tag_id) 

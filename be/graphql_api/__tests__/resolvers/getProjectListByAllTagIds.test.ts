@@ -1,32 +1,29 @@
 import { describe, it, expect, vi, beforeEach } from "vitest";
 import { executeQuery } from "../../src/lib/db";
-import { mapProjectResponse } from "../../src/lib/response_mapper";
 import { getProjectListByAllTagIds } from "../../src/resolvers/getProjectListByAllTagIds";
+import { ProjectItem, ProjectRow } from "shared_types";
 
 // Mock the client.query method
 vi.mock("../../src/lib/db", () => ({
 	executeQuery: vi.fn(),
 }));
 
-// Mock the mapProjectResponse function
-vi.mock("../../src/lib/response_mapper", () => ({
-	mapProjectResponse: vi.fn(),
-}));
-
 beforeEach(() => {
 	vi.mocked(executeQuery).mockReset();
-	vi.mocked(mapProjectResponse).mockReset();
 });
 
 describe("getProjectListByAllTagIds", {}, () => {
 	it("should return projects that contain all the specified tag IDs", async () => {
-		const mockProjectRows = {
+		const mockProjectRows: { rows: ProjectRow[] } = {
 			rows: [
 				{
 					id: 1,
 					name: "Project Alpha",
 					description: "First project",
-					releaseDate: "2023-01-01",
+					release_date: "2023-01-01",
+					image_url: "http://example.com/images/project-alpha",
+					repository_url: "http://github.com/project-alpha",
+					presentation_url: null,
 					tag_id: 1,
 					tag_name: "JavaScript",
 				},
@@ -34,19 +31,25 @@ describe("getProjectListByAllTagIds", {}, () => {
 					id: 1,
 					name: "Project Alpha",
 					description: "First project",
-					releaseDate: "2023-01-01",
+					release_date: "2023-01-01",
+					image_url: "http://example.com/images/project-alpha",
+					repository_url: "http://github.com/project-alpha",
+					presentation_url: null,
 					tag_id: 2,
 					tag_name: "GraphQL",
 				},
 			],
 		};
 
-		const expectedProjects = [
+		const expectedProjects: ProjectItem[] = [
 			{
 				id: 1,
 				name: "Project Alpha",
 				description: "First project",
 				releaseDate: "2023-01-01",
+				imageURL: "http://example.com/images/project-alpha",
+				repositoryURL: "http://github.com/project-alpha",
+				presentationURL: undefined,
 				tags: [
 					{ id: 1, name: "JavaScript" },
 					{ id: 2, name: "GraphQL" },
@@ -55,7 +58,6 @@ describe("getProjectListByAllTagIds", {}, () => {
 		];
 
 		vi.mocked(executeQuery).mockResolvedValue(mockProjectRows as any);
-		vi.mocked(mapProjectResponse).mockResolvedValue(expectedProjects as any);
 
 		// Call the function with tag IDs [1, 2]
 		const result = await getProjectListByAllTagIds(["1", "2"]);
@@ -69,7 +71,6 @@ describe("getProjectListByAllTagIds", {}, () => {
 
 	it("should return an empty array when no projects match the provided tag IDs", async () => {
 		vi.mocked(executeQuery).mockResolvedValue({ rows: [] } as any);
-		vi.mocked(mapProjectResponse).mockResolvedValue([] as any);
 
 		// Call the function with tag IDs [999] (assuming no projects have this tag)
 		const result = await getProjectListByAllTagIds(["999"]);

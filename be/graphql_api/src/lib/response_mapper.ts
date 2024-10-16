@@ -10,8 +10,9 @@ export function mapProjectResponse(rows: ProjectRow[]): ProjectItem[] {
 				name: row.name,
 				description: row.description,
 				releaseDate: row.release_date,
+				imageURL: row.image_url,
 				repositoryURL: row.repository_url,
-				presentationURL: row.presentation_url,
+				presentationURL: row.presentation_url ?? undefined,
 				tags: [],
 			});
 		}

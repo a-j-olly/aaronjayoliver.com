@@ -33,15 +33,12 @@
 			selectedTagStore.set(selectedTags.filter((v) => v !== tag));
 		}
 		// getProjectsByAllTags(selectedTags)
-		console.log(selectedTags);
 	}
 
 	function clearTags() {
-		console.log(tagsSelected);
 		tagsSelected = undefined;
 		tagsSelected = false;
 		selectedTagStore.set([]);
-		console.log(selectedTags);
 		// getProjectList()
 	}
 </script>
@@ -75,8 +72,8 @@
 	<h1 class="text-center text-2xl font-bold text-slate-600">Projects</h1>
 
 	<div class="m-auto grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
-		{#each projectList as { name, presentationURL }}
-			<Card {name} {presentationURL} />
+		{#each projectList as { name, imageURL }}
+			<Card {name} {imageURL} />
 		{/each}
 	</div>
 </div>
