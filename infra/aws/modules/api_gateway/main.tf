@@ -1,6 +1,12 @@
 resource "aws_apigatewayv2_api" "graphql_api" {
   name          = "${var.stage}-${var.graphql_api_name}"
   protocol_type = "HTTP"
+  cors_configuration {
+    allow_origins = ["*"]
+    allow_methods = ["POST", "OPTIONS"]
+    allow_headers = ["content-type"]
+    max_age = 300
+  }
 }
 
 resource "aws_apigatewayv2_deployment" "graphql_api_deployment" {
