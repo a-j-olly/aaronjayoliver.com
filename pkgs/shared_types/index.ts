@@ -33,4 +33,4 @@ export type Query = {
 	getTagList: TagItem[];
 };
 
-type ID = string | number;
+export type ID = string | number;

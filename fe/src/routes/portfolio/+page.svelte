@@ -4,42 +4,42 @@
 	import Card from './Card.svelte';
 	import Pill from './Pill.svelte';
 	import CloseIcon from './CloseIcon.svelte';
+	import { getProjectListByAllTags } from '$lib';
 
 	export let data;
 	const { projectData, tagData } = data;
 	projectStore.set(projectData);
 	tagStore.set(tagData);
 
-	let projectList: Partial<ProjectItem>[] = [];
-	let tagList: TagItem[] = [];
 	let selectedTags: TagItem[] = [];
-	let tagsSelected: boolean | undefined = false;
-
-	projectStore.subscribe((value) => {
-		projectList = value;
-	});
-	tagStore.subscribe((value) => {
-		tagList = value;
-	});
 	selectedTagStore.subscribe((value) => {
 		selectedTags = value;
 	});
 
-	function handleTagToggle(event: CustomEvent<{ tag: TagItem; selected: boolean }>) {
+	let displayedProjects: Partial<ProjectItem>[] = $projectStore;
+
+	let tagController: boolean | undefined = false;
+
+	async function tagToggleHandler(event: CustomEvent<{ tag: TagItem; selected: boolean }>) {
 		const { tag, selected } = event.detail;
 		if (selected) {
 			selectedTagStore.set([...selectedTags, tag]);
 		} else {
 			selectedTagStore.set(selectedTags.filter((v) => v !== tag));
 		}
-		// getProjectsByAllTags(selectedTags)
+		
+		if (!selectedTags.length) {
+			displayedProjects = $projectStore;
+		} else {
+			displayedProjects = await getProjectListByAllTags(selectedTags);
+		}
 	}
 
-	function clearTags() {
-		tagsSelected = undefined;
-		tagsSelected = false;
+	function clearTagsHandler() {
+		tagController = undefined;
+		tagController = false;
 		selectedTagStore.set([]);
-		// getProjectList()
+		displayedProjects = $projectStore;
 	}
 </script>
 
@@ -55,7 +55,7 @@
 				class="rounded text-center text-sm font-medium text-white {selectedTags.length === 0
 					? 'bg-grey-600'
 					: 'bg-red-700 hover:bg-red-800 dark:bg-red-600 dark:hover:bg-red-700'}"
-				on:click={clearTags}
+				on:click={clearTagsHandler}
 				><CloseIcon />
 			</button>
 		</div>
@@ -64,15 +64,15 @@
 	<ul
 		class="grid grid-cols-3 gap-2 border bg-slate-100 shadow-inner shadow-slate-200 sm:grid-cols-5 lg:grid-cols-8"
 	>
-		{#each tagList as tag}
-			<Pill {tag} selected={tagsSelected} on:toggle={handleTagToggle} />
+		{#each $tagStore as tag}
+			<Pill {tag} selected={tagController} on:toggle={tagToggleHandler} />
 		{/each}
 	</ul>
 
 	<h1 class="text-center text-2xl font-bold text-slate-600">Projects</h1>
 
 	<div class="m-auto grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
-		{#each projectList as { name, imageURL }}
+		{#each displayedProjects as { name, imageURL }}
 			<Card {name} {imageURL} />
 		{/each}
 	</div>
