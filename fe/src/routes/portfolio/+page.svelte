@@ -27,7 +27,7 @@
 		} else {
 			selectedTagStore.set(selectedTags.filter((v) => v !== tag));
 		}
-		
+
 		if (!selectedTags.length) {
 			displayedProjects = $projectStore;
 		} else {
@@ -72,8 +72,12 @@
 	<h1 class="text-center text-2xl font-bold text-slate-600">Projects</h1>
 
 	<div class="m-auto grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
-		{#each displayedProjects as { name, imageURL }}
-			<Card {name} {imageURL} />
+		{#each displayedProjects as project}
+			<Card
+				name={project.name}
+				imageURL={project.imageURL}
+				navURL={project.presentationURL ?? project.repositoryURL}
+			/>
 		{/each}
 	</div>
 </div>

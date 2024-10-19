@@ -6,6 +6,8 @@ export const getProjectListQuery = `
             id
             name
             imageURL
+            repositoryURL
+            presentationURL
             tags {
                 id
                 name
