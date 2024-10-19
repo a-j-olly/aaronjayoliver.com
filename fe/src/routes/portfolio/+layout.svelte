@@ -7,7 +7,7 @@
 		<div
 			class="flex h-min flex-row justify-start divide-x-2 max-sm:col-start-2 max-sm:justify-center"
 		>
-			<ul class="pr-2 text-right text-lg font-bold leading-5 text-dark-blue">
+			<ul class="text-dark-blue pr-2 text-right text-lg font-bold leading-5">
 				<li>
 					<h1>Aaron</h1>
 				</li>
@@ -27,7 +27,7 @@
 				<li>
 					<a
 						aria-current={$page.url.pathname === '/portfolio' ? 'page' : undefined}
-						class="underline hover:text-blue-600 hover:decoration-blue-600 aria-current:font-semibold aria-current:italic"
+						class="aria-current:font-semibold aria-current:italic underline hover:text-blue-600 hover:decoration-blue-600"
 						href="/portfolio"
 					>
 						portfolio
@@ -38,9 +38,11 @@
 				</li>
 			</ul>
 		</div>
-		<div class="flex items-center justify-center max-sm:hidden">
-			<h1 class="text-center text-4xl font-bold text-dark-blue">{$page.data.pageTitle}</h1>
-		</div>
+		{#if $page.data.pageTitle}
+			<div class="flex items-center justify-center max-sm:hidden">
+				<h1 class="text-dark-blue text-center text-4xl font-bold">{$page.data.pageTitle}</h1>
+			</div>
+		{/if}
 	</nav>
 </header>
 <main>
