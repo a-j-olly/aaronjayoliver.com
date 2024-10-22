@@ -45,14 +45,14 @@
 
 <div class="mx-2 sm:mx-4 md:mx-8 lg:mx-16">
 	<div class="relative">
-		<h1 class="text-center text-2xl font-bold text-slate-600">Skills</h1>
+		<h1 class="text-center font-serif text-2xl font-bold text-slate-600">Skills</h1>
 		<div
-			class="absolute bottom-0 right-0 flex h-8 w-10 items-center justify-center rounded-t bg-slate-200"
+			class="absolute bottom-0 right-0 flex h-8 w-10 items-center justify-center rounded-t-sm bg-slate-200"
 		>
 			<button
 				type="button"
 				disabled={selectedTags.length === 0}
-				class="rounded text-center text-sm font-medium text-white {selectedTags.length === 0
+				class="text-center text-sm font-medium text-white {selectedTags.length === 0
 					? 'bg-grey-600'
 					: 'bg-red-700 hover:bg-red-800 dark:bg-red-600 dark:hover:bg-red-700'}"
 				on:click={clearTagsHandler}
@@ -69,7 +69,7 @@
 		{/each}
 	</ul>
 
-	<h1 class="text-center text-2xl font-bold text-slate-600">Projects</h1>
+	<h1 class="text-center font-serif text-2xl font-bold text-slate-600">Projects</h1>
 
 	<div class="m-auto grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
 		{#each displayedProjects as project}

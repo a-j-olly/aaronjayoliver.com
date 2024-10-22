@@ -10,6 +10,10 @@ export default {
 			},
 			aria: {
 				current: 'current=page'
+			},
+			fontFamily: {
+				sans: ['Roboto', 'ui-sans-serif', 'system-ui'],
+				serif: ['"Roboto Serif"', 'ui-serif']
 			}
 		}
 	},
