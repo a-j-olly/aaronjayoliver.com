@@ -3,9 +3,9 @@
 </script>
 
 <header>
-	<nav class="m-2 mb-6 grid grid-cols-3">
+	<nav class="m-2 grid grid-cols-3">
 		<div
-			class="flex h-min flex-row justify-start divide-x-2 max-sm:col-start-2 max-sm:justify-center"
+			class="flex h-min flex-row justify-start divide-x-2 divide-slate-600 font-serif max-sm:col-start-2 max-sm:justify-center"
 		>
 			<ul class="text-dark-blue pr-2 text-right text-lg font-bold leading-5">
 				<li>
@@ -19,7 +19,7 @@
 				</li>
 			</ul>
 
-			<ul class="pl-2 text-lg leading-5 text-slate-600">
+			<ul class="pl-2 text-lg leading-5 text-slate-800">
 				<li>
 					<a class="underline hover:text-blue-600 hover:decoration-blue-600" href="/#about">about</a
 					>
@@ -27,7 +27,7 @@
 				<li>
 					<a
 						aria-current={$page.url.pathname === '/portfolio' ? 'page' : undefined}
-						class="aria-current:font-semibold aria-current:italic underline hover:text-blue-600 hover:decoration-blue-600"
+						class="aria-current:font-bold aria-current:italic underline hover:text-blue-600 hover:decoration-blue-600"
 						href="/portfolio"
 					>
 						portfolio
@@ -40,7 +40,9 @@
 		</div>
 		{#if $page.data.pageTitle}
 			<div class="flex items-center justify-center max-sm:hidden">
-				<h1 class="text-dark-blue text-center text-4xl font-bold">{$page.data.pageTitle}</h1>
+				<h1 class="text-dark-blue text-center font-serif text-4xl font-bold">
+					{$page.data.pageTitle}
+				</h1>
 			</div>
 		{/if}
 	</nav>
