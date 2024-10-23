@@ -3,9 +3,9 @@
 </script>
 
 <header>
-	<nav class="m-2 mb-6 grid grid-cols-3">
+	<nav class="m-2 grid grid-cols-3">
 		<div
-			class="flex h-min flex-row justify-start divide-x-2 font-serif max-sm:col-start-2 max-sm:justify-center"
+			class="flex h-min flex-row justify-start divide-x-2 divide-slate-600 font-serif max-sm:col-start-2 max-sm:justify-center"
 		>
 			<ul class="text-dark-blue pr-2 text-right text-lg font-bold leading-5">
 				<li>
@@ -19,7 +19,7 @@
 				</li>
 			</ul>
 
-			<ul class="pl-2 text-lg leading-5 text-slate-600">
+			<ul class="pl-2 text-lg leading-5 text-slate-800">
 				<li>
 					<a class="underline hover:text-blue-600 hover:decoration-blue-600" href="/#about">about</a
 					>

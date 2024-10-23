@@ -15,7 +15,9 @@
 <div class="flex flex-col items-center justify-center">
 	<!-- page 1 -->
 	<div class="flex h-screen items-center justify-center">
-		<div class="flex h-min flex-row items-center justify-center divide-x-2 font-serif">
+		<div
+			class="flex h-min flex-row items-center justify-center divide-x-4 divide-slate-600 font-serif"
+		>
 			<ul class="text-dark-blue pr-3 text-right text-4xl font-bold">
 				<li>
 					<h1>Aaron</h1>
@@ -28,7 +30,7 @@
 				</li>
 			</ul>
 
-			<ul class="pl-3 text-4xl text-slate-600">
+			<ul class="pl-3 text-4xl text-slate-800">
 				<li>
 					<a
 						class="underline hover:text-blue-600 hover:decoration-blue-600"
@@ -50,9 +52,9 @@
 
 	<!-- page 2 -->
 	<div class="flex h-screen flex-col items-center justify-center" id="about">
-		<div class="m-2 flex flex-wrap gap-x-4 py-2">
+		<div class="m-2 flex flex-wrap justify-center gap-x-4 py-2">
 			<div class="min-w-12">
-				<img class="max-w-24 rounded-full bg-gray-50" src={portrait} alt="Aaron Jay Oliver" />
+				<img class="max-w-24 rounded-full border-2" src={portrait} alt="Aaron Jay Oliver" />
 			</div>
 
 			<div class="flex min-w-36 gap-x-4">
@@ -72,7 +74,7 @@
 							/>
 						</svg>
 						<a
-							class="truncate text-sm text-slate-600 hover:text-blue-600 hover:decoration-blue-600"
+							class="truncate text-sm text-slate-800 hover:text-blue-600 hover:decoration-blue-600"
 							href="https://www.linkedin.com/in/aaron-j-oliver/">linkedin.com/in/aaron-j-oliver/</a
 						>
 					</div>
@@ -85,14 +87,14 @@
 							/>
 						</svg>
 						<a
-							class="truncate text-sm text-slate-600 hover:text-blue-600 hover:decoration-blue-600"
+							class="truncate text-sm text-slate-800 hover:text-blue-600 hover:decoration-blue-600"
 							href="https://github.com/a-j-olly">github.com/a-j-olly</a
 						>
 					</div>
 				</div>
 			</div>
 			<div class="flex min-w-0 max-w-prose items-center justify-center pt-2 sm:max-w-72">
-				<p class="italic leading-5 text-slate-600">
+				<p class="italic leading-5 text-slate-800">
 					'I enjoy building things; I gain a sense of fulfilment knowing my work could make
 					someone's day easier.'
 				</p>
@@ -100,7 +102,7 @@
 		</div>
 
 		<a
-			class="mt-2 text-center font-serif text-2xl text-slate-600 underline hover:text-blue-600 hover:decoration-blue-600"
+			class="mt-2 text-center font-serif text-2xl text-slate-800 underline hover:text-blue-600 hover:decoration-blue-600"
 			href="/portfolio">View My Portfolio</a
 		>
 	</div>

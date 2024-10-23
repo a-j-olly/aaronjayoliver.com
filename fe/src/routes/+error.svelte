@@ -4,7 +4,7 @@
 
 <div class="flex h-screen flex-col items-center justify-center">
 	<div class="flex flex-col items-center justify-center">
-		<h1 class="text-dark-blue font-serif text-4xl">{$page.status} - {$page.error?.message}</h1>
+		<h1 class="text-dark-blue font-bold font-serif text-2xl sm:text-4xl">{$page.status} - {$page.error?.message}</h1>
 		{#if $page.status == 404}
 			{#if $page.url.pathname === '/blog'}
 				<p class="mt-2">Page is under contruction!</p>

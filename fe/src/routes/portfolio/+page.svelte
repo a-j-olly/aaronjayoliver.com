@@ -43,11 +43,11 @@
 	}
 </script>
 
-<div class="mx-2 sm:mx-4 md:mx-8 lg:mx-16">
+<div class="mx-2 sm:mx-4 md:mx-8 lg:mx-16 xl:mx-24 2xl:mx-32">
 	<div class="relative">
-		<h1 class="text-center font-serif text-2xl font-bold text-slate-600">Skills</h1>
+		<h1 class="text-center font-serif text-2xl font-bold text-slate-800">Skills</h1>
 		<div
-			class="absolute bottom-0 right-0 flex h-8 w-10 items-center justify-center rounded-t-sm bg-slate-200"
+			class="absolute bottom-0 right-0 sm:right-10 md-right-5 flex h-8 w-10 items-center justify-center rounded-t-sm bg-slate-200"
 		>
 			<button
 				type="button"
@@ -62,16 +62,16 @@
 	</div>
 
 	<ul
-		class="grid grid-cols-3 gap-2 border bg-slate-100 shadow-inner shadow-slate-200 sm:grid-cols-5 lg:grid-cols-8"
+		class="grid grid-cols-3 gap-2 rounded-sm border-2 bg-slate-100 px-2 shadow-inner shadow-slate-200 sm:grid-cols-5 sm:rounded-full lg:grid-cols-8 2xl:grid-cols-11"
 	>
 		{#each $tagStore as tag}
 			<Pill {tag} selected={tagController} on:toggle={tagToggleHandler} />
 		{/each}
 	</ul>
 
-	<h1 class="text-center font-serif text-2xl font-bold text-slate-600">Projects</h1>
+	<h1 class="text-center font-serif text-2xl font-bold text-slate-800">Projects</h1>
 
-	<div class="m-auto grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+	<div class="m-auto grid grid-cols-1 gap-4 lg:grid-cols-2 xl:grid-cols-3">
 		{#each displayedProjects as project}
 			<Card
 				name={project.name}
