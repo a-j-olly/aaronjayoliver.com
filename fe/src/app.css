@@ -1,3 +1,139 @@
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
+
+body {
+	background-image: repeating-linear-gradient(
+			180deg,
+			#ffe6e6 0px,
+			#ffe6e6 1px,
+			#e6e6e6 1px,
+			#e6e6e6 2px,
+			#f2f2f2 2px,
+			#f2f2f2 3px,
+			transparent 3px,
+			transparent 32px,
+			#cccccc 33px,
+			#cccccc 35px,
+			#e6e6e6 35px,
+			#e6e6e6 36px,
+			#f2f2f2 36px,
+			#f2f2f2 37px,
+			transparent 37px,
+			transparent 64px
+		),
+		repeating-linear-gradient(
+			90deg,
+			transparent 0px,
+			transparent 6px,
+			#ffe6e6 6px,
+			#ffe6e6 7px,
+			#e6e6e6 7px,
+			#e6e6e6 8px,
+			#f2f2f2 8px,
+			#f2f2f2 9px,
+			transparent 9px,
+			transparent 32px,
+			#cccccc 32px,
+			#cccccc 34px,
+			#e6e6e6 34px,
+			#e6e6e6 35px,
+			#f2f2f2 35px,
+			#f2f2f2 36px,
+			#cccccc 36px,
+			#cccccc 38px,
+			#e6e6e6 38px,
+			#e6e6e6 39px,
+			#f2f2f2 39px,
+			#f2f2f2 40px,
+			#cccccc 40px,
+			#cccccc 42px,
+			#e6e6e6 42px,
+			#e6e6e6 43px,
+			#f2f2f2 43px,
+			#f2f2f2 44px,
+			#cccccc 44px,
+			#cccccc 46px,
+			#e6e6e6 46px,
+			#e6e6e6 47px,
+			#f2f2f2 47px,
+			#f2f2f2 48px,
+			transparent 48px,
+			transparent 64px
+		),
+		repeating-linear-gradient(90deg, #e6e6e6, #e6e6e6 1px, #d9d9d9 1px, #d9d9d9 2px);
+}
+
+@layer base {
+	/* roboto-regular - latin */
+	@font-face {
+		font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+		font-family: 'Roboto';
+		font-style: normal;
+		font-weight: 400;
+		src: url('/fonts/roboto/roboto-v32-latin-regular.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+	}
+
+	/* roboto-italic - latin */
+	@font-face {
+		font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+		font-family: 'Roboto';
+		font-style: italic;
+		font-weight: 400;
+		src: url('/fonts/roboto/roboto-v32-latin-italic.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+	}
+
+	/* roboto-700 - latin */
+	@font-face {
+		font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+		font-family: 'Roboto';
+		font-style: normal;
+		font-weight: 700;
+		src: url('/fonts/roboto/roboto-v32-latin-700.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+	}
+
+	/* roboto-700italic - latin */
+	@font-face {
+		font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+		font-family: 'Roboto';
+		font-style: italic;
+		font-weight: 700;
+		src: url('/fonts/roboto/roboto-v32-latin-700italic.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+	}
+
+	/* roboto-serif-regular - latin */
+	@font-face {
+		font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+		font-family: 'Roboto Serif';
+		font-style: normal;
+		font-weight: 400;
+		src: url('/fonts/roboto-serif/roboto-serif-v15-latin-regular.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+	}
+
+	/* roboto-serif-italic - latin */
+	@font-face {
+		font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+		font-family: 'Roboto Serif';
+		font-style: italic;
+		font-weight: 400;
+		src: url('/fonts/roboto-serif/roboto-serif-v15-latin-italic.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+	}
+
+	/* roboto-serif-700 - latin */
+	@font-face {
+		font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+		font-family: 'Roboto Serif';
+		font-style: normal;
+		font-weight: 700;
+		src: url('/fonts/roboto-serif/roboto-serif-v15-latin-700.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+	}
+
+	/* roboto-serif-700italic - latin */
+	@font-face {
+		font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+		font-family: 'Roboto Serif';
+		font-style: italic;
+		font-weight: 700;
+		src: url('/fonts/roboto-serif/roboto-serif-v15-latin-700italic.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+	}
+}

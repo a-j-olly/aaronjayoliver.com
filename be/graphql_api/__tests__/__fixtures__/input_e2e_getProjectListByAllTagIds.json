@@ -35,6 +35,6 @@
 		"time": "20/Sep/2024:12:31:59 +0000",
 		"timeEpoch": 1726835519431
 	},
-	"body": "{\"query\":\"{\\r\\n    getProjectListByAllTagIds(tagIds: [\\\"1\\\", \\\"5\\\"]) {\\r\\n        id\\r\\n        name\\r\\n        description\\r\\n        releaseDate\\r\\n        repositoryURL\\r\\n        presentationURL\\r\\n        tags {\\r\\n            id\\r\\n            name\\r\\n        }\\r\\n    }\\r\\n}\"}",
+	"body": "{\"query\":\"{\\r\\n    getProjectListByAllTagIds(tagIds: [\\\"1\\\", \\\"5\\\"]) {\\r\\n        id\\r\\n        name\\r\\n        description\\r\\n        releaseDate\\r\\n        imageURL\\r\\n        repositoryURL\\r\\n        presentationURL\\r\\n        tags {\\r\\n            id\\r\\n            name\\r\\n        }\\r\\n    }\\r\\n}\"}",
 	"isBase64Encoded": false
 }

@@ -1,15 +1,11 @@
 import { describe, it, expect, vi, beforeEach } from "vitest";
 import { executeQuery } from "../../src/lib/db";
 import { getTagList } from "../../src/resolvers/getTagList";
+import { TagItem } from "shared_types";
 
 // Mock the client.query method
 vi.mock("../../src/lib/db", () => ({
 	executeQuery: vi.fn(),
-}));
-
-// Mock the mapProjectResponse function
-vi.mock("../../src/lib/response_mapper", () => ({
-	mapProjectResponse: vi.fn(),
 }));
 
 beforeEach(() => {
@@ -25,7 +21,7 @@ describe("getTagList", () => {
 			],
 		};
 
-		const expectedTags = [
+		const expectedTags: TagItem[] = [
 			{ id: 1, name: "JavaScript" },
 			{ id: 2, name: "GraphQL" },
 		];
