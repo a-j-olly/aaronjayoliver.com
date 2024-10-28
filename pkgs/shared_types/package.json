@@ -1,6 +1,6 @@
 {
   "name": "shared_types",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "Common types for aaronjayoliver.com",
   "main": "index.js",
   "scripts": {
