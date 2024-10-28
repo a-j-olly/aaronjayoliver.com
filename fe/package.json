@@ -1,6 +1,6 @@
 {
 	"name": "fe",
-	"version": "0.2.1",
+	"version": "0.2.2",
 	"description": "The aaronjayoliver.com portfolio web application",
 	"private": true,
 	"scripts": {
