@@ -4,7 +4,8 @@
   "description": "The root pnpm workspace directory for the aaronjayoliver.com portfolio project",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build-fe": "pnpm --filter fe run build"
   },
   "keywords": [],
   "author": "aaronjayoliver@gmail.com",
