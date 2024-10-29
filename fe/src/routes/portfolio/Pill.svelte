@@ -1,13 +1,19 @@
 <script lang="ts">
 	// Event dispatcher
 	import { createEventDispatcher } from 'svelte';
+	import { selectedTagStore } from '$lib/stores';
 	import type { TagItem } from '../../../../pkgs/shared_types';
+	export let tag: TagItem;
+	
+	let selected = false;
+
+	selectedTagStore.subscribe(selectedTags => {
+		selected = selectedTags.some((selectedTag) => selectedTag.name === tag.name)
+	});
+
 	const dispatch = createEventDispatcher<{
 		toggle: { tag: TagItem; selected: boolean };
 	}>();
-
-	export let tag: TagItem;
-	export let selected = false;
 
 	// Emit an event to the parent to add/remove the value from the list
 	function toggle() {
