@@ -24,7 +24,7 @@
 		"presentationURL": "https://aaronjayoliver.com",
 		"tags": [
 			{ "id": 2, "name": "Angular" },
-			{ "id": 8, "name": "Nodejs" },
+			{ "id": 8, "name": "NodeJS" },
 			{ "id": 1, "name": "TypeScript" },
 			{ "id": 4, "name": "AWS" },
 			{ "id": 6, "name": "Serverless" },
