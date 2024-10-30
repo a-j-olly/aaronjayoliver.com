@@ -53,9 +53,9 @@
 	<!-- page 2 -->
 	<div class="flex h-screen flex-col items-center justify-center" id="about">
 		<div class="m-2 flex flex-wrap justify-center gap-x-4 py-2">
-			<div class="min-w-12">
+			<a class="min-w-12" href="https://linkedin.com/in/aaron-j-oliver/">
 				<img class="max-w-24 rounded-full border-2" src={portrait} alt="Aaron Jay Oliver" />
-			</div>
+			</a>
 
 			<div class="flex min-w-36 gap-x-4">
 				<div class="min-w-0 flex-auto">
@@ -75,7 +75,7 @@
 						</svg>
 						<a
 							class="truncate text-sm text-slate-800 hover:text-blue-600 hover:decoration-blue-600"
-							href="https://www.linkedin.com/in/aaron-j-oliver/">linkedin.com/in/aaron-j-oliver/</a
+							href="https://linkedin.com/in/aaron-j-oliver/">linkedin.com/in/aaron-j-oliver/</a
 						>
 					</div>
 

@@ -1,6 +1,6 @@
 {
 	"name": "fe",
-	"version": "0.2.2",
+	"version": "0.3.0",
 	"description": "The aaronjayoliver.com portfolio web application",
 	"private": true,
 	"scripts": {
@@ -14,7 +14,7 @@
 		"format": "prettier --write ."
 	},
 	"devDependencies": {
-		"@sveltejs/adapter-cloudflare": "^4.7.4",
+		"@sveltejs/adapter-static": "^3.0.6",
 		"@sveltejs/kit": "^2.0.0",
 		"@sveltejs/vite-plugin-svelte": "^3.0.0",
 		"@types/eslint": "^9.6.0",
