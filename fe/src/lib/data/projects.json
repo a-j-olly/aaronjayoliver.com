@@ -4,7 +4,7 @@
 		"name": "aaronjayoliver.com",
 		"description": "This is the portfolio website you are currently reading!",
 		"releaseDate": "2024-11-04T00:00:0.000Z",
-		"imageURL": "https://picsum.photos/id/1/640/360",
+		"imageURL": "aaronjayoliver.webp",
 		"repositoryURL": "https://github.com/a-j-olly/aaronjayoliver.com",
 		"presentationURL": "https://aaronjayoliver.com",
 		"tags": [
@@ -19,7 +19,7 @@
 		"name": "Neutrify",
 		"description": "Neutrify is a news aggregation service that gives the user more control over the news.",
 		"releaseDate": "2022-03-00T00:00:0.000Z",
-		"imageURL": "https://picsum.photos/id/2/640/360",
+		"imageURL": "neutrify.webp",
 		"repositoryURL": "https://github.com/a-j-olly/aaronjayoliver.com",
 		"presentationURL": "https://aaronjayoliver.com",
 		"tags": [
