@@ -29,7 +29,7 @@
 
 <!-- Button Style: Changing color based on selected state -->
 <button
-	class="m-1 truncate rounded-full p-1 text-lg font-bold text-white
+	class="m-2 truncate rounded-full text-lg text-white flex-1 min-w-24 max-w-24
            {selected ? 'bg-dark-blue hover:bg-blue-600' : 'bg-slate-400 hover:bg-slate-500'}"
 	on:click={toggle}
 >
