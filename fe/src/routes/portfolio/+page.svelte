@@ -5,7 +5,6 @@
 	import Pill from './Pill.svelte';
 	import CloseIcon from './CloseIcon.svelte';
 	import { filterProjectListByTags } from '$lib';
-	let tagController: boolean | undefined = false;
 
 	async function tagToggleHandler(event: CustomEvent<{ tag: TagItem; selected: boolean }>) {
 		const { tag, selected } = event.detail;
@@ -23,8 +22,6 @@
 	}
 
 	function clearTagsHandler() {
-		tagController = undefined;
-		tagController = false;
 		selectedTagStore.set([]);
 		displayedProjectStore.set($projectStore);
 	}
@@ -52,7 +49,7 @@
 		{/each}
 	</ul>
 
-	<ul class="m-auto grid grid-cols-1 gap-4 px-2 lg:grid-cols-2 xl:grid-cols-3">
+	<ul class="m-auto grid grid-cols-1 gap-4 px-2 sm:grid-cols-2">
 		{#each $displayedProjectStore as project}
 			<Card
 				name={project.name}
