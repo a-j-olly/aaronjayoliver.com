@@ -27,11 +27,11 @@
 				</a>
 			</ul>
 
-			<ul class="pl-2 text-lg leading-5 text-slate-800 underline decoration-slate-600">
-				<li class="hover:text-blue-600 hover:decoration-blue-600">
+			<ul class="pl-2 text-lg leading-5 text-slate-800">
+				<li class="underline decoration-slate-600 hover:text-blue-600 hover:decoration-blue-600">
 					<a href="/#about">about</a>
 				</li>
-				<li class="hover:text-blue-600 hover:decoration-blue-600">
+				<li class="underline decoration-slate-600 hover:text-blue-600 hover:decoration-blue-600">
 					<a
 						aria-current={$page.url.pathname === '/portfolio' ? 'page' : undefined}
 						class="aria-current:font-bold aria-current:italic"
@@ -40,7 +40,7 @@
 						portfolio
 					</a>
 				</li>
-				<li class="hover:text-blue-600 hover:decoration-blue-600">
+				<li class="underline decoration-slate-600 hover:text-blue-600 hover:decoration-blue-600">
 					<a href="/blog">blog</a>
 				</li>
 			</ul>
@@ -58,8 +58,8 @@
 				<a href="https://linkedin.com/in/aaron-j-oliver/">
 					<img class="h-16 w-16 rounded-full border" src={portrait} alt="Aaron Jay Oliver" />
 				</a>
-				<ul class="flex flex-col gap-2 font-serif text-slate-800 underline decoration-slate-600">
-					<li class="hover:text-blue-600 hover:decoration-blue-600">
+				<ul class="flex flex-col gap-2 font-serif text-slate-800">
+					<li class="underline decoration-slate-600 hover:text-blue-600 hover:decoration-blue-600">
 						<a href="https://linkedin.com/in/aaron-j-oliver/" class="flex items-center gap-2"
 							><svg
 								xmlns="http://www.w3.org/2000/svg"
@@ -75,7 +75,7 @@
 							<p class="max-sm:hidden">linkedin.com</p>
 						</a>
 					</li>
-					<li class="hover:text-blue-600 hover:decoration-blue-600">
+					<li class="underline decoration-slate-600 hover:text-blue-600 hover:decoration-blue-600">
 						<a href="https://github.com/a-j-olly" class="flex items-center gap-2">
 							<svg
 								xmlns="http://www.w3.org/2000/svg"
