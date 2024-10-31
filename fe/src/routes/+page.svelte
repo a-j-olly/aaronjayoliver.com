@@ -35,7 +35,7 @@
 					<a
 						class="underline hover:text-blue-600 hover:decoration-blue-600"
 						href="#about"
-						on:click={handleAnchorOnClick}>about</a
+						onclick={handleAnchorOnClick}>about</a
 					>
 				</li>
 				<li>
