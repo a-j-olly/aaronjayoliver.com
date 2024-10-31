@@ -37,13 +37,13 @@
 				class="rounded text-center text-sm font-medium text-white {$selectedTagStore.length === 0
 					? 'bg-orange-400'
 					: 'bg-red-700 hover:bg-red-800 dark:bg-red-600 dark:hover:bg-red-700'}"
-				on:click={clearTagsHandler}
+				onclick={clearTagsHandler}
 				><CloseIcon />
 			</button>
 		</div>
 	</div>
 
-	<ul class="flex flex-wrap items-center p-1">
+	<ul class="grid grid-cols-[repeat(auto-fit,_minmax(96px,_max-content))] justify-center gap-1 p-1">
 		{#each $tagStore as tag}
 			<li>
 				<Pill {tag} on:toggle={tagToggleHandler} />

@@ -3,9 +3,13 @@
 	import { createEventDispatcher } from 'svelte';
 	import { selectedTagStore } from '$lib/stores';
 	import type { TagItem } from '../../../../pkgs/shared_types';
-	export let tag: TagItem;
+	interface Props {
+		tag: TagItem;
+	}
+
+	let { tag }: Props = $props();
 	
-	let selected = false;
+	let selected = $state(false);
 
 	selectedTagStore.subscribe(selectedTags => {
 		selected = selectedTags.some((selectedTag) => selectedTag.name === tag.name)
@@ -31,7 +35,7 @@
 <button
 	class="m-2 truncate rounded-full text-lg text-white flex-1 w-24
            {selected ? 'bg-dark-blue hover:bg-blue-600' : 'bg-slate-400 hover:bg-slate-500'}"
-	on:click={toggle}
+	onclick={toggle}
 >
 	{tag.name}
 </button>

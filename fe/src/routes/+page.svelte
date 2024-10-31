@@ -35,7 +35,7 @@
 					<a
 						class="underline hover:text-blue-600 hover:decoration-blue-600"
 						href="#about"
-						on:click={handleAnchorOnClick}>about</a
+						onclick={handleAnchorOnClick}>about</a
 					>
 				</li>
 				<li>
@@ -93,14 +93,13 @@
 					</div>
 				</div>
 			</div>
-			<div class="flex min-w-0 max-w-prose items-center justify-center pt-2 sm:max-w-72">
-				<p class="italic leading-5 text-slate-800">
+			<div class="flex min-w-0 max-w-72 items-center pt-2">
+				<p class="px-2 italic leading-5 text-slate-800">
 					'I enjoy building things; I gain a sense of fulfilment knowing my work could make
 					someone's day easier.'
 				</p>
 			</div>
 		</div>
-
 		<a
 			class="mt-2 text-center font-serif text-2xl text-slate-800 underline hover:text-blue-600 hover:decoration-blue-600"
 			href="/portfolio">View My Portfolio</a
