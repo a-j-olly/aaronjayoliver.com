@@ -37,7 +37,7 @@
 				class="rounded text-center text-sm font-medium text-white {$selectedTagStore.length === 0
 					? 'bg-orange-400'
 					: 'bg-red-700 hover:bg-red-800 dark:bg-red-600 dark:hover:bg-red-700'}"
-				on:click={clearTagsHandler}
+				onclick={clearTagsHandler}
 				><CloseIcon />
 			</button>
 		</div>

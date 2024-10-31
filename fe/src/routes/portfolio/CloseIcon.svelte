@@ -1,6 +1,10 @@
 <script lang="ts">
-    export let width = "2em";
-    export let height = "2em";
+	interface Props {
+		width?: string;
+		height?: string;
+	}
+
+	let { width = "2em", height = "2em" }: Props = $props();
 </script>
 
 <svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" viewBox="0 0 24 24">

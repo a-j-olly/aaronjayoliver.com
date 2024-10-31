@@ -1,6 +1,11 @@
 <script lang="ts">
 	import { page } from '$app/stores';
 	import portrait from '$lib/images/ajo-portrait.webp';
+	interface Props {
+		children?: import('svelte').Snippet;
+	}
+
+	let { children }: Props = $props();
 </script>
 
 <header>
@@ -96,5 +101,5 @@
 	</nav>
 </header>
 <main>
-	<slot></slot>
+	{@render children?.()}
 </main>
