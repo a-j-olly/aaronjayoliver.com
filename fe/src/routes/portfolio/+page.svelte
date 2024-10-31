@@ -43,7 +43,7 @@
 		</div>
 	</div>
 
-	<ul class="flex flex-wrap items-center p-1">
+	<ul class="grid grid-cols-[repeat(auto-fit,_minmax(96px,_max-content))] justify-center gap-1 p-1">
 		{#each $tagStore as tag}
 			<li>
 				<Pill {tag} on:toggle={tagToggleHandler} />
