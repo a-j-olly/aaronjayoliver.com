@@ -33,7 +33,7 @@
 				</li>
 				<li class="underline decoration-slate-600 hover:text-blue-600 hover:decoration-blue-600">
 					<a
-						aria-current={$page.url.pathname === '/portfolio' ? 'page' : undefined}
+						aria-current={$page.url.pathname.startsWith('/portfolio') ? 'page' : undefined}
 						class="aria-current:font-bold aria-current:italic"
 						href="/portfolio"
 					>
@@ -48,7 +48,7 @@
 		{#if $page.data.pageTitle}
 			<div class="flex items-center justify-center max-sm:hidden">
 				<h1 class="text-dark-blue text-center font-serif text-4xl font-bold">
-					{$page.data.pageTitle}
+					{$page.url.pathname.startsWith('/portfolio') ? 'Portfolio' : $page.data.pageTitle}
 				</h1>
 			</div>
 		{/if}
@@ -96,6 +96,6 @@
 		</div>
 	</nav>
 </header>
-<main>
+<main class="mx-2 sm:mx-4 md:mx-8 lg:mx-16 xl:mx-24 2xl:mx-32">
 	{@render children?.()}
 </main>

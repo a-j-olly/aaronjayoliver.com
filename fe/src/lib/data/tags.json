@@ -6,5 +6,6 @@
 	{ "id": 5, "name": "Svelte" },
 	{ "id": 6, "name": "Serverless" },
 	{ "id": 7, "name": "Cloudflare" },
-	{ "id": 8, "name": "NodeJS" }
+	{ "id": 8, "name": "NodeJS" },
+	{ "id": 9, "name": "Ionic" }
 ]

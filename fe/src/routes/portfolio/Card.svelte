@@ -2,10 +2,10 @@
 	interface Props {
 		name: string;
 		imageURL: string;
-		navURL: string;
 	}
 
-	let { name, imageURL, navURL }: Props = $props();
+	let { name, imageURL }: Props = $props();
+	const navURL = `/portfolio/${encodeURI(name)}`;
 </script>
 
 <a

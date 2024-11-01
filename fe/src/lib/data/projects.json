@@ -17,7 +17,7 @@
 	{
 		"id": 2,
 		"name": "Neutrify",
-		"description": "Neutrify is a news aggregation service that gives the user more control over the news.",
+		"description": " The Neutrify app is a customisable B2C news aggregator that gave users greater control over their news consumption.",
 		"releaseDate": "2022-03-00T00:00:0.000Z",
 		"imageURL": "neutrify.webp",
 		"repositoryURL": "https://github.com/a-j-olly/aaronjayoliver.com",
@@ -28,7 +28,8 @@
 			{ "id": 1, "name": "TypeScript" },
 			{ "id": 4, "name": "AWS" },
 			{ "id": 6, "name": "Serverless" },
-			{ "id": 3, "name": "JavaScript" }
+			{ "id": 3, "name": "JavaScript" },
+			{ "id": 9, "name": "Ionic" }
 		]
 	}
 ]
