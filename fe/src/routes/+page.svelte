@@ -35,18 +35,18 @@
 			<ul class="pl-3 text-4xl text-slate-800">
 				<li>
 					<a
-						class="underline hover:text-blue-600 hover:decoration-blue-600"
+						class="underline decoration-slate-600 hover:text-blue-600 hover:decoration-blue-600"
 						href="#about"
 						onclick={handleAnchorOnClick}>about</a
 					>
 				</li>
 				<li>
-					<a class="underline hover:text-blue-600 hover:decoration-blue-600" href="/portfolio"
+					<a class="underline decoration-slate-600 hover:text-blue-600 hover:decoration-blue-600" href="/portfolio"
 						>portfolio</a
 					>
 				</li>
 				<li>
-					<a class="underline hover:text-blue-600 hover:decoration-blue-600" href="/blog">blog</a>
+					<a class="underline decoration-slate-600 hover:text-blue-600 hover:decoration-blue-600" href="/blog">blog</a>
 				</li>
 			</ul>
 		</div>
@@ -88,7 +88,7 @@
 			</div>
 		</div>
 		<a
-			class="mt-2 text-center font-serif text-2xl text-slate-800 underline hover:text-blue-600 hover:decoration-blue-600"
+			class="mt-2 text-center font-serif text-2xl text-slate-800 decoration-slate-600 underline hover:text-blue-600 hover:decoration-blue-600"
 			href="/portfolio">View My Portfolio</a
 		>
 	</div>
