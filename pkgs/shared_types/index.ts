@@ -3,27 +3,36 @@ export type ProjectRow = {
 	name: string;
 	description: string;
 	release_date: string;
-	image_url: string;
-	repository_url: string ;
+	image: string;
+	repository_url: string;
 	presentation_url: string | null;
 	tag_id: number | null;
 	tag_name: string | null;
-  }
+};
 
 export type ProjectItem = {
 	id: ID;
 	name: string;
 	description: string;
 	releaseDate: string;
-	imageURL: string;
+	image: string;
 	repositoryURL: string;
-	presentationURL?: string
+	presentationURL?: string;
 	tags: TagItem[];
+};
+
+export type ProjectDetail = ProjectItem & {
+	tags: TagDetail[];
 };
 
 export type TagItem = {
 	id: ID;
 	name: string;
+};
+
+export type TagDetail = TagItem & {
+	image: string;
+	url: string;
 };
 
 export type Query = {

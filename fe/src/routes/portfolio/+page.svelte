@@ -53,7 +53,7 @@
 
 	<ul class="m-auto grid grid-cols-1 gap-4 px-2 sm:grid-cols-2">
 		{#each $displayedProjectStore as project}
-			<Card name={project.name} imageURL={project.imageURL} />
+			<Card name={project.name} image={project.image} />
 		{/each}
 	</ul>
 </div>
