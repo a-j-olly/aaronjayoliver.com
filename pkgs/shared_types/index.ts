@@ -14,6 +14,7 @@ export type ProjectItem = {
 	id: ID;
 	name: string;
 	description: string;
+	updatedDate: string;
 	releaseDate: string;
 	image: string;
 	repositoryURL: string;

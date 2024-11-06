@@ -9,5 +9,6 @@ export const tagDetails: TagItem[] = [
 	{ id: 6, name: 'Serverless' },
 	{ id: 7, name: 'Cloudflare' },
 	{ id: 8, name: 'NodeJS' },
-	{ id: 9, name: 'Ionic' }
+	{ id: 9, name: 'Ionic' },
+	{ id: 10, name: 'TailwindCSS'}
 ];
