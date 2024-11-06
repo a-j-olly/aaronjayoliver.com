@@ -27,7 +27,7 @@
 	}
 </script>
 
-<div class="mx-2 rounded bg-orange-200/50 pb-2 sm:mx-4 md:mx-8 lg:mx-16 xl:mx-24 2xl:mx-32">
+<div class="mx-2 sm:mx-4 md:mx-8 max-w-screen-xl rounded bg-orange-200/50 pb-2">
 	<div class="relative">
 		<h1 class="rounded-t bg-orange-400 text-center font-serif text-2xl text-white">Tags</h1>
 		<div class="absolute bottom-0 right-0 flex h-8 w-10 items-center justify-center">
@@ -53,11 +53,7 @@
 
 	<ul class="m-auto grid grid-cols-1 gap-4 px-2 sm:grid-cols-2">
 		{#each $displayedProjectStore as project}
-			<Card
-				name={project.name}
-				imageURL={project.imageURL}
-				navURL={project.presentationURL ?? project.repositoryURL}
-			/>
+			<Card name={project.name} image={project.image} />
 		{/each}
 	</ul>
 </div>

@@ -1,7 +1,8 @@
-export const prerender = true;
+import type { PageLoad } from '../$types';
 
-export async function load() {
+export const prerender = true;
+export const load: PageLoad = () => {
 	return {
 		pageTitle: 'Portfolio'
 	};
-}
+};
