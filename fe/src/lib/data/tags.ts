@@ -10,5 +10,12 @@ export const tagDetails: TagItem[] = [
 	{ id: 7, name: 'Cloudflare' },
 	{ id: 8, name: 'NodeJS' },
 	{ id: 9, name: 'Ionic' },
-	{ id: 10, name: 'TailwindCSS'}
+	{ id: 10, name: 'TailwindCSS' },
+	{ id: 11, name: 'Jest' },
+	{ id: 12, name: 'Terraform' },
+	{ id: 13, name: 'Cordova' },
+	{ id: 14, name: 'Lambda' },
+	{ id: 15, name: 'DynamoDB' },
+	{ id: 16, name: 'PostgreSQL' },
+	{ id: 17, name: 'Vitest' }
 ];

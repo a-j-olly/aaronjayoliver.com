@@ -1,8 +1,5 @@
 <script lang="ts">
 	import dayjs from 'dayjs';
-	import localizedFormat from 'dayjs/plugin/localizedFormat';
-	dayjs.extend(localizedFormat);
-
 	import www from '$lib/images/icons/www.svg';
 	import github from '$lib/images/icons/github-dark.svg';
 
@@ -31,13 +28,13 @@
 			<div class="flex items-center gap-1 px-1">
 				<h3 class="font-bold">Updated:</h3>
 				<p>
-					{dayjs(projectData.updatedDate).format('L')}
+					{dayjs(projectData.updatedDate).format('DD/MM/YYYY')}
 				</p>
 			</div>
 			<div class="flex items-center justify-end gap-1 px-1">
 				<h3 class="font-bold">Released:</h3>
 				<p>
-					{dayjs(projectData.releaseDate).format('L')}
+					{dayjs(projectData.releaseDate).format('DD/MM/YYYY')}
 				</p>
 			</div>
 		</div>
