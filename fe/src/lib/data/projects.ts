@@ -80,7 +80,7 @@ export const projects: ProjectDetail[] = [
 			There is no supporting backend infrastructure, with the exception of hosting the application on Cloudflare. 
 			This results in a site that is free to maintain (within parameters), but with the drawback of needing to commit a code change whenever data must be updated.`,
 		releaseDate: '2024-11-04T00:00:00.000Z',
-		updatedDate: '2024-11-08T00:00:00.000Z',
+		updatedDate: '2024-11-11T00:00:00.000Z',
 		image: aaronjayoliver,
 		repositoryURL: 'https://github.com/a-j-olly/aaronjayoliver.com',
 		presentationURL: 'https://aaronjayoliver.com',
