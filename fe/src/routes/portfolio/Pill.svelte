@@ -33,7 +33,7 @@
 
 <!-- Button Style: Changing color based on selected state -->
 <button
-	class="m-2 min-w-24 xl:min-w-28 truncate rounded-full text-lg text-white
+	class="my-1 min-w-24 xl:min-w-28 truncate rounded-full text-lg text-white
            {selected ? 'bg-dark-blue hover:bg-blue-600' : 'bg-slate-400 hover:bg-slate-500'}"
 	onclick={toggle}
 	title={tag.name}

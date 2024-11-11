@@ -118,7 +118,8 @@ export const projects: ProjectDetail[] = [
 		name: 'Asynchronous Rest API',
 		description: `This project demonstrates an asynchronous payment API built with AWS and Terraform, using serverless infrastructure. 
 			It was designed to be resilient, scalable and secure, as per the requirements of a payment gateway.<br><br> 
-			One of the most interesting features of this project is that the Terraform script that creates the serverless infrastructure takes its configuration from the OpenAPI schema.`,
+			One of the most interesting features of this project is that the Terraform script that creates the API infrastructure takes its configuration from the OpenAPI schema.
+			A justification for all the design decisions made for this architecture can be found in the README documentation found in this project's repository.`,
 		releaseDate: '2024-03-21T00:00:00.000Z',
 		updatedDate: '2024-03-21T00:00:00.000Z',
 		image: asyncRestAPI,
@@ -148,7 +149,10 @@ export const projects: ProjectDetail[] = [
 		id: 4,
 		name: 'Serverless GraphQL API',
 		description: `This API was initally built to supply the project and tag information found on aaronjayoliver.com. 
-			It is now a tech demo for a serverless graphql api, integrated with a AWS Aurora Serverless V2 PostgreSQL DB.`,
+			It is now a tech demo for a serverless graphql api, integrated with a AWS Aurora Serverless V2 PostgreSQL DB.<br><br>
+			One of the major drawbacks of serverless architecture is that your infrastructure can be 'cold', which means it needs to be initialised before it can respond to any requests.
+			This is the cold start time, and it is exacerbated by the size of the package being intialised. 
+			GraphQL servers often contain middleware that bloats the package size, so choosing a lightweight one like GraphQL Yoga is vital for performance.`,
 		releaseDate: '2024-11-08T00:00:00.000Z',
 		updatedDate: '2024-11-08T00:00:00.000Z',
 		image: serverlessGQLAPI,

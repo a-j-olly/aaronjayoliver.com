@@ -78,6 +78,6 @@
 		</div>
 	</nav>
 </header>
-<main class="flex justify-center">
+<main>
 	{@render children?.()}
 </main>
