@@ -27,33 +27,48 @@
 	}
 </script>
 
-<div class="mx-2 sm:mx-4 md:mx-8 max-w-screen-xl rounded bg-orange-200/50 pb-2">
-	<div class="relative">
-		<h1 class="rounded-t bg-orange-400 text-center font-serif text-2xl text-white">Tags</h1>
-		<div class="absolute bottom-0 right-0 flex h-8 w-10 items-center justify-center">
-			<button
-				type="button"
-				disabled={$selectedTagStore.length === 0}
-				class="rounded text-center text-sm font-medium text-white {$selectedTagStore.length === 0
-					? 'bg-orange-400'
-					: 'bg-red-700 hover:bg-red-800 dark:bg-red-600 dark:hover:bg-red-700'}"
-				onclick={clearTagsHandler}
-				><CloseIcon />
-			</button>
+<div class="flex justify-center">
+	<div class="mx-2 max-w-screen-xl rounded bg-orange-200/50 pb-2 sm:mx-4 md:mx-8">
+		<div class="relative">
+			<h1 class="rounded-t bg-orange-400 text-center font-serif text-2xl text-white">Tags</h1>
+			<div class="absolute bottom-0 right-0 flex h-8 w-10 items-center justify-center">
+				<button
+					type="button"
+					disabled={$selectedTagStore.length === 0}
+					class="rounded text-center text-sm font-medium text-white {$selectedTagStore.length === 0
+						? 'bg-orange-400'
+						: 'bg-red-700 hover:bg-red-800 dark:bg-red-600 dark:hover:bg-red-700'}"
+					onclick={clearTagsHandler}
+					><CloseIcon />
+				</button>
+			</div>
 		</div>
+
+		<ul
+			class="grid grid-cols-[repeat(auto-fit,_minmax(96px,_max-content))] justify-center gap-1 p-1 xl:grid-cols-[repeat(auto-fit,_minmax(112px,_max-content))]"
+		>
+			{#each $tagStore as tag}
+				<li>
+					<Pill {tag} on:toggle={tagToggleHandler} />
+				</li>
+			{/each}
+		</ul>
+
+		<h1 class="mb-2 bg-orange-400 text-center font-serif text-2xl text-white">Projects</h1>
+
+		{#if $displayedProjectStore.length}
+			<ul class="m-auto grid grid-cols-1 gap-4 px-2 sm:grid-cols-2">
+				{#each $displayedProjectStore as project}
+					<Card name={project.name} image={project.image} />
+				{/each}
+			</ul>
+		{:else}
+			<div class="m-2 flex min-w-80 items-center justify-center">
+				<p class="text-slate-800">
+					There are no projects matching the tags you have selected. Reduce the number of tags you
+					have selected, or clear them to view all projects.
+				</p>
+			</div>
+		{/if}
 	</div>
-
-	<ul class="grid grid-cols-[repeat(auto-fit,_minmax(96px,_max-content))] justify-center gap-1 p-1">
-		{#each $tagStore as tag}
-			<li>
-				<Pill {tag} on:toggle={tagToggleHandler} />
-			</li>
-		{/each}
-	</ul>
-
-	<ul class="m-auto grid grid-cols-1 gap-4 px-2 sm:grid-cols-2">
-		{#each $displayedProjectStore as project}
-			<Card name={project.name} image={project.image} />
-		{/each}
-	</ul>
 </div>
