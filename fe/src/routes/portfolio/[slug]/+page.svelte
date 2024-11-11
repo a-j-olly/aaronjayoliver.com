@@ -14,6 +14,12 @@
 	const projectData = projectList.find((p) => p.name === data.pageTitle) as ProjectDetail;
 </script>
 
+<svelte:head>
+	<title>{projectData.name} | aaronjayoliver.com</title>
+	<meta name="description" content={`This is the ${projectData.name} project page.`} />
+
+</svelte:head>
+
 <div class="flex justify-center">
 	<div class="mx-2 mb-2 flex max-w-screen-lg flex-col sm:mx-8 md:mx-16">
 		<h1 class="rounded-t bg-orange-400 text-center font-serif text-2xl text-white">
@@ -25,7 +31,9 @@
 				<img src={projectData.image} alt={projectData.name} class="object-cover" />
 			</div>
 
-			<div class="mb-1 flex w-full items-center justify-between font-serif text-slate-800 text-sm sm:text-base">
+			<div
+				class="mb-1 flex w-full items-center justify-between font-serif text-sm text-slate-800 sm:text-base"
+			>
 				<div class="flex items-center gap-1 px-1">
 					<h3 class="font-bold">Updated:</h3>
 					<p>

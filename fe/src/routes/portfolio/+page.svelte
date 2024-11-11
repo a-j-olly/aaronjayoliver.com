@@ -27,6 +27,11 @@
 	}
 </script>
 
+<svelte:head>
+	<title>Portfolio | aaronjayoliver.com</title>
+	<meta name="description" content="This is the portfolio page for aaronjayoliver.com. It lists software development projects that I have developed." />
+</svelte:head>
+
 <div class="flex justify-center">
 	<div class="mx-2 max-w-screen-xl rounded bg-orange-200/50 pb-2 sm:mx-4 md:mx-8">
 		<div class="relative">
