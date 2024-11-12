@@ -1,41 +1,19 @@
 <script lang="ts">
-	// Event dispatcher
-	import { createEventDispatcher } from 'svelte';
-	import { selectedTagStore } from '$lib/stores';
 	import type { TagItem } from '../../../../pkgs/shared_types';
 	interface Props {
 		tag: TagItem;
+		selected: boolean;
+		toggleTag: Function
 	}
 
-	let { tag }: Props = $props();
+	let { tag, selected, toggleTag }: Props = $props();
 
-	let selected = $state(false);
-
-	selectedTagStore.subscribe((selectedTags) => {
-		selected = selectedTags.some((selectedTag) => selectedTag.name === tag.name);
-	});
-
-	const dispatch = createEventDispatcher<{
-		toggle: { tag: TagItem; selected: boolean };
-	}>();
-
-	// Emit an event to the parent to add/remove the value from the list
-	function toggle() {
-		selected = !selected;
-		const eventDetail = {
-			tag,
-			selected
-		};
-
-		dispatch('toggle', eventDetail);
-	}
 </script>
 
-<!-- Button Style: Changing color based on selected state -->
 <button
-	class="my-1 min-w-24 xl:min-w-28 truncate rounded-full text-lg text-white
+	class="my-1 min-w-24 truncate rounded-full text-lg text-white xl:min-w-28
            {selected ? 'bg-dark-blue hover:bg-blue-600' : 'bg-slate-400 hover:bg-slate-500'}"
-	onclick={toggle}
+	onclick={() => toggleTag(tag)}
 	title={tag.name}
 >
 	{tag.name}

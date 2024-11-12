@@ -1,7 +1,6 @@
 <script lang="ts">
 	import type { TagItem } from 'shared_types';
-	import { projectStore, tagStore, selectedTagStore, displayedProjectStore } from '$lib/stores';
-	import { filterProjectListByTags } from '$lib';
+	import { tagStore, selectedTagStore, displayedProjectStore } from '$lib/stores';
 
 	import Card from './Card.svelte';
 	import Pill from './Pill.svelte';
@@ -16,24 +15,18 @@
 		showTags = !showTags;
 	}
 
-	async function tagToggleHandler(event: CustomEvent<{ tag: TagItem; selected: boolean }>) {
-		const { tag, selected } = event.detail;
-		if (selected) {
-			selectedTagStore.set([...$selectedTagStore, tag]);
-		} else {
-			selectedTagStore.set($selectedTagStore.filter((v) => v !== tag));
-		}
-
-		if (!$selectedTagStore.length) {
-			displayedProjectStore.set($projectStore);
-		} else {
-			displayedProjectStore.set(filterProjectListByTags($projectStore, $selectedTagStore));
-		}
+	function toggleTagHandler(tag: TagItem) {
+		selectedTagStore.update((selectedTags) => {
+			if (selectedTags.some((t) => t.name === tag.name)) {
+				return selectedTags.filter((t) => t.name !== tag.name);
+			} else {
+				return [...selectedTags, tag];
+			}
+		});
 	}
 
 	function clearTagsHandler() {
 		selectedTagStore.set([]);
-		displayedProjectStore.set($projectStore);
 	}
 </script>
 
@@ -66,7 +59,7 @@
 				<button
 					type="button"
 					disabled={!showTags}
-					class="flex h-8 w-8 items-center justify-center bg-orange-400 bg-red-700 text-white hover:bg-red-800 dark:bg-red-600 dark:hover:bg-red-700"
+					class="flex h-8 w-8 items-center justify-center rounded-tl bg-orange-400 bg-red-700 text-white hover:bg-red-800 dark:bg-red-600 dark:hover:bg-red-700"
 					onclick={toggleShowTags}
 				>
 					<MinimiseIcon height="24px" width="24px" />
@@ -78,9 +71,13 @@
 			class="grid grid-cols-[repeat(auto-fit,_minmax(96px,_max-content))] justify-center gap-1 p-1 xl:grid-cols-[repeat(auto-fit,_minmax(112px,_max-content))]"
 			class:hidden={!showTags}
 		>
-			{#each $tagStore as tag}
+			{#each $tagStore as tag (tag.id)}
 				<li>
-					<Pill {tag} on:toggle={tagToggleHandler} />
+					<Pill
+						{tag}
+						selected={$selectedTagStore.some((selectedTag) => selectedTag.name === tag.name)}
+						toggleTag={toggleTagHandler}
+					/>
 				</li>
 			{/each}
 		</ul>
@@ -96,7 +93,7 @@
 				<button
 					type="button"
 					disabled={showTags}
-					class="flex h-8 w-8 items-center justify-center rounded-tr bg-orange-400 bg-red-700 text-white hover:bg-red-800 dark:bg-red-600 dark:hover:bg-red-700"
+					class="flex h-8 w-8 items-center justify-center rounded-tl bg-orange-400 bg-red-700 text-white hover:bg-red-800 dark:bg-red-600 dark:hover:bg-red-700"
 					onclick={toggleShowTags}
 				>
 					<MaximiseIcon height="24px" width="24px" />
@@ -106,7 +103,7 @@
 
 		{#if $displayedProjectStore.length}
 			<ul class="m-auto grid grid-cols-1 gap-4 px-2 sm:grid-cols-2">
-				{#each $displayedProjectStore as project}
+				{#each $displayedProjectStore as project (project.id)}
 					<Card name={project.name} image={project.image} />
 				{/each}
 			</ul>
