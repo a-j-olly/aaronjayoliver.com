@@ -17,7 +17,6 @@
 <svelte:head>
 	<title>{projectData.name} | aaronjayoliver.com</title>
 	<meta name="description" content={`This is the ${projectData.name} project page.`} />
-
 </svelte:head>
 
 <div class="flex justify-center">
