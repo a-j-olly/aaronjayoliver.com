@@ -1,27 +1,29 @@
 // Tag Icons
-import typescript from '$lib/images/icons/typescript.svg';
-import angular from '$lib/images/icons/angular.svg';
-import aws from '$lib/images/icons/aws-light.svg';
-import cloudflare from '$lib/images/icons/cloudflare-light.svg';
-import javascript from '$lib/images/icons/javascript.svg';
-import nodejs from '$lib/images/icons/nodejs-light.svg';
-import svelte from '$lib/images/icons/svelte.svg';
-import serverless from '$lib/images/icons/serverless.svg';
-import ionic from '$lib/images/icons/ionic.svg';
-import tailwindcss from '$lib/images/icons/tailwindcss.svg';
-import cordova from '$lib/images/icons/cordova.svg';
-import lambda from '$lib/images/icons/lambda.svg';
-import dynamodb from '$lib/images/icons/dynamodb.svg';
-import jest from '$lib/images/icons/jest.svg';
-import postgresql from '$lib/images/icons/postgresql-dark.svg';
-import terraform from '$lib/images/icons/terraform-dark.svg';
-import vitest from '$lib/images/icons/vitest-dark.svg';
+import typescript from '$lib/images/icons/tags/typescript.svg';
+import angular from '$lib/images/icons/tags/angular.svg';
+import aws from '$lib/images/icons/tags/aws-light.svg';
+import cloudflare from '$lib/images/icons/tags/cloudflare-light.svg';
+import javascript from '$lib/images/icons/tags/javascript.svg';
+import nodejs from '$lib/images/icons/tags/nodejs-light.svg';
+import svelte from '$lib/images/icons/tags/svelte.svg';
+import serverless from '$lib/images/icons/tags/serverless.svg';
+import ionic from '$lib/images/icons/tags/ionic.svg';
+import tailwindcss from '$lib/images/icons/tags/tailwindcss.svg';
+import cordova from '$lib/images/icons/tags/cordova.svg';
+import lambda from '$lib/images/icons/tags/lambda.svg';
+import dynamodb from '$lib/images/icons/tags/dynamodb.svg';
+import jest from '$lib/images/icons/tags/jest.svg';
+import postgresql from '$lib/images/icons/tags/postgresql-dark.svg';
+import terraform from '$lib/images/icons/tags/terraform-dark.svg';
+import vitest from '$lib/images/icons/tags/vitest-dark.svg';
+import prisma from '$lib/images/icons/tags/prisma.svg';
 
 // Project Images
 import aaronjayoliver from '$lib/images/projects/aaronjayoliver.webp';
 import neutrify from '$lib/images/projects/neutrify.webp';
 import asyncRestAPI from '$lib/images/projects/async-rest-api.webp';
 import serverlessGQLAPI from '$lib/images/projects/serverless-gql-api.webp';
+import paymentGatewayLibrary from '$lib/images/projects/payment-gateway-library.webp';
 
 import type { ProjectDetail } from 'shared_types';
 
@@ -79,8 +81,8 @@ export const projects: ProjectDetail[] = [
 			The site has lightning fast load times due to it being fully pre-rendered. 
 			There is no supporting backend infrastructure, with the exception of hosting the application on Cloudflare. 
 			This results in a site that is free to maintain (within parameters), but with the drawback of needing to commit a code change whenever data must be updated.`,
-		releaseDate: '2024-11-04T00:00:00.000Z',
-		updatedDate: '2024-11-11T00:00:00.000Z',
+		releaseDate: '2024-11-13T00:00:00.000Z',
+		updatedDate: '2024-11-13T00:00:00.000Z',
 		image: aaronjayoliver,
 		repositoryURL: 'https://github.com/a-j-olly/aaronjayoliver.com',
 		presentationURL: 'https://aaronjayoliver.com',
@@ -112,7 +114,6 @@ export const projects: ProjectDetail[] = [
 			}
 		]
 	},
-
 	{
 		id: 3,
 		name: 'Asynchronous Rest API',
@@ -176,6 +177,34 @@ export const projects: ProjectDetail[] = [
 			{ id: 14, name: 'Lambda', url: 'https://aws.amazon.com/lambda/', image: lambda },
 			{ id: 16, name: 'PostgreSQL', url: 'https://www.postgresql.org/', image: postgresql },
 			{ id: 17, name: 'Vitest', url: 'https://vitest.dev/', image: vitest }
+		]
+	},
+	{
+		id: 5,
+		name: 'Payment Gateway Library',
+		description: `This project was created as part of a coding challenge to develop a payment gateway library. 
+			The result is a library that makes idempotent transactions to a PostgreSQL database using Prisma ORM. 
+			It also provides basic logging, documentation and input validation to ensure robustness, and 95% test coverage using Vitest to ensure code reliability.`,
+		releaseDate: '2024-06-13T00:00:00.000Z',
+		updatedDate: '2024-06-13T00:00:00.000Z',
+		image: paymentGatewayLibrary,
+		repositoryURL: 'https://github.com/a-j-olly/payment-gateway-library',
+		tags: [
+			{
+				id: 1,
+				name: 'TypeScript',
+				url: 'https://www.typescriptlang.org/',
+				image: typescript
+			},
+			{
+				id: 3,
+				name: 'JavaScript',
+				url: 'https://www.w3schools.com/js/DEFAULT.asp',
+				image: javascript
+			},
+			{ id: 16, name: 'PostgreSQL', url: 'https://www.postgresql.org/', image: postgresql },
+			{ id: 17, name: 'Vitest', url: 'https://vitest.dev/', image: vitest },
+			{ id: 18, name: 'Prisma', url: 'https://www.prisma.io/', image: prisma }
 		]
 	}
 ];

@@ -14,6 +14,11 @@
 	}
 </script>
 
+<svelte:head>
+	<title>About Me | aaronjayoliver.com</title>
+	<meta name="description" content="This is the landing page for aaronjayoliver.com, a portfolio website. From here you can navigate to the portfolio, or the blog." />
+</svelte:head>
+
 <div class="flex flex-col items-center justify-center">
 	<!-- page 1 -->
 	<div class="flex h-screen items-center justify-center">
@@ -41,12 +46,16 @@
 					>
 				</li>
 				<li>
-					<a class="underline decoration-slate-600 hover:text-blue-600 hover:decoration-blue-600" href="/portfolio"
-						>portfolio</a
+					<a
+						class="underline decoration-slate-600 hover:text-blue-600 hover:decoration-blue-600"
+						href="/portfolio">portfolio</a
 					>
 				</li>
 				<li>
-					<a class="underline decoration-slate-600 hover:text-blue-600 hover:decoration-blue-600" href="/blog">blog</a>
+					<a
+						class="underline decoration-slate-600 hover:text-blue-600 hover:decoration-blue-600"
+						href="/blog">blog</a
+					>
 				</li>
 			</ul>
 		</div>
@@ -88,7 +97,7 @@
 			</div>
 		</div>
 		<a
-			class="mt-2 text-center font-serif text-2xl text-slate-800 decoration-slate-600 underline hover:text-blue-600 hover:decoration-blue-600"
+			class="mt-2 text-center font-serif text-2xl text-slate-800 underline decoration-slate-600 hover:text-blue-600 hover:decoration-blue-600"
 			href="/portfolio">View My Portfolio</a
 		>
 	</div>

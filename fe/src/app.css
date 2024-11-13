@@ -3,6 +3,7 @@
 @import 'tailwindcss/utilities';
 
 body {
+	overflow-y: scroll;
 	background: linear-gradient(-90deg, rgba(0, 0, 0, 0.05) 1px, transparent 1px),
 		linear-gradient(rgba(0, 0, 0, 0.05) 1px, transparent 1px),
 		linear-gradient(-90deg, rgba(0, 0, 0, 0.04) 1px, transparent 1px),
