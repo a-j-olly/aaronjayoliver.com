@@ -16,12 +16,14 @@ import jest from '$lib/images/icons/tags/jest.svg';
 import postgresql from '$lib/images/icons/tags/postgresql-dark.svg';
 import terraform from '$lib/images/icons/tags/terraform-dark.svg';
 import vitest from '$lib/images/icons/tags/vitest-dark.svg';
+import prisma from '$lib/images/icons/tags/prisma.svg';
 
 // Project Images
 import aaronjayoliver from '$lib/images/projects/aaronjayoliver.webp';
 import neutrify from '$lib/images/projects/neutrify.webp';
 import asyncRestAPI from '$lib/images/projects/async-rest-api.webp';
 import serverlessGQLAPI from '$lib/images/projects/serverless-gql-api.webp';
+import paymentGatewayLibrary from '$lib/images/projects/payment-gateway-library.webp';
 
 import type { ProjectDetail } from 'shared_types';
 
@@ -79,8 +81,8 @@ export const projects: ProjectDetail[] = [
 			The site has lightning fast load times due to it being fully pre-rendered. 
 			There is no supporting backend infrastructure, with the exception of hosting the application on Cloudflare. 
 			This results in a site that is free to maintain (within parameters), but with the drawback of needing to commit a code change whenever data must be updated.`,
-		releaseDate: '2024-11-04T00:00:00.000Z',
-		updatedDate: '2024-11-11T00:00:00.000Z',
+		releaseDate: '2024-11-13T00:00:00.000Z',
+		updatedDate: '2024-11-13T00:00:00.000Z',
 		image: aaronjayoliver,
 		repositoryURL: 'https://github.com/a-j-olly/aaronjayoliver.com',
 		presentationURL: 'https://aaronjayoliver.com',
@@ -175,6 +177,34 @@ export const projects: ProjectDetail[] = [
 			{ id: 14, name: 'Lambda', url: 'https://aws.amazon.com/lambda/', image: lambda },
 			{ id: 16, name: 'PostgreSQL', url: 'https://www.postgresql.org/', image: postgresql },
 			{ id: 17, name: 'Vitest', url: 'https://vitest.dev/', image: vitest }
+		]
+	},
+	{
+		id: 5,
+		name: 'Payment Gateway Library',
+		description: `This project was created as part of a coding challenge to develop a payment gateway library. 
+			The result is a library that makes idempotent transactions to a PostgreSQL database using Prisma ORM. 
+			It also provides basic logging, documentation and input validation to ensure robustness, and 95% test coverage using Vitest to ensure code reliability.`,
+		releaseDate: '2024-06-13T00:00:00.000Z',
+		updatedDate: '2024-06-13T00:00:00.000Z',
+		image: paymentGatewayLibrary,
+		repositoryURL: 'https://github.com/a-j-olly/payment-gateway-library',
+		tags: [
+			{
+				id: 1,
+				name: 'TypeScript',
+				url: 'https://www.typescriptlang.org/',
+				image: typescript
+			},
+			{
+				id: 3,
+				name: 'JavaScript',
+				url: 'https://www.w3schools.com/js/DEFAULT.asp',
+				image: javascript
+			},
+			{ id: 16, name: 'PostgreSQL', url: 'https://www.postgresql.org/', image: postgresql },
+			{ id: 17, name: 'Vitest', url: 'https://vitest.dev/', image: vitest },
+			{ id: 18, name: 'Prisma', url: 'https://www.prisma.io/', image: prisma }
 		]
 	}
 ];
