@@ -39,14 +39,14 @@
 </svelte:head>
 
 <div class="flex justify-center">
-	<div class="mx-2 max-w-screen-xl rounded bg-orange-200/50 pb-2 sm:mx-4 md:mx-8">
+	<div class="mx-2 w-full max-w-screen-xl rounded bg-orange-200/50 pb-2 sm:mx-4 md:mx-8">
 		<div class="relative" class:hidden={!showTags}>
 			<h1 class="rounded-t bg-orange-400 text-center font-serif text-2xl text-white">Tags</h1>
 			<div class="absolute bottom-0 right-0">
 				<button
 					type="button"
 					disabled={$selectedTagStore.length === 0}
-					class="flex h-8 w-8 items-center justify-center rounded-tr text-white {$selectedTagStore.length ===
+					class="flex size-8 items-center justify-center rounded-tr text-white {$selectedTagStore.length ===
 					0
 						? 'bg-slate-400 text-white'
 						: 'bg-red-700 hover:bg-red-800 dark:bg-red-600 dark:hover:bg-red-700'}"
@@ -59,7 +59,7 @@
 				<button
 					type="button"
 					disabled={!showTags}
-					class="flex h-8 w-8 items-center justify-center rounded-tl bg-orange-400 bg-red-700 text-white hover:bg-red-800 dark:bg-red-600 dark:hover:bg-red-700"
+					class="flex size-8 items-center justify-center rounded-tl bg-orange-400 bg-red-700 text-white hover:bg-red-800 dark:bg-red-600 dark:hover:bg-red-700"
 					onclick={toggleShowTags}
 				>
 					<MinimiseIcon height="24px" width="24px" />
@@ -93,7 +93,7 @@
 				<button
 					type="button"
 					disabled={showTags}
-					class="flex h-8 w-8 items-center justify-center rounded-tl bg-orange-400 bg-red-700 text-white hover:bg-red-800 dark:bg-red-600 dark:hover:bg-red-700"
+					class="flex size-8 items-center justify-center rounded-tl bg-orange-400 bg-red-700 text-white hover:bg-red-800 dark:bg-red-600 dark:hover:bg-red-700"
 					onclick={toggleShowTags}
 				>
 					<MaximiseIcon height="24px" width="24px" />
@@ -102,7 +102,7 @@
 		</div>
 
 		{#if $displayedProjectStore.length}
-			<ul class="m-auto grid grid-cols-1 gap-4 px-2 sm:grid-cols-2">
+			<ul class="grid grid-cols-1 gap-4 px-2 sm:grid-cols-2">
 				{#each $displayedProjectStore as project (project.id)}
 					<Card name={project.name} image={project.image} />
 				{/each}
