@@ -112,7 +112,6 @@ export const projects: ProjectDetail[] = [
 			}
 		]
 	},
-
 	{
 		id: 3,
 		name: 'Asynchronous Rest API',
