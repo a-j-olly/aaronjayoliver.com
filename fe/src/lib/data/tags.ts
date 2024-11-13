@@ -17,5 +17,6 @@ export const tagDetails: TagItem[] = [
 	{ id: 14, name: 'Lambda' },
 	{ id: 15, name: 'DynamoDB' },
 	{ id: 16, name: 'PostgreSQL' },
-	{ id: 17, name: 'Vitest' }
+	{ id: 17, name: 'Vitest' },
+	{ id: 18, name: 'Prisma' }
 ];
