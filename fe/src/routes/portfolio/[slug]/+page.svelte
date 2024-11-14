@@ -17,6 +17,7 @@
 <svelte:head>
 	<title>{projectData.name} | aaronjayoliver.com</title>
 	<meta name="description" content={`This is the ${projectData.name} project page.`} />
+	<meta property="og:image" content={projectData.image} />
 </svelte:head>
 
 <div class="flex justify-center">
@@ -73,16 +74,6 @@
 					? 'grid-cols-2'
 					: 'grid-cols-1'}"
 			>
-				{#if projectData.repositoryURL}
-					<li
-						class="font-serif text-slate-800 underline decoration-slate-800 hover:text-blue-600 hover:decoration-blue-600"
-					>
-						<a class="flex flex-col items-center justify-center" href={projectData.repositoryURL}>
-							<img class="h-8 w-8 lg:h-10 lg:w-10" src={github} alt="Code Repository" />
-							<p class="mt-1">View Code</p>
-						</a>
-					</li>
-				{/if}
 				{#if projectData.presentationURL}
 					<li
 						class="font-serif text-slate-800 underline underline hover:text-blue-600 hover:decoration-blue-600"
@@ -90,6 +81,16 @@
 						<a class="flex flex-col items-center justify-center" href={projectData.presentationURL}>
 							<img class="h-8 w-8 lg:h-10 lg:w-10" src={www} alt="Website" />
 							<p class="mt-1">Visit Website</p>
+						</a>
+					</li>
+				{/if}
+				{#if projectData.repositoryURL}
+					<li
+						class="font-serif text-slate-800 underline decoration-slate-800 hover:text-blue-600 hover:decoration-blue-600"
+					>
+						<a class="flex flex-col items-center justify-center" href={projectData.repositoryURL}>
+							<img class="h-8 w-8 lg:h-10 lg:w-10" src={github} alt="Code Repository" />
+							<p class="mt-1">View Code</p>
 						</a>
 					</li>
 				{/if}
