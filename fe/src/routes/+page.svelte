@@ -1,5 +1,5 @@
 <script lang="ts">
-	import portrait from '$lib/images/ajo-portrait.webp';
+	import portrait from '$lib/images/ajo-portrait.png';
 	import github from '$lib/images/icons/github-dark.svg';
 	import linkedin from '$lib/images/icons/linkedin.svg';
 
