@@ -2,6 +2,8 @@
 	import type { TagItem } from 'shared_types';
 	import { tagStore, selectedTagStore, displayedProjectStore } from '$lib/stores';
 
+	import aaronjayoliver from '$lib/images/projects/aaronjayoliver.png';
+
 	import Card from './Card.svelte';
 	import Pill from './Pill.svelte';
 
@@ -34,8 +36,10 @@
 	<title>Portfolio | aaronjayoliver.com</title>
 	<meta
 		name="description"
-		content="This is the portfolio page for aaronjayoliver.com. It lists software development projects that I have developed."
+		content="Here you can find the projects Aaron Jay Oliver has been working on."
 	/>
+	<meta property="og:image" content={aaronjayoliver}/>
+
 </svelte:head>
 
 <div class="flex justify-center">
