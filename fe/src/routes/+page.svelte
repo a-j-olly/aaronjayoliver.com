@@ -1,104 +1,123 @@
 <script lang="ts">
-	import portrait from '$lib/images/ajo-portrait.png';
-	import github from '$lib/images/icons/github-dark.svg';
-	import linkedin from '$lib/images/icons/linkedin.svg';
+	import type { TagItem } from 'shared_types';
+	import { tagStore, selectedTagStore, displayedProjectStore } from '$lib/stores';
 
-	function handleAnchorOnClick(event: MouseEvent) {
-		event.preventDefault();
-		const anchorId = new URL((event.currentTarget as HTMLAnchorElement).href).hash.replace('#', '');
-		const target = document.getElementById(anchorId) as HTMLElement;
-		window.scrollTo({
-			top: target.offsetTop,
-			behavior: 'smooth'
+	import aaronjayoliver from '$lib/images/projects/aaronjayoliver.png';
+
+	import Card from './Card.svelte';
+	import Pill from './Pill.svelte';
+
+	import ClearIcon from './ClearIcon.svelte';
+	import MinimiseIcon from './MinimiseIcon.svelte';
+	import MaximiseIcon from './MaximiseIcon.svelte';
+
+	let showTags = $state(true);
+
+	function toggleShowTags() {
+		showTags = !showTags;
+	}
+
+	function toggleTagHandler(tag: TagItem) {
+		selectedTagStore.update((selectedTags) => {
+			if (selectedTags.some((t) => t.name === tag.name)) {
+				return selectedTags.filter((t) => t.name !== tag.name);
+			} else {
+				return [...selectedTags, tag];
+			}
 		});
+	}
+
+	function clearTagsHandler() {
+		selectedTagStore.set([]);
 	}
 </script>
 
 <svelte:head>
-	<title>About Me | aaronjayoliver.com</title>
-	<meta name="description" content="This is the landing page for aaronjayoliver.com, a portfolio website. From here you can navigate to the portfolio, or the blog." />
+	<title>Portfolio | aaronjayoliver.com</title>
+	<meta
+		name="description"
+		content="Here you can find the projects Aaron Jay Oliver has been working on."
+	/>
+	<meta property="og:image" content={aaronjayoliver}/>
+
 </svelte:head>
 
-<div class="flex flex-col items-center justify-center">
-	<!-- page 1 -->
-	<div class="flex h-screen items-center justify-center">
-		<div
-			class="flex h-min flex-row items-center justify-center divide-x-4 divide-slate-600 font-serif"
-		>
-			<ul class="text-dark-blue pr-3 text-right text-4xl font-bold">
-				<li>
-					<h1>Aaron</h1>
-				</li>
-				<li>
-					<h1>Jay</h1>
-				</li>
-				<li>
-					<h1>Oliver</h1>
-				</li>
-			</ul>
-
-			<ul class="pl-3 text-4xl text-slate-800">
-				<li>
-					<a
-						class="underline decoration-slate-600 hover:text-blue-600 hover:decoration-blue-600"
-						href="#about"
-						onclick={handleAnchorOnClick}>about</a
-					>
-				</li>
-				<li>
-					<a
-						class="underline decoration-slate-600 hover:text-blue-600 hover:decoration-blue-600"
-						href="/portfolio">portfolio</a
-					>
-				</li>
-				<li>
-					<a
-						class="underline decoration-slate-600 hover:text-blue-600 hover:decoration-blue-600"
-						href="/blog">blog</a
-					>
-				</li>
-			</ul>
-		</div>
-	</div>
-
-	<!-- page 2 -->
-	<div class="flex h-screen flex-col items-center justify-center" id="about">
-		<div class="m-2 flex flex-wrap justify-center gap-x-4 py-2">
-			<a class="min-w-12" href="https://linkedin.com/in/aaron-j-oliver/">
-				<img class="max-w-24 rounded-full border-2" src={portrait} alt="Aaron Jay Oliver" />
-			</a>
-
-			<div class="flex min-w-36 gap-x-4">
-				<div class="min-w-0">
-					<p class="text-dark-blue font-serif text-2xl font-bold md:text-4xl">Aaron Jay Oliver</p>
-
-					<a
-						class="mt-1 flex items-center gap-x-2 truncate text-sm text-slate-800 hover:text-blue-600 hover:decoration-blue-600"
-						href="https://linkedin.com/in/aaron-j-oliver/"
-					>
-						<img src={linkedin} alt="linkedIn" />
-						<p>linkedin.com/in/aaron-j-oliver/</p>
-					</a>
-
-					<a
-						class="mt-1 flex items-center gap-x-2 truncate text-sm text-slate-800 hover:text-blue-600 hover:decoration-blue-600"
-						href="https://github.com/a-j-olly"
-					>
-						<img src={github} alt="github" />
-						<p>github.com/a-j-olly</p>
-					</a>
-				</div>
+<div class="flex justify-center">
+	<div class="mx-2 w-full max-w-screen-xl rounded bg-orange-200/50 pb-2 sm:mx-4 md:mx-8">
+		<div class="relative" class:hidden={!showTags}>
+			<h1 class="rounded-t bg-orange-400 text-center font-serif text-2xl text-white">Tags</h1>
+			<div class="absolute bottom-0 right-0">
+				<button
+					type="button"
+					disabled={$selectedTagStore.length === 0}
+					class="flex size-8 items-center justify-center rounded-tr text-white {$selectedTagStore.length ===
+					0
+						? 'bg-slate-400 text-white'
+						: 'bg-red-700 hover:bg-red-800 dark:bg-red-600 dark:hover:bg-red-700'}"
+					onclick={clearTagsHandler}
+				>
+					<ClearIcon />
+				</button>
 			</div>
-			<div class="flex min-w-0 max-w-72 items-center pt-2">
-				<p class="px-2 italic leading-5 text-slate-800">
-					'I enjoy building things; I gain a sense of fulfilment knowing my work could make
-					someone's day easier.'
+			<div class="absolute bottom-0 left-0">
+				<button
+					type="button"
+					disabled={!showTags}
+					class="flex size-8 items-center justify-center rounded-tl bg-orange-400 bg-red-700 text-white hover:bg-red-800 dark:bg-red-600 dark:hover:bg-red-700"
+					onclick={toggleShowTags}
+				>
+					<MinimiseIcon height="24px" width="24px" />
+				</button>
+			</div>
+		</div>
+
+		<ul
+			class="grid grid-cols-[repeat(auto-fit,_minmax(96px,_max-content))] justify-center gap-1 p-1 xl:grid-cols-[repeat(auto-fit,_minmax(112px,_max-content))]"
+			class:hidden={!showTags}
+		>
+			{#each $tagStore as tag (tag.id)}
+				<li>
+					<Pill
+						{tag}
+						selected={$selectedTagStore.some((selectedTag) => selectedTag.name === tag.name)}
+						toggleTag={toggleTagHandler}
+					/>
+				</li>
+			{/each}
+		</ul>
+
+		<div class="relative">
+			<h1
+				class="mb-2 bg-orange-400 text-center font-serif text-2xl text-white"
+				class:rounded-t={!showTags}
+			>
+				Projects
+			</h1>
+			<div class="absolute bottom-0 left-0" class:hidden={showTags}>
+				<button
+					type="button"
+					disabled={showTags}
+					class="flex size-8 items-center justify-center rounded-tl bg-orange-400 bg-red-700 text-white hover:bg-red-800 dark:bg-red-600 dark:hover:bg-red-700"
+					onclick={toggleShowTags}
+				>
+					<MaximiseIcon height="24px" width="24px" />
+				</button>
+			</div>
+		</div>
+
+		{#if $displayedProjectStore.length}
+			<ul class="grid grid-cols-1 gap-4 px-2 sm:grid-cols-2">
+				{#each $displayedProjectStore as project (project.id)}
+					<Card name={project.name} image={project.image} />
+				{/each}
+			</ul>
+		{:else}
+			<div class="m-2 flex min-w-80 items-center justify-center">
+				<p class="text-slate-800">
+					There are no projects matching the tags you have selected. Reduce the number of tags you
+					have selected, or clear them to view all projects.
 				</p>
 			</div>
-		</div>
-		<a
-			class="mt-2 text-center font-serif text-2xl text-slate-800 underline decoration-slate-600 hover:text-blue-600 hover:decoration-blue-600"
-			href="/portfolio">View My Portfolio</a
-		>
+		{/if}
 	</div>
 </div>

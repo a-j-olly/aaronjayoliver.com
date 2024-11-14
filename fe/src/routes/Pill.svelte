@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { TagItem } from '../../../../pkgs/shared_types';
+	import type { TagItem } from 'shared_types';
 	interface Props {
 		tag: TagItem;
 		selected: boolean;
