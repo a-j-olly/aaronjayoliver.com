@@ -19,11 +19,11 @@ import vitest from '$lib/images/icons/tags/vitest-dark.svg';
 import prisma from '$lib/images/icons/tags/prisma.svg';
 
 // Project Images
-import aaronjayoliver from '$lib/images/projects/aaronjayoliver.webp';
-import neutrify from '$lib/images/projects/neutrify.webp';
-import asyncRestAPI from '$lib/images/projects/async-rest-api.webp';
-import serverlessGQLAPI from '$lib/images/projects/serverless-gql-api.webp';
-import paymentGatewayLibrary from '$lib/images/projects/payment-gateway-library.webp';
+import aaronjayoliver from '$lib/images/projects/aaronjayoliver.png';
+import neutrify from '$lib/images/projects/neutrify.png';
+import asyncRestAPI from '$lib/images/projects/async-rest-api.png';
+import serverlessGQLAPI from '$lib/images/projects/serverless-gql-api.png';
+import paymentGateway from '$lib/images/projects/payment-gateway.png';
 
 import type { ProjectDetail } from 'shared_types';
 
@@ -35,7 +35,9 @@ export const projects: ProjectDetail[] = [
 			It is a news aggregator that presents the news tagged with AI derived metrics to improve transparency and filterability. 
 			The application is distributed via the web and the Google Play store.<br><br>
 			It is a full stack application built with AWS Amplify, AppSync, DynamoDB, and TypeScript ETL jobs running on Lambda. 
-			OAuth2.0 user account authentication is implemented using Amazon Cognito, and CI/CD is handled in AWS CodePipeline.`,
+			OAuth2.0 user account authentication is implemented using Amazon Cognito, and CI/CD is handled with AWS CodePipeline.<br><br>
+			<b>Note:</b> The Neutrify app was decommissioned at the end of 2021, however I am working to bring a limited version of it back online.
+		`,
 		releaseDate: '2019-11-01T00:00:00.000Z',
 		updatedDate: '2021-08-14T00:00:00.000Z',
 		image: neutrify,
@@ -82,7 +84,7 @@ export const projects: ProjectDetail[] = [
 			There is no supporting backend infrastructure, with the exception of hosting the application on Cloudflare. 
 			This results in a site that is free to maintain (within parameters), but with the drawback of needing to commit a code change whenever data must be updated.`,
 		releaseDate: '2024-11-13T00:00:00.000Z',
-		updatedDate: '2024-11-13T00:00:00.000Z',
+		updatedDate: '2024-14-13T00:00:00.000Z',
 		image: aaronjayoliver,
 		repositoryURL: 'https://github.com/a-j-olly/aaronjayoliver.com',
 		presentationURL: 'https://aaronjayoliver.com',
@@ -187,7 +189,7 @@ export const projects: ProjectDetail[] = [
 			It also provides basic logging, documentation and input validation to ensure robustness, and 95% test coverage using Vitest to ensure code reliability.`,
 		releaseDate: '2024-06-13T00:00:00.000Z',
 		updatedDate: '2024-06-13T00:00:00.000Z',
-		image: paymentGatewayLibrary,
+		image: paymentGateway,
 		repositoryURL: 'https://github.com/a-j-olly/payment-gateway-library',
 		tags: [
 			{
