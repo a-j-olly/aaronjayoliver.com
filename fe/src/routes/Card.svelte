@@ -5,7 +5,7 @@
 	}
 
 	let { name, image }: Props = $props();
-	const navURL = `/portfolio/${encodeURI(name)}`;
+	const navURL = `/${encodeURI(name)}`;
 </script>
 
 <a
