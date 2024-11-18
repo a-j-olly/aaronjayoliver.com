@@ -2,8 +2,6 @@
 	import type { TagItem } from 'shared_types';
 	import { tagStore, selectedTagStore, displayedProjectStore } from '$lib/stores';
 
-	import aaronjayoliver from '$lib/images/projects/aaronjayoliver.png';
-
 	import Card from './Card.svelte';
 	import Pill from './Pill.svelte';
 
@@ -38,14 +36,12 @@
 		name="description"
 		content="Here you can find the projects Aaron Jay Oliver has been working on."
 	/>
-	<meta property="og:image" content={aaronjayoliver}/>
-
 </svelte:head>
 
 <div class="flex justify-center">
 	<div class="mx-2 w-full max-w-screen-xl rounded bg-orange-200/50 pb-2 sm:mx-4 md:mx-8">
 		<div class="relative" class:hidden={!showTags}>
-			<h1 class="rounded-t bg-orange-400 text-center font-serif text-2xl text-white">Tags</h1>
+			<h1 class="rounded-t bg-orange-400 text-center font-serif text-2xl text-white">Skills</h1>
 			<div class="absolute bottom-0 right-0">
 				<button
 					type="button"

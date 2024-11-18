@@ -17,7 +17,6 @@
 <svelte:head>
 	<title>{projectData.name} | aaronjayoliver.com</title>
 	<meta name="description" content={`This is the ${projectData.name} project page.`} />
-	<meta property="og:image" content={projectData.image} />
 </svelte:head>
 
 <div class="flex justify-center">
