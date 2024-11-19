@@ -19,11 +19,11 @@ import vitest from '$lib/images/icons/tags/vitest-dark.svg';
 import prisma from '$lib/images/icons/tags/prisma.svg';
 
 // Project Images
-import aaronjayoliver from '$lib/images/projects/aaronjayoliver.webp';
-import neutrify from '$lib/images/projects/neutrify.webp';
-import asyncRestAPI from '$lib/images/projects/async-payment-api.webp';
-import serverlessGQLAPI from '$lib/images/projects/serverless-gql-api.webp';
-import paymentGateway from '$lib/images/projects/payment-gateway.webp';
+import aaronjayoliver from '$lib/images/projects/aaronjayoliver.webp?enhanced';
+import neutrify from '$lib/images/projects/neutrify.webp?enhanced';
+import asyncRestAPI from '$lib/images/projects/async-payment-api.webp?enhanced';
+import serverlessGQLAPI from '$lib/images/projects/serverless-gql-api.webp?enhanced';
+import paymentGateway from '$lib/images/projects/payment-gateway.webp?enhanced';
 
 import type { ProjectDetail } from 'shared_types';
 
