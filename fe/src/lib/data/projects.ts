@@ -19,11 +19,11 @@ import vitest from '$lib/images/icons/tags/vitest-dark.svg';
 import prisma from '$lib/images/icons/tags/prisma.svg';
 
 // Project Images
-import aaronjayoliver from '$lib/images/projects/aaronjayoliver.webp';
-import neutrify from '$lib/images/projects/neutrify.webp';
-import asyncRestAPI from '$lib/images/projects/async-payment-api.webp';
-import serverlessGQLAPI from '$lib/images/projects/serverless-gql-api.webp';
-import paymentGateway from '$lib/images/projects/payment-gateway.webp';
+import aaronjayoliver from '$lib/images/projects/aaronjayoliver.webp?enhanced';
+import neutrify from '$lib/images/projects/neutrify.webp?enhanced';
+import asyncRestAPI from '$lib/images/projects/async-payment-api.webp?enhanced';
+import serverlessGQLAPI from '$lib/images/projects/serverless-gql-api.webp?enhanced';
+import paymentGateway from '$lib/images/projects/payment-gateway.webp?enhanced';
 
 import type { ProjectDetail } from 'shared_types';
 
@@ -84,7 +84,7 @@ export const projects: ProjectDetail[] = [
 			There is no supporting backend infrastructure, with the exception of hosting the application on Cloudflare. 
 			This results in a site that is free to maintain (within parameters), but with the drawback of needing to commit a code change whenever data must be updated.`,
 		releaseDate: '2024-11-13T00:00:00.000Z',
-		updatedDate: '2024-11-18T00:00:00.000Z',
+		updatedDate: '2024-11-19T00:00:00.000Z',
 		image: aaronjayoliver,
 		repositoryURL: 'https://github.com/a-j-olly/aaronjayoliver.com',
 		presentationURL: 'https://aaronjayoliver.com',

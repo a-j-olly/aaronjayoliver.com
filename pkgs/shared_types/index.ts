@@ -16,7 +16,7 @@ export type ProjectItem = {
 	description: string;
 	updatedDate: string;
 	releaseDate: string;
-	image: string;
+	image: string | Picture;
 	repositoryURL: string;
 	presentationURL?: string;
 	tags: TagItem[];
@@ -44,3 +44,15 @@ export type Query = {
 };
 
 export type ID = string | number;
+
+export type Picture = {
+	/**
+	 * Key is format. Value is srcset.
+	 */
+	sources: Record<string, string>;
+	img: {
+		src: string;
+		w: number;
+		h: number;
+	};
+};

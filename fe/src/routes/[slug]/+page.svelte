@@ -27,7 +27,7 @@
 
 		<div class="flex flex-wrap border-x-4 border-b-4 border-orange-400 bg-orange-200/50">
 			<div class="border-b-4 border-orange-400">
-				<img src={projectData.image} alt={projectData.name} class="object-cover" />
+				<enhanced:img src={projectData.image} alt={projectData.name} class="object-cover" />
 			</div>
 
 			<div
@@ -58,7 +58,7 @@
 						<li>
 							<a href={tag.url}>
 								<img
-									class="mx-2 my-1 w-10 w-10 lg:mx-3 lg:my-2 lg:w-12 lg:w-12"
+									class="mx-2 my-1 size-10 lg:mx-3 lg:my-2 lg:size-12"
 									src={tag.image}
 									alt={tag.name}
 									title={tag.name}
@@ -78,7 +78,7 @@
 						class="font-serif text-slate-800 underline underline hover:text-blue-600 hover:decoration-blue-600"
 					>
 						<a class="flex flex-col items-center justify-center" href={projectData.presentationURL}>
-							<img class="h-8 w-8 lg:h-10 lg:w-10" src={www} alt="Website" />
+							<img class="size-8 lg:size-10" src={www} alt="Website" />
 							<p class="mt-1">Visit Website</p>
 						</a>
 					</li>
@@ -88,7 +88,7 @@
 						class="font-serif text-slate-800 underline decoration-slate-800 hover:text-blue-600 hover:decoration-blue-600"
 					>
 						<a class="flex flex-col items-center justify-center" href={projectData.repositoryURL}>
-							<img class="h-8 w-8 lg:h-10 lg:w-10" src={github} alt="Code Repository" />
+							<img class="size-8 lg:size-10" src={github} alt="Code Repository" />
 							<p class="mt-1">View Code</p>
 						</a>
 					</li>

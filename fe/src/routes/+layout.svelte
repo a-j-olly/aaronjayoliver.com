@@ -18,7 +18,7 @@
 	<nav class="m-2 mb-4 grid grid-cols-3">
 		<div class="flex h-min flex-row items-center justify-start gap-2 font-serif">
 			<a href="/">
-				<img class="h-16 w-16 rounded-full border" src={portrait} alt="Aaron Jay Oliver" />
+				<img class="size-16 rounded-full border" src={portrait} alt="Aaron Jay Oliver" />
 			</a>
 			<a class="max-sm:hidden" class:cursor-default={$page.data.pageTitle === 'Portfolio'} href="/">
 				<ul
@@ -54,13 +54,13 @@
 				<ul class="flex flex-col gap-2 font-serif text-slate-800">
 					<li class="underline decoration-slate-600 hover:text-blue-600 hover:decoration-blue-600">
 						<a href="https://linkedin.com/in/aaron-j-oliver/" class="flex items-center gap-2">
-							<img src={linkedin} alt="linkedIn" />
+							<img src={linkedin} alt="linkedIn" class="size-6" />
 							<p class="max-sm:hidden">linkedin.com</p>
 						</a>
 					</li>
 					<li class="underline decoration-slate-600 hover:text-blue-600 hover:decoration-blue-600">
 						<a href="https://github.com/a-j-olly" class="flex items-center gap-2">
-							<img src={github} alt="github" />
+							<img src={github} alt="github" class="size-6" />
 							<p class="max-sm:hidden">github.com</p>
 						</a>
 					</li>
