@@ -27,7 +27,7 @@
 
 		<div class="flex flex-wrap border-x-4 border-b-4 border-orange-400 bg-orange-200/50">
 			<div class="border-b-4 border-orange-400">
-				<img src={projectData.image} alt={projectData.name} class="object-cover" />
+				<enhanced:img src={projectData.image} alt={projectData.name} class="object-cover" />
 			</div>
 
 			<div
