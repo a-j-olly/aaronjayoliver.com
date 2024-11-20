@@ -45,6 +45,7 @@
 			<div class="absolute bottom-0 right-0">
 				<button
 					type="button"
+					title="Clear Skills"
 					disabled={$selectedTagStore.length === 0}
 					class="flex size-8 items-center justify-center rounded-tr text-white {$selectedTagStore.length ===
 					0
@@ -58,6 +59,7 @@
 			<div class="absolute bottom-0 left-0">
 				<button
 					type="button"
+					title="Hide Skills"
 					disabled={!showTags}
 					class="flex size-8 items-center justify-center rounded-tl bg-orange-400 bg-red-700 text-white hover:bg-red-800 dark:bg-red-600 dark:hover:bg-red-700"
 					onclick={toggleShowTags}
@@ -92,6 +94,7 @@
 			<div class="absolute bottom-0 left-0" class:hidden={showTags}>
 				<button
 					type="button"
+					title="Show Skills"
 					disabled={showTags}
 					class="flex size-8 items-center justify-center rounded-tl bg-orange-400 bg-red-700 text-white hover:bg-red-800 dark:bg-red-600 dark:hover:bg-red-700"
 					onclick={toggleShowTags}
@@ -104,14 +107,17 @@
 		{#if $displayedProjectStore.length}
 			<ul class="grid grid-cols-1 gap-4 px-2 sm:grid-cols-2">
 				{#each $displayedProjectStore as project (project.id)}
-					<Card name={project.name} image={project.image} />
+					<li
+						class="min-h-32 min-w-64 overflow-hidden rounded border-4 border-orange-400 bg-orange-400 shadow-lg hover:border-orange-500 hover:bg-orange-500"
+					>
+						<Card name={project.name} image={project.image} />
+					</li>
 				{/each}
 			</ul>
 		{:else}
 			<div class="m-2 flex min-w-80 items-center justify-center">
 				<p class="text-slate-800">
-					There are no projects matching the tags you have selected. Reduce the number of tags you
-					have selected, or clear them to view all projects.
+					There are no projects matching the skills you have selected. Clear all skills to view all projects.
 				</p>
 			</div>
 		{/if}
