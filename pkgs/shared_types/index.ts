@@ -1,15 +1,3 @@
-export type ProjectRow = {
-	id: number;
-	name: string;
-	description: string;
-	release_date: string;
-	image: string;
-	repository_url: string;
-	presentation_url: string | null;
-	tag_id: number | null;
-	tag_name: string | null;
-};
-
 export type ProjectItem = {
 	id: ID;
 	name: string;
@@ -34,13 +22,6 @@ export type TagItem = {
 export type TagDetail = TagItem & {
 	image: string;
 	url: string;
-};
-
-export type Query = {
-	getProjectList: ProjectItem[];
-	getProjectListByTagIds(tagIds: ID[]): ProjectItem[];
-	getProjectByProjectId(projectId: ID): ProjectItem | null;
-	getTagList: TagItem[];
 };
 
 export type ID = string | number;
