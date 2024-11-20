@@ -1,7 +1,8 @@
 {
   "name": "aaronjayoliver.com",
-  "version": "1.1.2",
+  "version": "1.1.3",
   "description": "The root pnpm workspace directory for the aaronjayoliver.com portfolio project",
+  "private": "true",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
