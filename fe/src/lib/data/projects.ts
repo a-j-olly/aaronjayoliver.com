@@ -115,7 +115,8 @@ export const projects: ProjectDetail[] = [
 				name: 'TailwindCSS',
 				url: 'https://tailwindcss.com/',
 				image: tailwindcss
-			}
+			},
+			{ id: 17, name: 'Vitest', url: 'https://vitest.dev/', image: vitest }
 		]
 	},
 	{
