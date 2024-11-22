@@ -5,6 +5,11 @@ import { enhancedImages } from '@sveltejs/enhanced-img';
 export default defineConfig({
 	plugins: [sveltekit(), enhancedImages()],
 	test: {
-		include: ['src/**/*.{test,spec}.{js,ts}']
-	}
+		include: ['tests/**/*.{test,spec}.{js,ts}']
+	},
+	resolve: process.env.VITEST
+	? {
+			conditions: ['browser']
+		}
+	: undefined
 });
