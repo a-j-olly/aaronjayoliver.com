@@ -11,7 +11,7 @@
 	let { data }: { data: PageData } = $props();
 
 	const projectList = get(projectStore);
-	const projectData = projectList.find((p) => p.name === data.pageTitle) as ProjectDetail;
+	const projectData = projectList.find((p) => p.slug === data.slugName) as ProjectDetail;
 </script>
 
 <svelte:head>

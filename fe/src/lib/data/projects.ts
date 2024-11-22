@@ -38,6 +38,7 @@ export const projects: ProjectDetail[] = [
 			OAuth2.0 user account authentication is implemented using Amazon Cognito, and CI/CD is handled with AWS CodePipeline.<br><br>
 			<b>Note:</b> The Neutrify app was decommissioned at the end of 2021, however I am working to bring a limited version of it back online.
 		`,
+		slug: 'neutrify',
 		releaseDate: '2019-11-01T00:00:00.000Z',
 		updatedDate: '2021-08-14T00:00:00.000Z',
 		image: neutrify,
@@ -83,6 +84,7 @@ export const projects: ProjectDetail[] = [
 			The site has lightning fast load times due to it being fully pre-rendered. 
 			There is no supporting backend infrastructure, with the exception of hosting the application on Cloudflare. 
 			This results in a site that is free to maintain (within parameters), but with the drawback of needing to commit a code change whenever data must be updated.`,
+		slug: 'aaronjayoliver.com',
 		releaseDate: '2024-11-13T00:00:00.000Z',
 		updatedDate: '2024-11-20T00:00:00.000Z',
 		image: aaronjayoliver,
@@ -123,6 +125,7 @@ export const projects: ProjectDetail[] = [
 			It was designed to be resilient, scalable and secure, as per the requirements of a payment gateway.<br><br> 
 			One of the most interesting features of this project is that the Terraform script that creates the API infrastructure takes its configuration from the OpenAPI schema.
 			A justification for all the design decisions made for this architecture can be found in the README documentation found in this project's repository.`,
+		slug: 'asynchronous-rest-api',
 		releaseDate: '2024-03-21T00:00:00.000Z',
 		updatedDate: '2024-03-21T00:00:00.000Z',
 		image: asyncRestAPI,
@@ -156,6 +159,7 @@ export const projects: ProjectDetail[] = [
 			One of the major drawbacks of serverless architecture is that your infrastructure can be 'cold', which means it needs to be initialised before it can respond to any requests.
 			This is the cold start time, and it is exacerbated by the size of the package being intialised. 
 			GraphQL servers often contain middleware that bloats the package size, so choosing a lightweight one like GraphQL Yoga is vital for performance.`,
+		slug: 'serverless-graphql-api',
 		releaseDate: '2024-11-08T00:00:00.000Z',
 		updatedDate: '2024-11-08T00:00:00.000Z',
 		image: serverlessGQLAPI,
@@ -187,6 +191,7 @@ export const projects: ProjectDetail[] = [
 		description: `This project was created as part of a coding challenge to develop a payment gateway library. 
 			The result is a library that makes idempotent transactions to a PostgreSQL database using Prisma ORM. 
 			It also provides basic logging, documentation and input validation to ensure robustness, and 95% test coverage using Vitest to ensure code reliability.`,
+		slug: 'payment-gateway-library',
 		releaseDate: '2024-06-13T00:00:00.000Z',
 		updatedDate: '2024-06-13T00:00:00.000Z',
 		image: paymentGateway,
