@@ -86,7 +86,7 @@ export const projects: ProjectDetail[] = [
 			This results in a site that is free to maintain (within parameters), but with the drawback of needing to commit a code change whenever data must be updated.`,
 		slug: 'aaronjayoliver.com',
 		releaseDate: '2024-11-13T00:00:00.000Z',
-		updatedDate: '2024-11-20T00:00:00.000Z',
+		updatedDate: '2024-11-26T00:00:00.000Z',
 		image: aaronjayoliver,
 		repositoryURL: 'https://github.com/a-j-olly/aaronjayoliver.com',
 		presentationURL: 'https://aaronjayoliver.com',
