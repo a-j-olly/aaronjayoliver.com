@@ -1,6 +1,7 @@
 export type ProjectItem = {
 	id: ID;
 	name: string;
+	slug: string;
 	description: string;
 	updatedDate: string;
 	releaseDate: string;

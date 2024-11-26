@@ -110,7 +110,7 @@
 					<li
 						class="min-h-32 min-w-64 overflow-hidden rounded border-4 border-orange-400 bg-orange-400 shadow-lg hover:border-orange-500 hover:bg-orange-500"
 					>
-						<Card name={project.name} image={project.image} />
+						<Card name={project.name} image={project.image} slug={project.slug} />
 					</li>
 				{/each}
 			</ul>

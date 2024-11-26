@@ -17,12 +17,12 @@
 <header>
 	<nav class="m-2 mb-4 grid grid-cols-3">
 		<div class="flex h-min flex-row items-center justify-start gap-2 font-serif">
-			<a href="/">
+			<a href="/" class:cursor-default={$page.url.pathname === '/'}>
 				<img class="size-16 rounded-full border" src={portrait} alt="Aaron Jay Oliver" />
 			</a>
-			<a class="max-sm:hidden" class:cursor-default={$page.data.pageTitle === 'Portfolio'} href="/">
+			<a class="max-sm:hidden" class:cursor-default={$page.url.pathname === '/'} href="/">
 				<ul
-					class:hover:text-blue-700={$page.data.pageTitle !== 'Portfolio'}
+					class:hover:text-blue-700={$page.url.pathname !== '/'}
 					class="text-dark-blue pr-2 text-lg font-bold leading-5"
 				>
 					<li>
@@ -39,10 +39,10 @@
 		</div>
 
 		<div class="text-dark-blue flex items-center justify-center">
-			<a class:cursor-default={$page.data.pageTitle === 'Portfolio'} href="/">
+			<a class:cursor-default={$page.url.pathname === '/'} href="/">
 				<h1
 					class="text-center font-serif text-3xl font-bold sm:text-4xl"
-					class:hover:text-blue-700={$page.data.pageTitle !== 'Portfolio'}
+					class:hover:text-blue-700={$page.url.pathname !== '/'}
 				>
 					Portfolio
 				</h1>
