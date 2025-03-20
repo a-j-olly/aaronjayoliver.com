@@ -1,6 +1,6 @@
 {
 	"name": "fe",
-	"version": "1.1.5",
+	"version": "1.2.0",
 	"description": "The frontend for the aaronjayoliver.com portfolio website.",
 	"private": true,
 	"scripts": {
