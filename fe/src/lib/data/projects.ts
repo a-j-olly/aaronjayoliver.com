@@ -33,16 +33,18 @@ export const projects: ProjectDetail[] = [
 		name: 'Neutrify',
 		description: `I founded Neutrify to provide a tool to help control the news articles we see. 
 			It is a news aggregator that presents the news tagged with AI derived metrics to improve transparency and filterability. 
-			The application is distributed via the web and the Google Play store.<br><br>
+			The application was distributed via the web and the Google Play store.<br><br>
 			It is a full stack application built with AWS Amplify, AppSync, DynamoDB, and TypeScript ETL jobs running on Lambda. 
 			OAuth2.0 user account authentication is implemented using Amazon Cognito, and CI/CD is handled with AWS CodePipeline.<br><br>
-			<b>Note:</b> The Neutrify app was decommissioned at the end of 2021, however I am working to bring a limited version of it back online.
+			<b>Note:</b> The Neutrify app was decommissioned at the end of 2021, but I have rehosted it for demonstration purposes on Cloudflare.
+			The demo uses partially randomly generated mock articles.
 		`,
 		slug: 'neutrify',
 		releaseDate: '2019-11-01T00:00:00.000Z',
-		updatedDate: '2021-08-14T00:00:00.000Z',
+		updatedDate: '2025-03-20T00:00:00.000Z',
 		image: neutrify,
-		repositoryURL: 'https://github.com/Neutrify/neutrify',
+		presentationURL: 'https://neutrify-demo.pages.dev/app',
+		repositoryURL: 'https://github.com/a-j-olly/neutrify',
 		tags: [
 			{ id: 2, name: 'Angular', url: 'https://angular.dev/', image: angular },
 			{ id: 8, name: 'NodeJS', url: 'https://nodejs.org/', image: nodejs },
