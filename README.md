@@ -24,4 +24,4 @@ You can find the live portfolio here: [https://aaronjayoliver.com](https://aaron
 - Svelte 5, SvelteKit
 - Cloudflare
 
-The site is completely prerendered by SvelteKit, then deployed to Cloudflare. Given the small volumne of data required by this project, there is no need for backend API integration, so all data is statically served by Cloudflare.
+The site is completely prerendered by SvelteKit, then deployed to Cloudflare. Given the small volumne of data required by this project, there is no need for a backend API integration, so all data is statically served by Cloudflare.
