@@ -2,16 +2,18 @@
 	import dayjs from 'dayjs';
 	import www from '$lib/images/icons/www.svg';
 	import github from '$lib/images/icons/github-dark.svg';
-
-	import { get } from 'svelte/store';
+	import { getProjectBySlug } from '$lib/services/projectStore';
 	import type { PageData } from '../$types';
-	import { projectStore } from '$lib/stores';
-	import type { ProjectDetail } from 'shared_types';
 
 	let { data }: { data: PageData } = $props();
 
-	const projectList = get(projectStore);
-	const projectData = projectList.find((p) => p.slug === data.slugName) as ProjectDetail;
+	// Get the project data
+	const projectData = getProjectBySlug(data.slugName);
+
+	// This shouldn't happen due to our page loader, but added for type safety
+	if (!projectData) {
+		throw new Error(`Project with slug "${data.slugName}" not found`);
+	}
 </script>
 
 <svelte:head>
@@ -59,7 +61,7 @@
 							<a href={tag.url}>
 								<img
 									class="mx-2 my-1 size-10 lg:mx-3 lg:my-2 lg:size-12"
-									src={tag.image}
+									src={tag.image as string}
 									alt={tag.name}
 									title={tag.name}
 								/>

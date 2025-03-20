@@ -1,0 +1,110 @@
+[
+  {
+    "id": "1",
+    "name": "TypeScript",
+    "url": "https://www.typescriptlang.org/",
+    "image": "typescript"
+  },
+  {
+    "id": "2",
+    "name": "Angular",
+    "url": "https://angular.dev/",
+    "image": "angular"
+  },
+  {
+    "id": "3",
+    "name": "JavaScript",
+    "url": "https://www.w3schools.com/js/DEFAULT.asp",
+    "image": "javascript"
+  },
+  {
+    "id": "4",
+    "name": "AWS",
+    "url": "https://aws.amazon.com/",
+    "image": "aws-light"
+  },
+  {
+    "id": "5",
+    "name": "Svelte",
+    "url": "https://svelte.dev/",
+    "image": "svelte"
+  },
+  {
+    "id": "6",
+    "name": "Serverless",
+    "url": "https://www.serverless.com/",
+    "image": "serverless"
+  },
+  {
+    "id": "7",
+    "name": "Cloudflare",
+    "url": "https://www.cloudflare.com/",
+    "image": "cloudflare-light"
+  },
+  {
+    "id": "8",
+    "name": "NodeJS",
+    "url": "https://nodejs.org/",
+    "image": "nodejs-light"
+  },
+  {
+    "id": "9",
+    "name": "Ionic",
+    "url": "https://ionicframework.com/",
+    "image": "ionic"
+  },
+  {
+    "id": "10",
+    "name": "TailwindCSS",
+    "url": "https://tailwindcss.com/",
+    "image": "tailwindcss"
+  },
+  {
+    "id": "11",
+    "name": "Jest",
+    "url": "https://jestjs.io/",
+    "image": "jest"
+  },
+  {
+    "id": "12",
+    "name": "Terraform",
+    "url": "https://www.terraform.io/",
+    "image": "terraform-dark"
+  },
+  {
+    "id": "13",
+    "name": "Cordova",
+    "url": "https://cordova.apache.org/",
+    "image": "cordova"
+  },
+  {
+    "id": "14",
+    "name": "Lambda",
+    "url": "https://aws.amazon.com/lambda/",
+    "image": "lambda"
+  },
+  {
+    "id": "15",
+    "name": "DynamoDB",
+    "url": "https://aws.amazon.com/dynamodb/",
+    "image": "dynamodb"
+  },
+  {
+    "id": "16",
+    "name": "PostgreSQL",
+    "url": "https://www.postgresql.org/",
+    "image": "postgresql-dark"
+  },
+  {
+    "id": "17",
+    "name": "Vitest",
+    "url": "https://vitest.dev/",
+    "image": "vitest-dark"
+  },
+  {
+    "id": "18",
+    "name": "Prisma",
+    "url": "https://www.prisma.io/",
+    "image": "prisma"
+  }
+]
