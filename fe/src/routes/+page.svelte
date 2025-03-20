@@ -1,32 +1,23 @@
 <script lang="ts">
-	import type { TagItem } from 'shared_types';
-	import { tagStore, selectedTagStore, displayedProjectStore } from '$lib/stores';
+	import {
+		allTags,
+		selectedTags,
+		displayedProjects,
+		toggleTag,
+		clearTags,
+		isTagSelected
+	} from '$lib/services/projectStore';
+	import Card from '../lib/components/ui/Card.svelte';
+	import Pill from '../lib/components/ui/Pill.svelte';
+	import ClearIcon from '../lib/components/ui/icons/ClearIcon.svelte';
+	import MinimiseIcon from '../lib/components/ui/icons/MinimiseIcon.svelte';
+	import MaximiseIcon from '../lib/components/ui/icons/MaximiseIcon.svelte';
 
-	import Card from './Card.svelte';
-	import Pill from './Pill.svelte';
-
-	import ClearIcon from './ClearIcon.svelte';
-	import MinimiseIcon from './MinimiseIcon.svelte';
-	import MaximiseIcon from './MaximiseIcon.svelte';
-
+	// Local component state
 	let showTags = $state(true);
 
 	function toggleShowTags() {
 		showTags = !showTags;
-	}
-
-	function toggleTagHandler(tag: TagItem) {
-		selectedTagStore.update((selectedTags) => {
-			if (selectedTags.some((t) => t.name === tag.name)) {
-				return selectedTags.filter((t) => t.name !== tag.name);
-			} else {
-				return [...selectedTags, tag];
-			}
-		});
-	}
-
-	function clearTagsHandler() {
-		selectedTagStore.set([]);
 	}
 </script>
 
@@ -46,12 +37,12 @@
 				<button
 					type="button"
 					title="Clear Skills"
-					disabled={$selectedTagStore.length === 0}
-					class="flex size-8 items-center justify-center rounded-tr text-white {$selectedTagStore.length ===
+					disabled={$selectedTags.length === 0}
+					class="flex size-8 items-center justify-center rounded-tr text-white {$selectedTags.length ===
 					0
 						? 'bg-slate-400 text-white'
 						: 'bg-red-700 hover:bg-red-800 dark:bg-red-600 dark:hover:bg-red-700'}"
-					onclick={clearTagsHandler}
+					onclick={clearTags}
 				>
 					<ClearIcon />
 				</button>
@@ -73,13 +64,9 @@
 			class="grid grid-cols-[repeat(auto-fit,_minmax(96px,_max-content))] justify-center gap-1 p-1 xl:grid-cols-[repeat(auto-fit,_minmax(112px,_max-content))]"
 			class:hidden={!showTags}
 		>
-			{#each $tagStore as tag (tag.id)}
+			{#each $allTags as tag (tag.id)}
 				<li>
-					<Pill
-						{tag}
-						selected={$selectedTagStore.some((selectedTag) => selectedTag.name === tag.name)}
-						toggleTag={toggleTagHandler}
-					/>
+					<Pill {tag} selected={isTagSelected(tag.id)} toggleTag={() => toggleTag(tag.id)} />
 				</li>
 			{/each}
 		</ul>
@@ -104,9 +91,9 @@
 			</div>
 		</div>
 
-		{#if $displayedProjectStore.length}
+		{#if $displayedProjects.length}
 			<ul class="grid grid-cols-1 gap-4 px-2 sm:grid-cols-2">
-				{#each $displayedProjectStore as project (project.id)}
+				{#each $displayedProjects as project (project.id)}
 					<li
 						class="min-h-32 min-w-64 overflow-hidden rounded border-4 border-orange-400 bg-orange-400 shadow-lg hover:border-orange-500 hover:bg-orange-500"
 					>
@@ -117,7 +104,8 @@
 		{:else}
 			<div class="m-2 flex min-w-80 items-center justify-center">
 				<p class="text-slate-800">
-					There are no projects matching the skills you have selected. Clear all skills to view all projects.
+					There are no projects matching the skills you have selected. Clear all skills to view all
+					projects.
 				</p>
 			</div>
 		{/if}
