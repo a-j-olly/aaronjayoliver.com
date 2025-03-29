@@ -6,8 +6,9 @@ import type { ProjectDetail, TagDetail, TagItem } from 'shared_types';
 const allProjectsData = getAllProjectDetails();
 const allTagsData = getAllTags();
 
-// The only writable store - single source of truth for selected tags
+// The only writable stores - single source of truth
 export const selectedTagIds = writable<string[]>([]);
+export const sortMethod = writable<SortMethod>('release');
 
 // Create a store for selected tag objects (derived from IDs)
 export const selectedTags: Readable<TagItem[]> = derived(selectedTagIds, ($selectedTagIds) => {
@@ -19,15 +20,18 @@ export const selectedTags: Readable<TagItem[]> = derived(selectedTagIds, ($selec
 
 // Create a store for displayed projects based on tag filter
 export const displayedProjects: Readable<ProjectDetail[]> = derived(
-	selectedTagIds,
-	($selectedTagIds) => {
-		if ($selectedTagIds.length === 0) {
-			return allProjectsData;
-		}
+	[selectedTagIds, sortMethod],
+	([$selectedTagIds, $sortMethod]) => {
+		let filtered = $selectedTagIds.length === 0 
+			? allProjectsData 
+			: allProjectsData.filter(project =>
+				$selectedTagIds.every(tagId => project.tags.some(t => t.id === tagId))
+			);
 
-		return allProjectsData.filter((project) =>
-			$selectedTagIds.every((tagId) => project.tags.some((t) => t.id === tagId))
-		);
+		return filtered.sort((a, b) => {
+			const key = $sortMethod === 'updated' ? 'updatedDate' : 'releaseDate';
+			return new Date(b[key]).getTime() - new Date(a[key]).getTime();
+		});
 	}
 );
 
@@ -75,4 +79,8 @@ export function isTagSelected(tagId: string): boolean {
  */
 export function getProjectBySlug(slug: string): ProjectDetail | undefined {
 	return allProjectsData.find((project) => project.slug === slug);
+}
+
+export function toggleSort(): void {
+	sortMethod.update(current => current === 'release' ? 'updated' : 'release');
 }

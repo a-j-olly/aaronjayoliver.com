@@ -3,7 +3,9 @@
 		allTags,
 		selectedTags,
 		displayedProjects,
+		sortMethod,
 		toggleTag,
+		toggleSort,
 		clearTags,
 		isTagSelected
 	} from '$lib/services/projectStore';
@@ -70,6 +72,8 @@
 				</li>
 			{/each}
 		</ul>
+
+		<SortButton currentSort={$sortMethod} toggle={toggleSort} />
 
 		<div class="relative">
 			<h1
