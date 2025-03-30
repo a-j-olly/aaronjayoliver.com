@@ -11,6 +11,7 @@
 	} from '$lib/services/projectStore';
 	import Card from '../lib/components/ui/Card.svelte';
 	import Pill from '../lib/components/ui/Pill.svelte';
+	import SortButton from '../lib/components/ui/SortButton.svelte';
 	import ClearIcon from '../lib/components/ui/icons/ClearIcon.svelte';
 	import MinimiseIcon from '../lib/components/ui/icons/MinimiseIcon.svelte';
 	import MaximiseIcon from '../lib/components/ui/icons/MaximiseIcon.svelte';
