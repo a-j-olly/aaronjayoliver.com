@@ -8,7 +8,7 @@ const allTagsData = getAllTags();
 
 // The only writable stores - single source of truth
 export const selectedTagIds = writable<string[]>([]);
-export const sortMethod = writable<SortMethod>('updated');
+export const sortMethod = writable<SortMethod>('desc');
 
 // Create a store for selected tag objects (derived from IDs)
 export const selectedTags: Readable<TagItem[]> = derived(selectedTagIds, ($selectedTagIds) => {
@@ -20,19 +20,20 @@ export const selectedTags: Readable<TagItem[]> = derived(selectedTagIds, ($selec
 
 // Create a store for displayed projects based on tag filter
 export const displayedProjects: Readable<ProjectDetail[]> = derived(
-	[selectedTagIds, sortMethod],
-	([$selectedTagIds, $sortMethod]) => {
-		const filtered = $selectedTagIds.length === 0 
-			? allProjectsData 
-			: allProjectsData.filter(project =>
-				$selectedTagIds.every(tagId => project.tags.some(t => t.id === tagId))
-			);
+  [selectedTagIds, sortMethod],
+  ([$selectedTagIds, $sortMethod]) => {
+    const filtered = $selectedTagIds.length === 0 
+      ? allProjectsData 
+      : allProjectsData.filter(project =>
+          $selectedTagIds.every(tagId => project.tags.some(t => t.id === tagId))
+        );
 
-		return filtered.sort((a, b) => {
-			const key = $sortMethod === 'updated' ? 'updatedDate' : 'releaseDate';
-			return new Date(b[key]).getTime() - new Date(a[key]).getTime();
-		});
-	}
+    return filtered.sort((a, b) => {
+      const dateA = new Date(a.updatedDate).getTime();
+      const dateB = new Date(b.updatedDate).getTime();
+      return $sortMethod === 'desc' ? dateB - dateA : dateA - dateB;
+    });
+  }
 );
 
 // All available tags
@@ -85,5 +86,5 @@ export function getProjectBySlug(slug: string): ProjectDetail | undefined {
  * Toggle project sorting by release date or updated date (descending)
  */
 export function toggleSort(): void {
-	sortMethod.update(current => current === 'release' ? 'updated' : 'release');
+  sortMethod.update(current => current === 'asc' ? 'desc' : 'asc');
 }

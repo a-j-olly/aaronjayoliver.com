@@ -1,4 +1,4 @@
-export type SortMethod = 'release' | 'updated';
+export type SortMethod = 'asc' | 'desc';
 
 export type Picture = {
 	/**
