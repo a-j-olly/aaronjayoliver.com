@@ -6,7 +6,8 @@
 		toggleTag,
 		toggleSort,
 		clearTags,
-		isTagSelected
+		isTagSelected,
+		sortMethod
 	} from '$lib/services/projectStore';
 	import Card from '../lib/components/ui/Card.svelte';
 	import Pill from '../lib/components/ui/Pill.svelte';
@@ -95,7 +96,7 @@
 			<div class="absolute bottom-0 right-0">
 				<button
 					type="button"
-					title="Sort Projects"
+					title="Sort Projects ({$sortMethod})"
 					class="flex size-8 items-center justify-center rounded-tr bg-orange-400 bg-red-700 text-white hover:bg-red-800 dark:bg-red-600 dark:hover:bg-red-700"
 					onclick={toggleSort}
 				>
