@@ -1,3 +1,5 @@
+export type SortMethod = 'asc' | 'desc';
+
 export type Picture = {
 	/**
 	 * Key is format. Value is srcset.

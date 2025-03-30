@@ -26,57 +26,59 @@ import postgresql from '$lib/images/icons/tags/postgresql-dark.svg';
 import terraform from '$lib/images/icons/tags/terraform-dark.svg';
 import vitest from '$lib/images/icons/tags/vitest-dark.svg';
 import prisma from '$lib/images/icons/tags/prisma.svg';
+import python from '$lib/images/icons/tags/python-dark.svg';
 
 // Maps for project and tag images
 const projectImageMap: Record<string, Picture | string> = {
-  neutrify,
-  aaronjayoliver,
-  asyncRestAPI,
-  serverlessGQLAPI,
-  paymentGateway
+	neutrify,
+	aaronjayoliver,
+	asyncRestAPI,
+	serverlessGQLAPI,
+	paymentGateway
 };
 
 const tagImageMap: Record<string, string> = {
-  'typescript': typescript,
-  'angular': angular,
-  'aws-light': aws,
-  'cloudflare-light': cloudflare,
-  'javascript': javascript,
-  'nodejs-light': nodejs,
-  'svelte': svelte,
-  'serverless': serverless,
-  'ionic': ionic,
-  'tailwindcss': tailwindcss,
-  'cordova': cordova,
-  'lambda': lambda,
-  'dynamodb': dynamodb,
-  'jest': jest,
-  'postgresql-dark': postgresql,
-  'terraform-dark': terraform,
-  'vitest-dark': vitest,
-  'prisma': prisma
+	typescript: typescript,
+	angular: angular,
+	aws: aws,
+	cloudflare: cloudflare,
+	javascript: javascript,
+	nodejs: nodejs,
+	svelte: svelte,
+	serverless: serverless,
+	ionic: ionic,
+	tailwindcss: tailwindcss,
+	cordova: cordova,
+	lambda: lambda,
+	dynamodb: dynamodb,
+	jest: jest,
+	postgresql: postgresql,
+	terraform: terraform,
+	vitest: vitest,
+	prisma: prisma,
+	python: python
 };
 
 /**
  * Get the resolved image for a project
  */
 export function getProjectImage(key: string): Picture | string {
-  const image = projectImageMap[key];
-  if (!image) {
-    console.warn(`Project image not found: ${key}`);
-    return '/placeholder-project.webp';
-  }
-  return image;
+	const image = projectImageMap[key];
+	if (!image) {
+		console.warn(`Project image not found: ${key}`);
+		return '/placeholder-project.webp';
+	}
+	return image;
 }
 
 /**
  * Get the resolved image for a tag
  */
 export function getTagImage(key: string): string {
-  const image = tagImageMap[key];
-  if (!image) {
-    console.warn(`Tag image not found: ${key}`);
-    return '/placeholder-tag.svg';
-  }
-  return image;
+	const image = tagImageMap[key];
+	if (!image) {
+		console.warn(`Tag image not found: ${key}`);
+		return '/placeholder-tag.svg';
+	}
+	return image;
 }

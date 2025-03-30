@@ -1,13 +1,14 @@
 import { writable, derived, type Readable } from 'svelte/store';
 import { getAllProjectDetails, getAllTags } from './projectService';
-import type { ProjectDetail, TagDetail, TagItem } from 'shared_types';
+import type { ProjectDetail, SortMethod, TagDetail, TagItem } from 'shared_types';
 
 // Cache all projects and tags to avoid recalculation
 const allProjectsData = getAllProjectDetails();
 const allTagsData = getAllTags();
 
-// The only writable store - single source of truth for selected tags
+// The only writable stores - single source of truth
 export const selectedTagIds = writable<string[]>([]);
+export const sortMethod = writable<SortMethod>('desc');
 
 // Create a store for selected tag objects (derived from IDs)
 export const selectedTags: Readable<TagItem[]> = derived(selectedTagIds, ($selectedTagIds) => {
@@ -19,16 +20,20 @@ export const selectedTags: Readable<TagItem[]> = derived(selectedTagIds, ($selec
 
 // Create a store for displayed projects based on tag filter
 export const displayedProjects: Readable<ProjectDetail[]> = derived(
-	selectedTagIds,
-	($selectedTagIds) => {
-		if ($selectedTagIds.length === 0) {
-			return allProjectsData;
-		}
+  [selectedTagIds, sortMethod],
+  ([$selectedTagIds, $sortMethod]) => {
+    const filtered = $selectedTagIds.length === 0 
+      ? allProjectsData 
+      : allProjectsData.filter(project =>
+          $selectedTagIds.every(tagId => project.tags.some(t => t.id === tagId))
+        );
 
-		return allProjectsData.filter((project) =>
-			$selectedTagIds.every((tagId) => project.tags.some((t) => t.id === tagId))
-		);
-	}
+    return filtered.sort((a, b) => {
+      const dateA = new Date(a.updatedDate).getTime();
+      const dateB = new Date(b.updatedDate).getTime();
+      return $sortMethod === 'desc' ? dateB - dateA : dateA - dateB;
+    });
+  }
 );
 
 // All available tags
@@ -75,4 +80,11 @@ export function isTagSelected(tagId: string): boolean {
  */
 export function getProjectBySlug(slug: string): ProjectDetail | undefined {
 	return allProjectsData.find((project) => project.slug === slug);
+}
+
+/**
+ * Toggle project sorting by release date or updated date (descending)
+ */
+export function toggleSort(): void {
+  sortMethod.update(current => current === 'asc' ? 'desc' : 'asc');
 }
