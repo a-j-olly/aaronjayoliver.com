@@ -3,7 +3,6 @@
 		allTags,
 		selectedTags,
 		displayedProjects,
-		sortMethod,
 		toggleTag,
 		toggleSort,
 		clearTags,
@@ -11,10 +10,10 @@
 	} from '$lib/services/projectStore';
 	import Card from '../lib/components/ui/Card.svelte';
 	import Pill from '../lib/components/ui/Pill.svelte';
-	import SortButton from '../lib/components/ui/SortButton.svelte';
 	import ClearIcon from '../lib/components/ui/icons/ClearIcon.svelte';
 	import MinimiseIcon from '../lib/components/ui/icons/MinimiseIcon.svelte';
 	import MaximiseIcon from '../lib/components/ui/icons/MaximiseIcon.svelte';
+	import SortIcon from '$lib/components/ui/icons/SortIcon.svelte';
 
 	// Local component state
 	let showTags = $state(true);
@@ -74,8 +73,6 @@
 			{/each}
 		</ul>
 
-		<SortButton currentSort={$sortMethod} toggle={toggleSort} />
-
 		<div class="relative">
 			<h1
 				class="mb-2 bg-orange-400 text-center font-serif text-2xl text-white"
@@ -83,15 +80,26 @@
 			>
 				Projects
 			</h1>
-			<div class="absolute bottom-0 left-0" class:hidden={showTags}>
+			<div class="absolute bottom-0 left-0">
 				<button
 					type="button"
 					title="Show Skills"
 					disabled={showTags}
 					class="flex size-8 items-center justify-center rounded-tl bg-orange-400 bg-red-700 text-white hover:bg-red-800 dark:bg-red-600 dark:hover:bg-red-700"
+					class:hidden={showTags}
 					onclick={toggleShowTags}
 				>
 					<MaximiseIcon height="24px" width="24px" />
+				</button>
+			</div>
+			<div class="absolute bottom-0 right-0">
+				<button
+					type="button"
+					title="Sort Projects"
+					class="flex size-8 items-center justify-center rounded-tr bg-orange-400 bg-red-700 text-white hover:bg-red-800 dark:bg-red-600 dark:hover:bg-red-700"
+					onclick={toggleSort}
+				>
+					<SortIcon height="24px" width="24px" />
 				</button>
 			</div>
 		</div>

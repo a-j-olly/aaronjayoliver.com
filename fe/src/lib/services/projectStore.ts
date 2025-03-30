@@ -1,6 +1,6 @@
 import { writable, derived, type Readable } from 'svelte/store';
 import { getAllProjectDetails, getAllTags } from './projectService';
-import type { ProjectDetail, TagDetail, TagItem } from 'shared_types';
+import type { ProjectDetail, SortMethod, TagDetail, TagItem } from 'shared_types';
 
 // Cache all projects and tags to avoid recalculation
 const allProjectsData = getAllProjectDetails();
@@ -8,7 +8,7 @@ const allTagsData = getAllTags();
 
 // The only writable stores - single source of truth
 export const selectedTagIds = writable<string[]>([]);
-export const sortMethod = writable<SortMethod>('release');
+export const sortMethod = writable<SortMethod>('updated');
 
 // Create a store for selected tag objects (derived from IDs)
 export const selectedTags: Readable<TagItem[]> = derived(selectedTagIds, ($selectedTagIds) => {
@@ -22,7 +22,7 @@ export const selectedTags: Readable<TagItem[]> = derived(selectedTagIds, ($selec
 export const displayedProjects: Readable<ProjectDetail[]> = derived(
 	[selectedTagIds, sortMethod],
 	([$selectedTagIds, $sortMethod]) => {
-		let filtered = $selectedTagIds.length === 0 
+		const filtered = $selectedTagIds.length === 0 
 			? allProjectsData 
 			: allProjectsData.filter(project =>
 				$selectedTagIds.every(tagId => project.tags.some(t => t.id === tagId))
@@ -81,6 +81,9 @@ export function getProjectBySlug(slug: string): ProjectDetail | undefined {
 	return allProjectsData.find((project) => project.slug === slug);
 }
 
+/**
+ * Toggle project sorting by release date or updated date (descending)
+ */
 export function toggleSort(): void {
 	sortMethod.update(current => current === 'release' ? 'updated' : 'release');
 }
