@@ -3,10 +3,8 @@
 		allTags,
 		selectedTags,
 		displayedProjects,
-		toggleTag,
 		toggleSort,
 		clearTags,
-		isTagSelected,
 		sortMethod
 	} from '$lib/services/projectStore';
 	import Card from '../lib/components/ui/Card.svelte';
@@ -69,7 +67,7 @@
 		>
 			{#each $allTags as tag (tag.id)}
 				<li>
-					<Pill {tag} selected={isTagSelected(tag.id)} toggleTag={() => toggleTag(tag.id)} />
+					<Pill {tag} />
 				</li>
 			{/each}
 		</ul>
