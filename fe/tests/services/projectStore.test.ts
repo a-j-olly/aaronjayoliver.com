@@ -7,7 +7,6 @@ import {
 	allTags,
 	toggleTag,
 	clearTags,
-	isTagSelected,
 	getProjectBySlug,
 	sortMethod,
 	toggleSort
@@ -244,20 +243,6 @@ describe('projectStore', () => {
 
 			const tagIds = get(selectedTagIds);
 			expect(tagIds).toHaveLength(0);
-		});
-	});
-
-	describe('isTagSelected', () => {
-		it('should return true for a selected tag', () => {
-			toggleTag('1');
-
-			const selected = isTagSelected('1');
-			expect(selected).toBe(true);
-		});
-
-		it('should return false for a non-selected tag', () => {
-			const selected = isTagSelected('999');
-			expect(selected).toBe(false);
 		});
 	});
 

@@ -1,27 +1,24 @@
 <script lang="ts">
-	import { selectedTagIds } from '$lib/services/projectStore';
-	import { readable } from 'svelte/store';
+	import { selectedTagIds, toggleTag } from '$lib/services/projectStore';
+	import type { TagItem } from 'shared_types';
 
-	export let tagId;
-	export let tag: TagItem;
-
-	const isSelected = readable(false);
-
-	$: {
-		isSelected.set($selectedTagIds.includes(tagId));
+	interface Props {
+		tag: TagItem;
 	}
 
-	function toggleTag() {
-		selectedTagIds.update(ids =>
-			ids.includes(tagId) ? ids.filter(id => id !== tagId) : [...ids, tagId]
-		);
-	}
+	let { tag }: Props = $props();
+
+	let isSelected = $state(false);
+
+	selectedTagIds.subscribe((ids) => {
+		isSelected = ids.includes(tag.id);
+	});
 </script>
 
 <button
 	class="my-1 w-24 rounded-full px-1 text-lg text-white xl:w-28
 	 {isSelected ? 'bg-dark-blue hover:bg-blue-600' : 'bg-slate-400 hover:bg-slate-500'}"
-	on:click={toggleTag}
+	onclick={() => toggleTag(tag.id)}
 	title={tag.name}
 >
 	{tag.name}

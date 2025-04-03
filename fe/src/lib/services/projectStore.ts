@@ -65,17 +65,6 @@ export function clearTags(): void {
 }
 
 /**
- * Check if a tag is currently selected
- */
-export function isTagSelected(tagId: string): boolean {
-	let result = false;
-	selectedTagIds.subscribe(($ids) => {
-		result = $ids.includes(tagId);
-	})();
-	return result;
-}
-
-/**
  * Get a project by slug
  */
 export function getProjectBySlug(slug: string): ProjectDetail | undefined {
