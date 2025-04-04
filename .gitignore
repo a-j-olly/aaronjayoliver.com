@@ -4,3 +4,5 @@ node_modules
 .pnpm-store
 .cursor
 .cursorignore
+PLANNING.md
+TASK.md

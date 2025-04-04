@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { fade, slide } from 'svelte/transition';
 	import {
 		allTags,
 		selectedTags,
@@ -13,6 +14,7 @@
 	import MinimiseIcon from '../lib/components/ui/icons/MinimiseIcon.svelte';
 	import MaximiseIcon from '../lib/components/ui/icons/MaximiseIcon.svelte';
 	import SortIcon from '$lib/components/ui/icons/SortIcon.svelte';
+	import { cubicInOut } from 'svelte/easing';
 
 	// Local component state
 	let showTags = $state(true);
@@ -32,45 +34,47 @@
 
 <div class="flex justify-center">
 	<div class="mx-2 w-full max-w-screen-xl rounded bg-orange-200/50 pb-2 sm:mx-4 md:mx-8">
-		<div class="relative" class:hidden={!showTags}>
-			<h1 class="rounded-t bg-orange-400 text-center font-serif text-2xl text-white">Skills</h1>
-			<div class="absolute bottom-0 right-0">
-				<button
-					type="button"
-					title="Clear Skills"
-					disabled={$selectedTags.length === 0}
-					class="flex size-8 items-center justify-center rounded-tr text-white {$selectedTags.length ===
-					0
-						? 'bg-slate-400 text-white'
-						: 'bg-red-700 hover:bg-red-800 dark:bg-red-600 dark:hover:bg-red-700'}"
-					onclick={clearTags}
-				>
-					<ClearIcon />
-				</button>
+		{#if showTags}
+			<div class="relative" transition:slide={{ duration: 200, easing: cubicInOut }}>
+				<h1 class="rounded-t bg-orange-400 text-center font-serif text-2xl text-white">Skills</h1>
+				<div class="absolute bottom-0 right-0">
+					<button
+						type="button"
+						title="Clear Skills"
+						disabled={$selectedTags.length === 0}
+						class="flex size-8 items-center justify-center rounded-tr text-white {$selectedTags.length ===
+						0
+							? 'bg-slate-400 text-white'
+							: 'bg-red-700 hover:bg-red-800 dark:bg-red-600 dark:hover:bg-red-700'}"
+						onclick={clearTags}
+					>
+						<ClearIcon />
+					</button>
+				</div>
+				<div class="absolute bottom-0 left-0">
+					<button
+						type="button"
+						title="Hide Skills"
+						disabled={!showTags}
+						class="flex size-8 items-center justify-center rounded-tl bg-orange-400 bg-red-700 text-white hover:bg-red-800 dark:bg-red-600 dark:hover:bg-red-700"
+						onclick={toggleShowTags}
+					>
+						<MinimiseIcon height="24px" width="24px" />
+					</button>
+				</div>
 			</div>
-			<div class="absolute bottom-0 left-0">
-				<button
-					type="button"
-					title="Hide Skills"
-					disabled={!showTags}
-					class="flex size-8 items-center justify-center rounded-tl bg-orange-400 bg-red-700 text-white hover:bg-red-800 dark:bg-red-600 dark:hover:bg-red-700"
-					onclick={toggleShowTags}
-				>
-					<MinimiseIcon height="24px" width="24px" />
-				</button>
-			</div>
-		</div>
 
-		<ul
-			class="grid grid-cols-[repeat(auto-fit,_minmax(96px,_max-content))] justify-center gap-1 p-1 xl:grid-cols-[repeat(auto-fit,_minmax(112px,_max-content))]"
-			class:hidden={!showTags}
-		>
-			{#each $allTags as tag (tag.id)}
-				<li>
-					<Pill {tag} />
-				</li>
-			{/each}
-		</ul>
+			<ul
+				transition:slide={{ duration: 200, easing: cubicInOut }}
+				class="grid grid-cols-[repeat(auto-fit,_minmax(96px,_max-content))] justify-center gap-1 p-1 xl:grid-cols-[repeat(auto-fit,_minmax(112px,_max-content))]"
+			>
+				{#each $allTags as tag (tag.id)}
+					<li>
+						<Pill {tag} />
+					</li>
+				{/each}
+			</ul>
+		{/if}
 
 		<div class="relative">
 			<h1
