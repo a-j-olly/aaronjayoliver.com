@@ -83,18 +83,23 @@
 			>
 				Projects
 			</h1>
+			{#if !showTags}
+
 			<div class="absolute bottom-0 left-0">
 				<button
 					type="button"
 					title="Show Skills"
 					disabled={showTags}
 					class="flex size-8 items-center justify-center rounded-tl bg-orange-400 bg-red-700 text-white hover:bg-red-800 dark:bg-red-600 dark:hover:bg-red-700"
-					class:hidden={showTags}
 					onclick={toggleShowTags}
+					transition:fade={{ duration: 100 }}
 				>
 					<MaximiseIcon height="24px" width="24px" />
 				</button>
 			</div>
+
+			{/if}
+
 			<div class="absolute bottom-0 right-0">
 				<button
 					type="button"
