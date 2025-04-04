@@ -2,3 +2,5 @@ node_modules
 .aider*
 .devcontainer
 .pnpm-store
+.cursor
+.cursorignore
