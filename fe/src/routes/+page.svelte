@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { fade, slide } from 'svelte/transition';
+	import { flip } from 'svelte/animate';
 	import {
 		allTags,
 		selectedTags,
@@ -15,12 +16,16 @@
 	import MaximiseIcon from '../lib/components/ui/icons/MaximiseIcon.svelte';
 	import SortIcon from '$lib/components/ui/icons/SortIcon.svelte';
 	import { cubicInOut } from 'svelte/easing';
+	import { showSkills } from '$lib/services/uiStore';
 
-	// Local component state
-	let showTags = $state(true);
+	// Animation configuration for consistency
+	const ANIMATION_CONFIG = {
+		duration: 200,
+		easing: cubicInOut
+	} as const;
 
 	function toggleShowTags() {
-		showTags = !showTags;
+		$showSkills = !$showSkills;
 	}
 </script>
 
@@ -34,8 +39,8 @@
 
 <div class="flex justify-center">
 	<div class="mx-2 w-full max-w-screen-xl rounded bg-orange-200/50 pb-2 sm:mx-4 md:mx-8">
-		{#if showTags}
-			<div class="relative" transition:slide={{ duration: 200, easing: cubicInOut }}>
+		{#if $showSkills}
+			<div class="animate-slide hardware-accelerated relative" transition:slide={ANIMATION_CONFIG}>
 				<h1 class="rounded-t bg-orange-400 text-center font-serif text-2xl text-white">Skills</h1>
 				<div class="absolute bottom-0 right-0">
 					<button
@@ -55,7 +60,7 @@
 					<button
 						type="button"
 						title="Hide Skills"
-						disabled={!showTags}
+						disabled={!$showSkills}
 						class="flex size-8 items-center justify-center rounded-tl bg-orange-400 bg-red-700 text-white hover:bg-red-800 dark:bg-red-600 dark:hover:bg-red-700"
 						onclick={toggleShowTags}
 					>
@@ -65,8 +70,8 @@
 			</div>
 
 			<ul
-				transition:slide={{ duration: 200, easing: cubicInOut }}
-				class="grid grid-cols-[repeat(auto-fit,_minmax(96px,_max-content))] justify-center gap-1 p-1 xl:grid-cols-[repeat(auto-fit,_minmax(112px,_max-content))]"
+				transition:slide={ANIMATION_CONFIG}
+				class="animate-slide hardware-accelerated grid grid-cols-[repeat(auto-fit,_minmax(96px,_max-content))] justify-center gap-1 p-1 xl:grid-cols-[repeat(auto-fit,_minmax(112px,_max-content))]"
 			>
 				{#each $allTags as tag (tag.id)}
 					<li>
@@ -79,25 +84,23 @@
 		<div class="relative">
 			<h1
 				class="mb-2 bg-orange-400 text-center font-serif text-2xl text-white"
-				class:rounded-t={!showTags}
+				class:rounded-t={!$showSkills}
 			>
 				Projects
 			</h1>
-			{#if !showTags}
-
-			<div class="absolute bottom-0 left-0">
-				<button
-					type="button"
-					title="Show Skills"
-					disabled={showTags}
-					class="flex size-8 items-center justify-center rounded-tl bg-orange-400 bg-red-700 text-white hover:bg-red-800 dark:bg-red-600 dark:hover:bg-red-700"
-					onclick={toggleShowTags}
-					transition:fade={{ duration: 100 }}
-				>
-					<MaximiseIcon height="24px" width="24px" />
-				</button>
-			</div>
-
+			{#if !$showSkills}
+				<div class="absolute bottom-0 left-0">
+					<button
+						type="button"
+						title="Show Skills"
+						disabled={$showSkills}
+						class="animate-fade hardware-accelerated flex size-8 items-center justify-center rounded-tl bg-orange-400 bg-red-700 text-white hover:bg-red-800 dark:bg-red-600 dark:hover:bg-red-700"
+						onclick={toggleShowTags}
+						transition:fade={ANIMATION_CONFIG}
+					>
+						<MaximiseIcon height="24px" width="24px" />
+					</button>
+				</div>
 			{/if}
 
 			<div class="absolute bottom-0 right-0">
@@ -113,17 +116,25 @@
 		</div>
 
 		{#if $displayedProjects.length}
-			<ul class="grid grid-cols-1 gap-4 px-2 sm:grid-cols-2">
+			<ul
+				class="animate-fade hardware-accelerated grid grid-cols-1 gap-4 px-2 sm:grid-cols-2"
+				transition:fade={ANIMATION_CONFIG}
+			>
 				{#each $displayedProjects as project (project.id)}
 					<li
-						class="min-h-32 min-w-64 overflow-hidden rounded border-4 border-orange-400 bg-orange-400 shadow-lg hover:border-orange-500 hover:bg-orange-500"
+						animate:flip={ANIMATION_CONFIG}
+						transition:fade={ANIMATION_CONFIG}
+						class="animate-flip hardware-accelerated min-h-32 min-w-64 overflow-hidden rounded border-4 border-orange-400 bg-orange-400 shadow-lg hover:border-orange-500 hover:bg-orange-500"
 					>
 						<Card name={project.name} image={project.image} slug={project.slug} />
 					</li>
 				{/each}
 			</ul>
 		{:else}
-			<div class="m-2 flex min-w-80 items-center justify-center">
+			<div
+				class="animate-fade hardware-accelerated m-2 flex min-w-80 items-center justify-center"
+				transition:fade={ANIMATION_CONFIG}
+			>
 				<p class="text-slate-800">
 					There are no projects matching the skills you have selected. Clear all skills to view all
 					projects.

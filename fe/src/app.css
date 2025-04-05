@@ -96,3 +96,24 @@ body {
 		src: url('/fonts/roboto-serif/roboto-serif-v15-latin-700italic.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
 	}
 }
+
+/* Animation performance optimizations */
+@layer utilities {
+	/* Add will-change hints for better performance */
+	.animate-flip {
+		will-change: transform;
+	}
+	.animate-fade {
+		will-change: opacity;
+	}
+	.animate-slide {
+		will-change: transform;
+	}
+
+	/* Add hardware acceleration for smoother animations */
+	.hardware-accelerated {
+		transform: translateZ(0);
+		backface-visibility: hidden;
+		perspective: 1000px;
+	}
+}
