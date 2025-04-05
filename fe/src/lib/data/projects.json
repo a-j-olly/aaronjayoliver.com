@@ -17,7 +17,7 @@
     "description": "A portfolio website developed using SvelteKit that serves as an advertisement of my professional web development skills. The UI design philosophy was to be bold but not garish; simple, yet feature complete.<br><br>The site has lightning fast load times due to it being fully pre-rendered. There is no supporting backend infrastructure, with the exception of hosting the application on Cloudflare. This results in a site that is free to maintain (within parameters), but with the drawback of needing to commit a code change whenever data must be updated.",
     "slug": "aaronjayoliver.com",
     "releaseDate": "2024-11-13T00:00:00.000Z",
-    "updatedDate": "2025-04-03T00:00:00.000Z",
+    "updatedDate": "2025-04-05T00:00:00.000Z",
     "image": "aaronjayoliver",
     "repositoryURL": "https://github.com/a-j-olly/aaronjayoliver.com",
     "presentationURL": "https://aaronjayoliver.com",
