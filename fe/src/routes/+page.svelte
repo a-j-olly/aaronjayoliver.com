@@ -15,12 +15,14 @@
 	import MaximiseIcon from '../lib/components/ui/icons/MaximiseIcon.svelte';
 	import SortIcon from '$lib/components/ui/icons/SortIcon.svelte';
 	import { cubicInOut } from 'svelte/easing';
+	import { getStoredValue, setStoredValue, STORAGE_KEYS } from '$lib/services/localStorageService';
 
-	// Local component state
-	let showTags = $state(true);
+	// Local component state initialized directly from localStorage
+	let showTags = $state(getStoredValue(STORAGE_KEYS.SHOW_TAGS, true));
 
 	function toggleShowTags() {
 		showTags = !showTags;
+		setStoredValue(STORAGE_KEYS.SHOW_TAGS, showTags);
 	}
 </script>
 
