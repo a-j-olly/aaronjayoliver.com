@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { fade, slide } from 'svelte/transition';
+	import { flip } from 'svelte/animate';
 	import {
 		allTags,
 		selectedTags,
@@ -17,6 +18,12 @@
 	import { cubicInOut } from 'svelte/easing';
 	import { showSkills } from '$lib/services/uiStore';
 
+	// Animation configuration for consistency
+	const ANIMATION_CONFIG = {
+		duration: 200,
+		easing: cubicInOut
+	} as const;
+
 	function toggleShowTags() {
 		$showSkills = !$showSkills;
 	}
@@ -33,7 +40,7 @@
 <div class="flex justify-center">
 	<div class="mx-2 w-full max-w-screen-xl rounded bg-orange-200/50 pb-2 sm:mx-4 md:mx-8">
 		{#if $showSkills}
-			<div class="relative" transition:slide={{ duration: 200, easing: cubicInOut }}>
+			<div class="animate-slide hardware-accelerated relative" transition:slide={ANIMATION_CONFIG}>
 				<h1 class="rounded-t bg-orange-400 text-center font-serif text-2xl text-white">Skills</h1>
 				<div class="absolute bottom-0 right-0">
 					<button
@@ -63,8 +70,8 @@
 			</div>
 
 			<ul
-				transition:slide={{ duration: 200, easing: cubicInOut }}
-				class="grid grid-cols-[repeat(auto-fit,_minmax(96px,_max-content))] justify-center gap-1 p-1 xl:grid-cols-[repeat(auto-fit,_minmax(112px,_max-content))]"
+				transition:slide={ANIMATION_CONFIG}
+				class="animate-slide hardware-accelerated grid grid-cols-[repeat(auto-fit,_minmax(96px,_max-content))] justify-center gap-1 p-1 xl:grid-cols-[repeat(auto-fit,_minmax(112px,_max-content))]"
 			>
 				{#each $allTags as tag (tag.id)}
 					<li>
@@ -87,9 +94,9 @@
 						type="button"
 						title="Show Skills"
 						disabled={$showSkills}
-						class="flex size-8 items-center justify-center rounded-tl bg-orange-400 bg-red-700 text-white hover:bg-red-800 dark:bg-red-600 dark:hover:bg-red-700"
+						class="animate-fade hardware-accelerated flex size-8 items-center justify-center rounded-tl bg-orange-400 bg-red-700 text-white hover:bg-red-800 dark:bg-red-600 dark:hover:bg-red-700"
 						onclick={toggleShowTags}
-						transition:fade={{ duration: 100 }}
+						transition:fade={ANIMATION_CONFIG}
 					>
 						<MaximiseIcon height="24px" width="24px" />
 					</button>
@@ -109,17 +116,25 @@
 		</div>
 
 		{#if $displayedProjects.length}
-			<ul class="grid grid-cols-1 gap-4 px-2 sm:grid-cols-2">
+			<ul
+				class="animate-fade hardware-accelerated grid grid-cols-1 gap-4 px-2 sm:grid-cols-2"
+				transition:fade={ANIMATION_CONFIG}
+			>
 				{#each $displayedProjects as project (project.id)}
 					<li
-						class="min-h-32 min-w-64 overflow-hidden rounded border-4 border-orange-400 bg-orange-400 shadow-lg hover:border-orange-500 hover:bg-orange-500"
+						animate:flip={ANIMATION_CONFIG}
+						transition:fade={ANIMATION_CONFIG}
+						class="animate-flip hardware-accelerated min-h-32 min-w-64 overflow-hidden rounded border-4 border-orange-400 bg-orange-400 shadow-lg hover:border-orange-500 hover:bg-orange-500"
 					>
 						<Card name={project.name} image={project.image} slug={project.slug} />
 					</li>
 				{/each}
 			</ul>
 		{:else}
-			<div class="m-2 flex min-w-80 items-center justify-center">
+			<div
+				class="animate-fade hardware-accelerated m-2 flex min-w-80 items-center justify-center"
+				transition:fade={ANIMATION_CONFIG}
+			>
 				<p class="text-slate-800">
 					There are no projects matching the skills you have selected. Clear all skills to view all
 					projects.
