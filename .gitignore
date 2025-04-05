@@ -2,3 +2,7 @@ node_modules
 .aider*
 .devcontainer
 .pnpm-store
+.cursor
+.cursorignore
+PLANNING.md
+TASK.md
