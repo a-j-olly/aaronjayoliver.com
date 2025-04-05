@@ -15,14 +15,10 @@
 	import MaximiseIcon from '../lib/components/ui/icons/MaximiseIcon.svelte';
 	import SortIcon from '$lib/components/ui/icons/SortIcon.svelte';
 	import { cubicInOut } from 'svelte/easing';
-	import { getStoredValue, setStoredValue, STORAGE_KEYS } from '$lib/services/localStorageService';
-
-	// Local component state initialized directly from localStorage
-	let showTags = $state(getStoredValue(STORAGE_KEYS.SHOW_TAGS, true));
+	import { showSkills } from '$lib/services/uiStore';
 
 	function toggleShowTags() {
-		showTags = !showTags;
-		setStoredValue(STORAGE_KEYS.SHOW_TAGS, showTags);
+		$showSkills = !$showSkills;
 	}
 </script>
 
@@ -36,7 +32,7 @@
 
 <div class="flex justify-center">
 	<div class="mx-2 w-full max-w-screen-xl rounded bg-orange-200/50 pb-2 sm:mx-4 md:mx-8">
-		{#if showTags}
+		{#if $showSkills}
 			<div class="relative" transition:slide={{ duration: 200, easing: cubicInOut }}>
 				<h1 class="rounded-t bg-orange-400 text-center font-serif text-2xl text-white">Skills</h1>
 				<div class="absolute bottom-0 right-0">
@@ -57,7 +53,7 @@
 					<button
 						type="button"
 						title="Hide Skills"
-						disabled={!showTags}
+						disabled={!$showSkills}
 						class="flex size-8 items-center justify-center rounded-tl bg-orange-400 bg-red-700 text-white hover:bg-red-800 dark:bg-red-600 dark:hover:bg-red-700"
 						onclick={toggleShowTags}
 					>
@@ -81,25 +77,23 @@
 		<div class="relative">
 			<h1
 				class="mb-2 bg-orange-400 text-center font-serif text-2xl text-white"
-				class:rounded-t={!showTags}
+				class:rounded-t={!$showSkills}
 			>
 				Projects
 			</h1>
-			{#if !showTags}
-
-			<div class="absolute bottom-0 left-0">
-				<button
-					type="button"
-					title="Show Skills"
-					disabled={showTags}
-					class="flex size-8 items-center justify-center rounded-tl bg-orange-400 bg-red-700 text-white hover:bg-red-800 dark:bg-red-600 dark:hover:bg-red-700"
-					onclick={toggleShowTags}
-					transition:fade={{ duration: 100 }}
-				>
-					<MaximiseIcon height="24px" width="24px" />
-				</button>
-			</div>
-
+			{#if !$showSkills}
+				<div class="absolute bottom-0 left-0">
+					<button
+						type="button"
+						title="Show Skills"
+						disabled={$showSkills}
+						class="flex size-8 items-center justify-center rounded-tl bg-orange-400 bg-red-700 text-white hover:bg-red-800 dark:bg-red-600 dark:hover:bg-red-700"
+						onclick={toggleShowTags}
+						transition:fade={{ duration: 100 }}
+					>
+						<MaximiseIcon height="24px" width="24px" />
+					</button>
+				</div>
 			{/if}
 
 			<div class="absolute bottom-0 right-0">
