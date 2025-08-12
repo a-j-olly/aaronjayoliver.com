@@ -6,6 +6,7 @@ import aaronjayoliver from '$lib/images/projects/aaronjayoliver.webp?enhanced';
 import asyncRestAPI from '$lib/images/projects/async-payment-api.webp?enhanced';
 import serverlessGQLAPI from '$lib/images/projects/serverless-gql-api.webp?enhanced';
 import paymentGateway from '$lib/images/projects/payment-gateway.webp?enhanced';
+import diceRollerMCP from '$lib/images/projects/dice-roller-mcp.webp?enhanced';
 
 // Tag icon imports
 import typescript from '$lib/images/icons/tags/typescript.svg';
@@ -34,7 +35,8 @@ const projectImageMap: Record<string, Picture | string> = {
 	aaronjayoliver,
 	asyncRestAPI,
 	serverlessGQLAPI,
-	paymentGateway
+	paymentGateway,
+	diceRollerMCP
 };
 
 const tagImageMap: Record<string, string> = {
